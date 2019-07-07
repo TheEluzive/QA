@@ -1,0 +1,12 @@
+<test name = "Test">
+    <parameter name="firstValue" value = "true"/>
+    <parameter name="secondValue" value = "false"/>
+    <classes>
+        <class name = "Test">
+            <methods>
+                <include name="paramertizedTestAssertTrue"/>
+                <include name="paramertizedTestAssertFalse"/>
+            </methods>
+        </class>
+    </classes>
+</test>
