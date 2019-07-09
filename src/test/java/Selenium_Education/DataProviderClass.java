@@ -7,16 +7,15 @@ public class DataProviderClass {
     @DataProvider(name = "dataProviderEmail")
     public Object[][] DataProvidereEmail() {
         return new Object[][]{
-                {
-                        "12ww345mail1235@gmail.com"
-
-                }
+                {"12w543df2ghjwga235@gmail.com"},
+                {"12ww32vfw5432kl2a35@gmail.com"},
+                {"12ww2345wgdfsgfsdl1235@gmail.com"}
         };
     }
 
     @DataProvider(name = "dataProviderForRegistration")
     public Object[][] DataProviderForRegistration() {
-        return new Object[][]{
+        return  new Object[][]{
                 {
                         "Evgeny",//firstname
                         "Tkach", //lastname
@@ -39,7 +38,8 @@ public class DataProviderClass {
                         "89876543210", //mobile number
                         "Adress", //address alias
 
-                }
+                },
+
         };
     }
 }
