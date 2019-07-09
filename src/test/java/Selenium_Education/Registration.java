@@ -87,6 +87,10 @@ public class Registration {
 
     }
 
+    @Test(priority = 3)
+    public void finish() {
+        driver.close();
+    }
 
 }
 
