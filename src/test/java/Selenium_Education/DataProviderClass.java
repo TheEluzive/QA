@@ -8,7 +8,7 @@ public class DataProviderClass {
     public Object[][] DataProviderForRegistration() {
         return  new Object[][]{
                 {
-                        "1gdfgjhggfdgfdjghasgfh5@gmail.com",//email
+                        "dgfdjghasgfh5@gmail.com",//email
                         "Evgeny",//firstname
                         "Tkach", //lastname
                         "2345dfghqwerty", //password
@@ -32,14 +32,14 @@ public class DataProviderClass {
 
                 },
                 {
-                        "12gfdhgfdgfs7gh5@gmail.com",//email
-                        "Evgeny",//firstname
-                        "Tkach", //lastname
-                        "2345dfghqwerty", //password
+                        "fs7gh5@gmail.com",//email
+                        "NeEvgeny",//firstname
+                        "NeTkach", //lastname
+                        "234533333332", //password
                         "24", //day
                         "5", //month
                         "1997", //year
-                        true, //newsletter radio
+                        false, //newsletter radio
                         true, //optin radio
                         "", //firstname + ...
                         "", //lastname + ...
@@ -56,9 +56,9 @@ public class DataProviderClass {
 
                 },
                 {
-                        "12jg3hgfdhdgfhfdds666665@gmail.com",//email
-                        "Evgeny",//firstname
-                        "Tkach", //lastname
+                        "dgfhfdds666665@gmail.com",//email
+                        "TochnoNeEvgeny",//firstname
+                        "TochnoNeTkach", //lastname
                         "2345dfghqwerty", //password
                         "24", //day
                         "5", //month
