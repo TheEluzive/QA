@@ -48,10 +48,10 @@ public class SignIn_Out_And_Registration {
         if (newUser.isOptinRadio()) driver.findElement(By.xpath("//input[@id='optin']")).click();
         driver.findElement(By.xpath("//input[@id='firstname']")).sendKeys(newUser.getFirstname2());
         driver.findElement(By.xpath("//input[@id='lastname']")).sendKeys(newUser.getLastname2());
-        driver.findElement(By.xpath("//input[@id='address1']")).sendKeys(newUser.adress1);
-        driver.findElement(By.xpath("//input[@id='address2']")).sendKeys(newUser.adress2);
-        driver.findElement(By.xpath("//input[@id='city']")).sendKeys(newUser.adress2);
-        driver.findElement(By.xpath("//input[@id='postcode']")).sendKeys(newUser.postcode);
+        driver.findElement(By.xpath("//input[@id='address1']")).sendKeys(newUser.getAdress1());
+        driver.findElement(By.xpath("//input[@id='address2']")).sendKeys(newUser.getAdress2());
+        driver.findElement(By.xpath("//input[@id='city']")).sendKeys(newUser.getCity());
+        driver.findElement(By.xpath("//input[@id='postcode']")).sendKeys(newUser.getPostcode());
         Select selectCountry = new Select(driver.findElement(By.xpath("//select[@id='id_country']")));
         selectCountry.selectByValue(newUser.getCountry()); //only 21
         Select selectState = new Select(driver.findElement(By.xpath("//select[@id='id_state']")));
@@ -67,13 +67,12 @@ public class SignIn_Out_And_Registration {
         buttonLogout.click();
         return new String[] {usedEmail, newUser.getPassword()};
     }
-    public void signIn(WebDriver driver, String email, String password){
+    public void signInAndOut(WebDriver driver, String email, String password){
         driver.findElement(By.xpath("//a[@class='login']")).click();
         driver.findElement(By.xpath("//input[@id='email']")).sendKeys(email);
         driver.findElement(By.xpath("//input[@id='passwd']")).sendKeys(password);
         driver.findElement(By.xpath("//p[@class='submit']//span[1]")).click();
-
-
+        driver.findElement(By.xpath("//a[@class='logout']")).click();
     }
 
 
