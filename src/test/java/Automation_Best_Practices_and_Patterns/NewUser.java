@@ -23,12 +23,22 @@ public class NewUser {
     private String homePhone;
     private String mobileNumber;
     private String addressAlias;
+    private String usedEmail;
+
+    public String getUsedEmail() {
+        return usedEmail;
+    }
+
+    public void setUsedEmail(String usedEmail) {
+        this.usedEmail = usedEmail;
+    }
 
     public NewUser(String email, String firstname, String lastname, String password, String day, String month,
                    String year, boolean newsletterRadio, boolean optinRadio, String firstname2, String lastname2,
                    String adress1, String adress2, String city, String postcode, String country, String state,
                    String additionalInformation, String homePhone, String mobileNumber, String addressAlias) {
         this.email = email;
+        this.usedEmail = email;
         this.firstname = firstname;
         this.lastname = lastname;
         this.password = password;

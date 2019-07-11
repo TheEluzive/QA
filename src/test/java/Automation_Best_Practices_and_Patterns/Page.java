@@ -1,5 +1,7 @@
 package Automation_Best_Practices_and_Patterns;
+
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -8,27 +10,41 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
 
-import java.sql.Driver;
+public class Page {
+    static WebDriver driver;
+    String mainPage = "http://automationpractice.com/";
+    String dressesPage = mainPage + "index.php?id_category=8&controller=category";
 
-public class SignIn_Out_And_Registration {
-    private String mainPage = "http://automationpractice.com";
-    public WebDriver driver;
-    public SignIn_Out_And_Registration() {
 
+    Page(){
         System.setProperty("webdriver.chrome.driver", (System.getProperty("user.dir") + "/src/test/Drivers/chromedriver.exe"));
         driver = new ChromeDriver();
         driver.get(mainPage);
     }
 
-    public String[] registration(WebDriver driver, NewUser newUser) {
+
+
+    void contactUs(){}
+
+    void signIn(String email, String password) {
+        driver.findElement(By.xpath("//a[@class='login']")).click();
+        driver.findElement(By.xpath("//input[@id='email']")).sendKeys(email);
+        driver.findElement(By.xpath("//input[@id='passwd']")).sendKeys(password);
+        driver.findElement(By.xpath("//p[@class='submit']//span[1]")).click();
+    }
+    void signOut(){
+        driver.findElement(By.xpath("//a[@class='logout']")).click();
+    }
+
+    public String[] registration(NewUser newUser) {
         //registrated user and return String email and password
         driver.findElement(By.xpath("//a[@class='login']")).click();
         WebElement inputEmail = (new WebDriverWait(driver, 10))
                 .until(ExpectedConditions.presenceOfElementLocated(By.xpath("//input[@id='email_create']")));//or 2
         inputEmail.clear();
-        String usedEmail = System.currentTimeMillis() + newUser.getEmail();
-        driver.findElement(By.xpath("//input[@id='email_create']")).sendKeys(usedEmail);
-        System.out.println("Used email: " + usedEmail);
+        newUser.setUsedEmail(System.currentTimeMillis() + newUser.getEmail());
+        driver.findElement(By.xpath("//input[@id='email_create']")).sendKeys(newUser.getUsedEmail());
+        System.out.println("Used email: " + newUser.getUsedEmail());
         driver.findElement(By.xpath("//form[@id='create-account_form']//span[1]")).click();
 
 
@@ -65,15 +81,21 @@ public class SignIn_Out_And_Registration {
         WebElement buttonLogout = (new WebDriverWait(driver, 10))
                 .until(ExpectedConditions.presenceOfElementLocated(By.xpath("//a[@class='logout']")));//or 2
         buttonLogout.click();
-        return new String[] {usedEmail, newUser.getPassword()};
+        return new String[] {newUser.getUsedEmail(), newUser.getPassword()};
     }
-    public void signInAndOut(WebDriver driver, String email, String password){
-        driver.findElement(By.xpath("//a[@class='login']")).click();
-        driver.findElement(By.xpath("//input[@id='email']")).sendKeys(email);
-        driver.findElement(By.xpath("//input[@id='passwd']")).sendKeys(password);
-        driver.findElement(By.xpath("//p[@class='submit']//span[1]")).click();
-        driver.findElement(By.xpath("//a[@class='logout']")).click();
+    void openCart(){
+        driver.findElement(By.xpath("//a[@title='View my shopping cart']")).click();
+    }
+    public void mouseOver(WebElement element) {
+        String code = "var fireOnThis = arguments[0];"
+                + "var evObj = document.createEvent('MouseEvents');"
+                + "evObj.initEvent( 'mouseover', true, true );"
+                + "fireOnThis.dispatchEvent(evObj);";
+        ((JavascriptExecutor)driver).executeScript(code, element);
     }
 
 
+    public static void quitDriver() {
+        driver.quit();
+    }
 }
