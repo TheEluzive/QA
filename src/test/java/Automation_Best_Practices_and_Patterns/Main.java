@@ -1,20 +1,26 @@
 package Automation_Best_Practices_and_Patterns;
 
 import org.testng.annotations.AfterTest;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import java.util.logging.Logger;
 
+@Listeners (CustomListener.class)
 public class Main {
     @AfterTest
     public void afterMethod(){
-        Page.quitDriver();
+        AbstractPage.quitDriver();
     }
 
+
+
     @Test(dataProvider = "dataProviderNewUser", dataProviderClass = DataProviderNewUser.class)
+
     public void RegistrationTest(NewUser newUser) {
-        Logger logger = Logger.getLogger(String.valueOf(MyLogger.class));
-        Page homepage = new Homepage();
+        Logger logger = Logger.getLogger(String.valueOf(Main.class));
+        AbstractPage homepage = new Homepage();
+        logger.info("Registration was started");
         homepage.registration(newUser);
         homepage.signIn(newUser.getUsedEmail(), newUser.getPassword());
         homepage.signOut();

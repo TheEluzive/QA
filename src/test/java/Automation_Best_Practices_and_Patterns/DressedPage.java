@@ -1,10 +1,9 @@
 package Automation_Best_Practices_and_Patterns;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 
-public class DressedPage extends Page {
+public class DressedPage extends AbstractPage {
     DressedPage() {
         super();
         driver.get(dressesPage);

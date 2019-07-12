@@ -1,10 +1,9 @@
 package TestNG_Education;
 
 import org.testng.Assert;
-import org.testng.annotations.DataProvider;
-import org.testng.annotations.Listeners;
-import org.testng.annotations.Parameters;
+import org.testng.annotations.*;
 import org.testng.asserts.SoftAssert;
+
 @Listeners(CustomListener.class)
 public class FirstTask {
     @DataProvider(name  = "someDataProviderName")
@@ -15,6 +14,57 @@ public class FirstTask {
                 {2, 4},
         };
 
+    }
+
+    @BeforeClass
+    public void beforeClass() {
+        System.out.println("Before Class");
+    }
+    @AfterClass
+    public void afterClass() {
+        System.out.println("After Class");
+    }
+
+
+    @BeforeSuite
+    public void beforeSuite() {
+        System.out.println("Before Suite");
+    }
+
+    @AfterSuite
+    public void afterSuite() {
+        System.out.println("After Suite");
+    }
+
+    @BeforeTest
+    public void beforeTest() {
+        System.out.println("Before Test");
+    }
+
+    @AfterTest
+    public void afterTest() {
+        System.out.println("After Test");
+    }
+
+
+    @BeforeMethod
+    public void beforeMethod() {
+        System.out.println("Before Method");
+    }
+
+    @AfterMethod
+    public void afterMethod() {
+        System.out.println("After Method");
+    }
+
+    @BeforeGroups
+    public void beforeGroups() {
+        System.out.println("Before Groups");
+    }
+
+    @AfterGroups
+    public void afterGroups() {
+        System.out.println("After Groups");
     }
 
     @org.testng.annotations.Test(expectedExceptions = {ArithmeticException.class, Exception.class})

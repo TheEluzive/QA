@@ -7,6 +7,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.util.Scanner;
@@ -14,10 +15,9 @@ import java.util.Scanner;
 public class Registration {
     private WebDriver driver;
     private String url = "http://automationpractice.com";
+    private String personalArea = "http://automationpractice.com/index.php?controller=my-account";
 
-    public static void main(String[] args) {
 
-    }
 
 
     @Test(priority = 1)
@@ -77,6 +77,8 @@ public class Registration {
         driver.findElement(By.xpath("//input[@id='alias']")).sendKeys(adressOptional);
         driver.findElement(By.xpath("//span[contains(text(),'Register')]")).click();
 
+
+        Assert.assertEquals(driver.getCurrentUrl(), personalArea, "Something wrong");
 
         driver.navigate().to(url);
         WebElement buttonLogout = (new WebDriverWait(driver, 10))

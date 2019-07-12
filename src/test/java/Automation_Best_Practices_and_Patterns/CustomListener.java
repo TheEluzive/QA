@@ -1,20 +1,23 @@
-package TestNG_Education;
+package Automation_Best_Practices_and_Patterns;
 
+import org.apache.log4j.Logger;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 
 public class CustomListener implements ITestListener {
+    Logger logger = Logger.getLogger(Main.class);
     public void onTestStart(ITestResult iTestResult) {
         System.out.println("Test started!");
     }
 
     public void onTestSuccess(ITestResult iTestResult) {
-        System.out.println("Test Success");
+
+        logger.info("Test succesfull finish");
     }
 
     public void onTestFailure(ITestResult iTestResult) {
-        System.out.println("Test Failure");
+        logger.info("Test Failure");
     }
 
     public void onTestSkipped(ITestResult iTestResult) {

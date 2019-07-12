@@ -10,13 +10,13 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
 
-public class Page {
+public class AbstractPage {
     static WebDriver driver;
     String mainPage = "http://automationpractice.com/";
     String dressesPage = mainPage + "index.php?id_category=8&controller=category";
 
 
-    Page(){
+    AbstractPage(){
         System.setProperty("webdriver.chrome.driver", (System.getProperty("user.dir") + "/src/test/Drivers/chromedriver.exe"));
         driver = new ChromeDriver();
         driver.get(mainPage);

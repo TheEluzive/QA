@@ -1,9 +1,6 @@
 package Automation_Best_Practices_and_Patterns;
 
-import org.openqa.selenium.WebDriver;
-import org.testng.annotations.Test;
-
-public class Homepage extends Page {
+public class Homepage extends AbstractPage {
     @Override
     void contactUs() {
         super.contactUs();
