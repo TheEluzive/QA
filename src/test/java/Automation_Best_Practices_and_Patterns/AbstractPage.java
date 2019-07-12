@@ -10,16 +10,20 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
 
+import java.util.logging.Logger;
+
 public class AbstractPage {
-    static WebDriver driver;
-    String mainPage = "http://automationpractice.com/";
-    String dressesPage = mainPage + "index.php?id_category=8&controller=category";
+    protected static WebDriver driver;
+    public String mainPage = "http://automationpractice.com/";
+    public String dressesPage = mainPage + "index.php?id_category=8&controller=category";
+
 
 
     AbstractPage(){
         System.setProperty("webdriver.chrome.driver", (System.getProperty("user.dir") + "/src/test/Drivers/chromedriver.exe"));
         driver = new ChromeDriver();
         driver.get(mainPage);
+
     }
 
 
@@ -36,6 +40,7 @@ public class AbstractPage {
         driver.findElement(By.xpath("//a[@class='logout']")).click();
     }
 
+
     public String[] registration(NewUser newUser) {
         //registrated user and return String email and password
         driver.findElement(By.xpath("//a[@class='login']")).click();
@@ -44,7 +49,7 @@ public class AbstractPage {
         inputEmail.clear();
         newUser.setUsedEmail(System.currentTimeMillis() + newUser.getEmail());
         driver.findElement(By.xpath("//input[@id='email_create']")).sendKeys(newUser.getUsedEmail());
-        System.out.println("Used email: " + newUser.getUsedEmail());
+        MyLogger.LOGGER.debug("used email: " + newUser.getUsedEmail());
         driver.findElement(By.xpath("//form[@id='create-account_form']//span[1]")).click();
 
 
