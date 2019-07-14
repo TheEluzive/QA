@@ -1,39 +1,43 @@
 package Automation_Best_Practices_and_Patterns;
 
-import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 
+import static Automation_Best_Practices_and_Patterns.AbstractPage.LOGGER;
+
 public class CustomListener implements ITestListener {
-    Logger logger = Logger.getLogger(Main.class);
+
 
     public void onTestStart(ITestResult iTestResult) {
-        logger.info("Test started!");;
+        LOGGER.info("Test started!");
     }
 
     public void onTestSuccess(ITestResult iTestResult) {
 
-        logger.info("Test succesfull finish");
+        LOGGER.info("Test succesfull finish");
     }
 
     public void onTestFailure(ITestResult iTestResult) {
-        logger.info("Test Failure");
+        LOGGER.info("Test Failure");
     }
 
     public void onTestSkipped(ITestResult iTestResult) {
-        System.out.println("Test Skipped");
+        LOGGER.info("Test Skipped");
     }
 
     public void onTestFailedButWithinSuccessPercentage(ITestResult iTestResult) {
-        System.out.println("Test Failed But Within Success Percentage");
+        LOGGER.info("Test Failed But Within Success Percentage");
     }
 
     public void onStart(ITestContext iTestContext) {
-        System.out.println("Start");
+        String log4jConfPath = (System.getProperty("user.dir") + "/src/test/java/Automation_Best_Practices_and_Patterns/log4j.properties");
+        PropertyConfigurator.configure(log4jConfPath);
+        LOGGER.info("Start");
     }
 
     public void onFinish(ITestContext iTestContext) {
-        System.out.println("Finish");
+        LOGGER.info("Finish");
     }
 }

@@ -1,13 +1,13 @@
 package Automation_Best_Practices_and_Patterns;
 
-import org.apache.log4j.Logger;
+import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 @Listeners(CustomListener.class)
 public class Main {
-    //org.apache.log4j.Logger logger = Logger.getLogger(Main.class);
+
 
     @AfterTest
     public void afterMethod() {
@@ -17,14 +17,21 @@ public class Main {
 
     @Test(dataProvider = "dataProviderNewUser", dataProviderClass = DataProviderNewUser.class)
     public void RegistrationTest(NewUser newUser) {
+
         AbstractPage homepage = new Homepage();
 
         homepage.registration(newUser);
         homepage.signIn(newUser.getUsedEmail(), newUser.getPassword());
-       // logger.debug("Login: " + newUser.getUsedEmail() + " password: " + newUser.getPassword());
-        MyLogger.LOGGER.debug("Login: " + newUser.getUsedEmail() + " password: " + newUser.getPassword());
-        ;
+        AbstractPage.LOGGER.debug("Login: " + newUser.getUsedEmail() + " password: " + newUser.getPassword());
+        AbstractPage.LOGGER.info("Login: " + newUser.getUsedEmail() + " password: " + newUser.getPassword());
+        try {Assert.assertEquals(AbstractPage.driver.getCurrentUrl(), AbstractPage.personalArea, "Wrong page, registration failed");
+        }
+        catch (Exception e){
+            AbstractPage.LOGGER.error("Wrong page, registration failed");
+        }
+
         homepage.signOut();
+        AbstractPage.driver.quit();
     }
 
 

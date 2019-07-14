@@ -1,5 +1,6 @@
 package Automation_Best_Practices_and_Patterns;
 
+import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -8,14 +9,15 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.annotations.Test;
 
-import java.util.logging.Logger;
+
 
 public class AbstractPage {
     protected static WebDriver driver;
-    public String mainPage = "http://automationpractice.com/";
-    public String dressesPage = mainPage + "index.php?id_category=8&controller=category";
+    public static final String mainPage = "http://automationpractice.com/";
+    public static final String dressesPage = mainPage + "index.php?id_category=8&controller=category";
+    protected static final Logger LOGGER = Logger.getLogger(Main.class);
+    public static final String personalArea = "http://automationpractice.com/index.php?controller=my-account";
 
 
 
@@ -49,7 +51,6 @@ public class AbstractPage {
         inputEmail.clear();
         newUser.setUsedEmail(System.currentTimeMillis() + newUser.getEmail());
         driver.findElement(By.xpath("//input[@id='email_create']")).sendKeys(newUser.getUsedEmail());
-        MyLogger.LOGGER.debug("used email: " + newUser.getUsedEmail());
         driver.findElement(By.xpath("//form[@id='create-account_form']//span[1]")).click();
 
 
