@@ -18,20 +18,36 @@ public class Main {
     @Test(dataProvider = "dataProviderNewUser", dataProviderClass = DataProviderNewUser.class)
     public void RegistrationTest(NewUser newUser) {
 
-        AbstractPage homepage = new Homepage();
+        Homepage homepage = new Homepage();
 
         homepage.registration(newUser);
         homepage.signIn(newUser.getUsedEmail(), newUser.getPassword());
         AbstractPage.LOGGER.debug("Login: " + newUser.getUsedEmail() + " password: " + newUser.getPassword());
         AbstractPage.LOGGER.info("Login: " + newUser.getUsedEmail() + " password: " + newUser.getPassword());
-        try {Assert.assertEquals(AbstractPage.driver.getCurrentUrl(), AbstractPage.personalArea, "Wrong page, registration failed");
+        RegistratedUser registratedUser = new RegistratedUser(newUser.getUsedEmail(), newUser.getPassword());
+
+        try {
+            Assert.assertEquals(AbstractPage.driver.getCurrentUrl(), AbstractPage.personalArea);
         }
-        catch (Exception e){
-            AbstractPage.LOGGER.error("Wrong page, registration failed");
+        catch (Error e){
+            AbstractPage.LOGGER.error("Wrong page, registration failed", e);
         }
 
-        homepage.signOut();
-        AbstractPage.driver.quit();
+
+
+        try {//for LOGGER.ERROR
+            Assert.assertEquals(AbstractPage.driver.getCurrentUrl() + "fdss", AbstractPage.personalArea);
+        }
+        catch (Error e){
+            AbstractPage.LOGGER.error("Wrong page, registration failed", e);
+        }
+        finally {
+            homepage.signOut();
+            AbstractPage.driver.quit();
+        }
+
+
+
     }
 
 
