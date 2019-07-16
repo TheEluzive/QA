@@ -46,11 +46,13 @@ public class AbstractPage {
     public String[] registration(NewUser newUser) {
         //registrated user and return String email and password
         driver.findElement(By.xpath("//a[@class='login']")).click();
+        AbstractPage.LOGGER.debug("Registration called");
+        AbstractPage.LOGGER.debug("using mail: " + newUser.getEmail() + " password: " + newUser.getPassword());
         WebElement inputEmail = (new WebDriverWait(driver, 10))
                 .until(ExpectedConditions.presenceOfElementLocated(By.xpath("//input[@id='email_create']")));//or 2
         inputEmail.clear();
-        newUser.setUsedEmail(System.currentTimeMillis() + newUser.getEmail());
-        driver.findElement(By.xpath("//input[@id='email_create']")).sendKeys(newUser.getUsedEmail());
+        //newUser.setUsedEmail(System.currentTimeMillis() + newUser.getEmail());
+        driver.findElement(By.xpath("//input[@id='email_create']")).sendKeys(newUser.getEmail());
         driver.findElement(By.xpath("//form[@id='create-account_form']//span[1]")).click();
 
 
@@ -87,7 +89,7 @@ public class AbstractPage {
         WebElement buttonLogout = (new WebDriverWait(driver, 10))
                 .until(ExpectedConditions.presenceOfElementLocated(By.xpath("//a[@class='logout']")));//or 2
         buttonLogout.click();
-        return new String[] {newUser.getUsedEmail(), newUser.getPassword()};
+        return new String[] {newUser.getEmail(), newUser.getPassword()};
     }
     void openCart(){
         driver.findElement(By.xpath("//a[@title='View my shopping cart']")).click();

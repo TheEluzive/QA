@@ -21,10 +21,10 @@ public class Main {
         Homepage homepage = new Homepage();
 
         homepage.registration(newUser);
-        homepage.signIn(newUser.getUsedEmail(), newUser.getPassword());
-        AbstractPage.LOGGER.debug("Login: " + newUser.getUsedEmail() + " password: " + newUser.getPassword());
-        AbstractPage.LOGGER.info("Login: " + newUser.getUsedEmail() + " password: " + newUser.getPassword());
-        RegistratedUser registratedUser = new RegistratedUser(newUser.getUsedEmail(), newUser.getPassword());
+        //homepage.signIn(newUser.getEmail(), newUser.getPassword());
+        AbstractPage.LOGGER.debug("Login: " + newUser.getEmail() + " password: " + newUser.getPassword());
+        AbstractPage.LOGGER.info("Auto-generated email: " + newUser.getEmail() + " password: " + newUser.getPassword());
+        RegistratedUser registratedUser = new RegistratedUser(newUser.getEmail(), newUser.getPassword());
 
         try {
             Assert.assertEquals(AbstractPage.driver.getCurrentUrl(), AbstractPage.personalArea);
@@ -32,10 +32,10 @@ public class Main {
         catch (Error e){
             AbstractPage.LOGGER.error("Wrong page, registration failed", e);
         }
+        //homepage.signOut();
+        AbstractPage.driver.quit();
 
-
-
-        try {//for LOGGER.ERROR
+        /*try {//for LOGGER.ERROR
             Assert.assertEquals(AbstractPage.driver.getCurrentUrl() + "fdss", AbstractPage.personalArea);
         }
         catch (Error e){
@@ -44,7 +44,7 @@ public class Main {
         finally {
             homepage.signOut();
             AbstractPage.driver.quit();
-        }
+        }*/
 
 
 
