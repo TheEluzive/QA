@@ -1,11 +1,12 @@
-package Automation_Best_Practices_and_Patterns;
+package Util;
 
-import org.apache.log4j.PropertyConfigurator;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 
-import static Automation_Best_Practices_and_Patterns.AbstractPage.LOGGER;
+
+import static Test.BaseTest.LOGGER;
+
 
 public class CustomListener implements ITestListener {
 
@@ -32,12 +33,11 @@ public class CustomListener implements ITestListener {
     }
 
     public void onStart(ITestContext iTestContext) {
-        String log4jConfPath = (System.getProperty("user.dir") + "/src/test/java/Automation_Best_Practices_and_Patterns/log4j.properties");
-        PropertyConfigurator.configure(log4jConfPath);
-        LOGGER.info("Start");
+
+        LOGGER.info("Suite Start");
     }
 
     public void onFinish(ITestContext iTestContext) {
-        LOGGER.info("Finish");
+        LOGGER.info("Suite Finish");
     }
 }

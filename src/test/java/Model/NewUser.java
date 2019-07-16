@@ -1,22 +1,25 @@
-package Automation_Best_Practices_and_Patterns;
+package Model;
+
+import Page.BasePage;
+import Test.BaseTest;
 
 public class NewUser {
 
     private String email;
-    private String firstname;
-    private String lastname;
+    private String firstName;
+    private String lastName;
     private String password;
     private String day;
     private String month;
     private String year;
-    private boolean newsletterRadio;
+    private boolean newsLetterRadio;
     private boolean optinRadio;
-    private String firstname2;
-    private String lastname2;
+    private String adressFirstName;
+    private String adressLastName;
     private String adress1;
     private String adress2;
     private String city;
-    private String postcode;
+    private String postCode;
     private String country;
     private String state;
     private String additionalInformation;
@@ -33,30 +36,25 @@ public class NewUser {
         this.usedEmail = usedEmail;
     }
 
-    /*public NewUser(String email, String firstname, String lastname, String password, String day, String month,
-                   String year, boolean newsletterRadio, boolean optinRadio, String firstname2, String lastname2,
-                   String adress1, String adress2, String city, String postcode, String country, String state,
-                   String additionalInformation, String homePhone, String mobileNumber, String addressAlias) {}*/
-
 
     public NewUser() {
 
         this.email = System.currentTimeMillis() + "evgeny.tkach@gmail.com";//email
-        AbstractPage.LOGGER.debug("Constructor generated email:" +  this.email);
-        this.firstname = "Evgeny";//firstname
-        this.lastname = "Tkach"; //lastname
+        BaseTest.LOGGER.debug("Constructor generated email:" +  this.email);
+        this.firstName = "Evgeny";//firstName
+        this.lastName = "Tkach"; //lastName
         this.password = "2345dfghqwerty"; //password
         this.day = "24"; //day
         this.month = "5"; //month
         this.year = "1997"; //year
-        this.newsletterRadio = true; //newsletter radio
+        this.newsLetterRadio = true; //newsletter radio
         this.optinRadio = true; //optin radio
-        this.firstname2 = ""; //firstname + ...
-        this.lastname2 = ""; //lastname + ...
+        this.adressFirstName = ""; //firstName + ...
+        this.adressLastName = ""; //lastName + ...
         this.adress1 = "Street street"; //adress1
         this.adress2 = "5";//adress2
         this.city = "Volgograd"; //city
-        this.postcode = "12345"; //postcode
+        this.postCode = "12345"; //postCode
         this.country = "21"; //country //only USA
         this.state = "10"; //state 1-50
         this.additionalInformation = "something"; //Additional information
@@ -74,8 +72,8 @@ public class NewUser {
         this.email = email;
     }
 
-    public String getFirstname() {
-        return firstname;
+    public String getFirstName() {
+        return firstName;
     }
 
     @Override
@@ -85,16 +83,16 @@ public class NewUser {
                 '}';
     }
 
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public String getLastname() {
-        return lastname;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getPassword() {
@@ -129,12 +127,12 @@ public class NewUser {
         this.year = year;
     }
 
-    public boolean isNewsletterRadio() {
-        return newsletterRadio;
+    public boolean isNewsLetterRadio() {
+        return newsLetterRadio;
     }
 
-    public void setNewsletterRadio(boolean newsletterRadio) {
-        this.newsletterRadio = newsletterRadio;
+    public void setNewsLetterRadio(boolean newsLetterRadio) {
+        this.newsLetterRadio = newsLetterRadio;
     }
 
     public boolean isOptinRadio() {
@@ -145,20 +143,20 @@ public class NewUser {
         this.optinRadio = optinRadio;
     }
 
-    public String getFirstname2() {
-        return firstname2;
+    public String getAdressFirstName() {
+        return adressFirstName;
     }
 
-    public void setFirstname2(String firstname2) {
-        this.firstname2 = firstname2;
+    public void setAdressFirstName(String adressFirstName) {
+        this.adressFirstName = adressFirstName;
     }
 
-    public String getLastname2() {
-        return lastname2;
+    public String getAdressLastName() {
+        return adressLastName;
     }
 
-    public void setLastname2(String lastname2) {
-        this.lastname2 = lastname2;
+    public void setAdressLastName(String adressLastName) {
+        this.adressLastName = adressLastName;
     }
 
     public String getAdress1() {
@@ -185,12 +183,12 @@ public class NewUser {
         this.city = city;
     }
 
-    public String getPostcode() {
-        return postcode;
+    public String getPostCode() {
+        return postCode;
     }
 
-    public void setPostcode(String postcode) {
-        this.postcode = postcode;
+    public void setPostCode(String postCode) {
+        this.postCode = postCode;
     }
 
     public String getCountry() {

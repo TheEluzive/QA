@@ -1,4 +1,4 @@
-package TestNG_Education;
+package Z_TestNG_Education;
 
 import org.testng.Assert;
 import org.testng.annotations.*;

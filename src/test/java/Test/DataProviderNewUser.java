@@ -1,6 +1,9 @@
-package Automation_Best_Practices_and_Patterns;
+package Test;
 
+import Model.NewUser;
+import Page.BasePage;
 import org.testng.annotations.DataProvider;
+
 
 public class DataProviderNewUser {
     @DataProvider(name = "dataProviderNewUser")
@@ -10,7 +13,7 @@ public class DataProviderNewUser {
         for (int i =0; i<n; i++) {
             newUsers[i] = new NewUser();
             ((NewUser)newUsers[i]).setEmail(i+(((NewUser)newUsers[i]).getEmail())) ;
-            AbstractPage.LOGGER.debug(newUsers[i].toString());
+            BaseTest.LOGGER.debug(newUsers[i].toString());
 
         }
         return newUsers;

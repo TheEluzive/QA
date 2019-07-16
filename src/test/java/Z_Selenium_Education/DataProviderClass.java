@@ -1,4 +1,4 @@
-package Selenium_Education;
+package Z_Selenium_Education;
 
 import org.testng.annotations.DataProvider;
 
