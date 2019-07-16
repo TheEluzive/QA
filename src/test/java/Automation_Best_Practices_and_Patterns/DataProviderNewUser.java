@@ -10,7 +10,7 @@ public class DataProviderNewUser {
         for (int i =0; i<n; i++) {
             newUsers[i] = new NewUser();
             ((NewUser)newUsers[i]).setEmail(i+(((NewUser)newUsers[i]).getEmail())) ;
-            System.out.println(newUsers[i].toString());
+            AbstractPage.LOGGER.debug(newUsers[i].toString());
 
         }
         return newUsers;

@@ -21,7 +21,7 @@ public class Main {
         Homepage homepage = new Homepage();
 
         homepage.registration(newUser);
-        //homepage.signIn(newUser.getEmail(), newUser.getPassword());
+        homepage.signIn(newUser.getEmail(), newUser.getPassword());
         AbstractPage.LOGGER.debug("Login: " + newUser.getEmail() + " password: " + newUser.getPassword());
         AbstractPage.LOGGER.info("Auto-generated email: " + newUser.getEmail() + " password: " + newUser.getPassword());
         RegistratedUser registratedUser = new RegistratedUser(newUser.getEmail(), newUser.getPassword());
@@ -32,7 +32,7 @@ public class Main {
         catch (Error e){
             AbstractPage.LOGGER.error("Wrong page, registration failed", e);
         }
-        //homepage.signOut();
+        homepage.signOut();
         AbstractPage.driver.quit();
 
         /*try {//for LOGGER.ERROR
