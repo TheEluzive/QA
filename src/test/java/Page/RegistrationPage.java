@@ -8,6 +8,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import static Test.BaseTest.LOGGER;
 
+
 public class RegistrationPage extends BasePage {
 
     @FindBy(xpath = "//input[@id='email_create']")

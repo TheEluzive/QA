@@ -6,9 +6,9 @@ import org.testng.ITestResult;
 
 
 import static Test.BaseTest.LOGGER;
+public class CustomListener {}
 
-
-public class CustomListener implements ITestListener {
+/*public class CustomListener implements ITestListener {
 
 
     public void onTestStart(ITestResult iTestResult) {
@@ -25,19 +25,19 @@ public class CustomListener implements ITestListener {
     }
 
     public void onTestSkipped(ITestResult iTestResult) {
-        LOGGER.info("Test Skipped");
+//        LOGGER.info("Test Skipped");
     }
 
     public void onTestFailedButWithinSuccessPercentage(ITestResult iTestResult) {
-        LOGGER.info("Test Failed But Within Success Percentage");
+        //LOGGER.info("Test Failed But Within Success Percentage");
     }
 
     public void onStart(ITestContext iTestContext) {
 
-        LOGGER.info("Suite Start");
+
     }
 
     public void onFinish(ITestContext iTestContext) {
-        LOGGER.info("Suite Finish");
+
     }
-}
+}*/

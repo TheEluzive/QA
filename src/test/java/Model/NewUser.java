@@ -1,7 +1,13 @@
 package Model;
 
 import Test.BaseTest;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
+@Data
+@JsonPropertyOrder
 public class NewUser {
 
     private String email;
@@ -25,15 +31,9 @@ public class NewUser {
     private String homePhone;
     private String mobileNumber;
     private String addressAlias;
-    private String usedEmail;
 
-    public String getUsedEmail() {
-        return usedEmail;
-    }
 
-    public void setUsedEmail(String usedEmail) {
-        this.usedEmail = usedEmail;
-    }
+
 
 
     public NewUser() {
@@ -63,17 +63,7 @@ public class NewUser {
 
     }
 
-    public String getEmail() {
-        return email;
-    }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
 
     @Override
     public String toString() {
@@ -82,159 +72,5 @@ public class NewUser {
                 '}';
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
 
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getDay() {
-        return day;
-    }
-
-    public void setDay(String day) {
-        this.day = day;
-    }
-
-    public String getMonth() {
-        return month;
-    }
-
-    public void setMonth(String month) {
-        this.month = month;
-    }
-
-    public String getYear() {
-        return year;
-    }
-
-    public void setYear(String year) {
-        this.year = year;
-    }
-
-    public boolean isNewsLetterRadio() {
-        return newsLetterRadio;
-    }
-
-    public void setNewsLetterRadio(boolean newsLetterRadio) {
-        this.newsLetterRadio = newsLetterRadio;
-    }
-
-    public boolean isOptinRadio() {
-        return optinRadio;
-    }
-
-    public void setOptinRadio(boolean optinRadio) {
-        this.optinRadio = optinRadio;
-    }
-
-    public String getAdressFirstName() {
-        return adressFirstName;
-    }
-
-    public void setAdressFirstName(String adressFirstName) {
-        this.adressFirstName = adressFirstName;
-    }
-
-    public String getAdressLastName() {
-        return adressLastName;
-    }
-
-    public void setAdressLastName(String adressLastName) {
-        this.adressLastName = adressLastName;
-    }
-
-    public String getAdress1() {
-        return adress1;
-    }
-
-    public void setAdress1(String adress1) {
-        this.adress1 = adress1;
-    }
-
-    public String getAdress2() {
-        return adress2;
-    }
-
-    public void setAdress2(String adress2) {
-        this.adress2 = adress2;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public String getPostCode() {
-        return postCode;
-    }
-
-    public void setPostCode(String postCode) {
-        this.postCode = postCode;
-    }
-
-    public String getCountry() {
-        return country;
-    }
-
-    public void setCountry(String country) {
-        this.country = country;
-    }
-
-    public String getState() {
-        return state;
-    }
-
-    public void setState(String state) {
-        this.state = state;
-    }
-
-    public String getAdditionalInformation() {
-        return additionalInformation;
-    }
-
-    public void setAdditionalInformation(String additionalInformation) {
-        this.additionalInformation = additionalInformation;
-    }
-
-    public String getHomePhone() {
-        return homePhone;
-    }
-
-    public void setHomePhone(String homePhone) {
-        this.homePhone = homePhone;
-    }
-
-    public String getMobileNumber() {
-        return mobileNumber;
-    }
-
-    public void setMobileNumber(String mobileNumber) {
-        this.mobileNumber = mobileNumber;
-    }
-
-    public String getAddressAlias() {
-        return addressAlias;
-    }
-
-    public void setAddressAlias(String addressAlias) {
-        this.addressAlias = addressAlias;
-    }
 }

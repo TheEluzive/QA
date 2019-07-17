@@ -1,10 +1,14 @@
 package Test;
 
+import Model.DataPool;
 import Model.NewUser;
 import org.testng.annotations.DataProvider;
 
 
 public class DataProviderNewUser {
+
+
+
     @DataProvider(name = "dataProviderNewUser")
     public Object[] dataProviderNewUser() {
         int n = 2;

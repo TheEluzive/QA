@@ -19,7 +19,7 @@ public class BasePage {
     static WebElement buttonSignIn;
 
     @FindBy(xpath = "//a[@class='logout']")
-    static WebElement buttonLogout;
+    public static WebElement buttonLogout;
 
     @FindBy(xpath = "//a[@title='View my shopping cart']")
     static WebElement buttonCart;
