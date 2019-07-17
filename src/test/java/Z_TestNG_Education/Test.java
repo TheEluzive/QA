@@ -37,7 +37,7 @@ public class Test {
         System.out.println("hardAssertEquals Method Was Executed");
     }
 
-    private SoftAssert softAssertion = new SoftAssert();
+    private final SoftAssert softAssertion = new SoftAssert();
     @org.testng.annotations.Test(dataProvider = "someDataProviderName")
     public void softAssertEqualsTest(Integer i, Integer j){
         System.out.println("softAssertEquals Method Was Started");

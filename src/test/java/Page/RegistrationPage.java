@@ -1,8 +1,6 @@
 package Page;
 
 import Model.NewUser;
-import Test.BaseTest;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -33,7 +31,7 @@ public class RegistrationPage extends BasePage {
     @FindBy(xpath = "//select[@id='days']")
     private WebElement selectorDay;
 
-    public void selectDay(String day) {
+    private void selectDay(String day) {
         Select select = new Select(selectorDay);
         select.selectByValue(day);
     }
@@ -41,7 +39,7 @@ public class RegistrationPage extends BasePage {
     @FindBy(xpath = "//select[@id='months']")
     private WebElement selectorMonth;
 
-    public void selectMonth(String month) {
+    private void selectMonth(String month) {
         Select select = new Select(selectorMonth);
         select.selectByValue(month);
     }
@@ -49,7 +47,7 @@ public class RegistrationPage extends BasePage {
     @FindBy(xpath = "//select[@id='years']")
     private WebElement selectorYear;
 
-    public void selectYear(String year) {
+    private void selectYear(String year) {
         Select select = new Select(selectorYear);
         select.selectByValue(year);
     }
@@ -81,7 +79,7 @@ public class RegistrationPage extends BasePage {
     @FindBy(xpath = "//select[@id='id_country']")
     private WebElement selectorCountry;
 
-    public void selectCountry(String country) {
+    private void selectCountry(String country) {
         Select select = new Select(selectorCountry);
         select.selectByValue(country);
     }
@@ -89,7 +87,7 @@ public class RegistrationPage extends BasePage {
     @FindBy(xpath = "//select[@id='id_state']")
     private WebElement selectorState;
 
-    public void selectState(String state) {
+    private void selectState(String state) {
         Select select = new Select(selectorState);
         select.selectByValue(state);
     }

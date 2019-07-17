@@ -1,7 +1,6 @@
 package Test;
 
 import Model.NewUser;
-import Page.BasePage;
 import org.testng.annotations.DataProvider;
 
 

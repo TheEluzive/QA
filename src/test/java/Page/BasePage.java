@@ -1,6 +1,5 @@
 package Page;
 
-import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -17,16 +16,16 @@ public class BasePage {
     public static String personalArea = mainPage + "index.php?controller=my-account";
 
     @FindBy(xpath = "//a[@class='login']")
-    public static WebElement buttonSignIn;
+    static WebElement buttonSignIn;
 
     @FindBy(xpath = "//a[@class='logout']")
-    public static WebElement buttonLogout;
+    static WebElement buttonLogout;
 
     @FindBy(xpath = "//a[@title='View my shopping cart']")
-    public static WebElement buttonCart;
+    static WebElement buttonCart;
 
     @FindBy(xpath = "//div[@id='contact-link']//a[contains(text(),'Contact us')]")
-    public static WebElement buttonContactUs;
+    static WebElement buttonContactUs;
 
     BasePage() {
         driver.get(mainPage);

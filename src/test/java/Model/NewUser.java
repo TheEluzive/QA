@@ -1,6 +1,5 @@
 package Model;
 
-import Page.BasePage;
 import Test.BaseTest;
 
 public class NewUser {

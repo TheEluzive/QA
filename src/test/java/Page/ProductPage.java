@@ -1,10 +1,8 @@
 package Page;
 
-import Model.NewUser;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 
-public class ProductPage extends BasePage {
+class ProductPage extends BasePage {
     ProductPage() {
         super();
         driver.get(dressesPage);

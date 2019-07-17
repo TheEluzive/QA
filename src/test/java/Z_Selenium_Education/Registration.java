@@ -12,8 +12,8 @@ import org.testng.annotations.Test;
 
 public class Registration {
     private WebDriver driver;
-    private String url = "http://automationpractice.com";
-    private String personalArea = "http://automationpractice.com/index.php?controller=my-account";
+    private final String url = "http://automationpractice.com";
+    private final String personalArea = "http://automationpractice.com/index.php?controller=my-account";
 
 
 
