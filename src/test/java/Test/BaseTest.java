@@ -7,6 +7,7 @@ import Util.CustomListener;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import org.testng.annotations.*;
 
@@ -49,17 +50,16 @@ public class BaseTest {
     }
 
 
-@Test
-public void test(){
-    BasePage.buttonSignIn.click();
 
-}
 
     @Test(dataProvider = "dataProviderNewUser", dataProviderClass = DataProviderNewUser.class)
     public void RegistrationTest(NewUser newUser) {
 
-        RegistrationPage registrationPage = new RegistrationPage();
+        RegistrationPage registrationPage;
+        registrationPage = PageFactory.initElements(BasePage.driver, RegistrationPage.class);
         registrationPage.inputEmailAndOpenRegistrationPage(newUser.getEmail());
+        registrationPage.inputPersonalInformation(newUser);
+        BasePage.buttonLogout.click();
         registrationPage.signIn(newUser.getEmail(), newUser.getPassword());
         LOGGER.debug("Login: " + newUser.getEmail() + " password: " + newUser.getPassword());
         LOGGER.info("Auto-generated email: " + newUser.getEmail() + " password: " + newUser.getPassword());

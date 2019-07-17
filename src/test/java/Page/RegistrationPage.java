@@ -31,13 +31,28 @@ public class RegistrationPage extends BasePage {
     private WebElement textFieldPassword;
 
     @FindBy(xpath = "//select[@id='days']")
-    private Select selectorDay;
+    private WebElement selectorDay;
+
+    public void selectDay(String day) {
+        Select select = new Select(selectorDay);
+        select.selectByValue(day);
+    }
 
     @FindBy(xpath = "//select[@id='months']")
-    private Select selectorMonth;
+    private WebElement selectorMonth;
+
+    public void selectMonth(String month) {
+        Select select = new Select(selectorMonth);
+        select.selectByValue(month);
+    }
 
     @FindBy(xpath = "//select[@id='years']")
-    private Select selectorYear;
+    private WebElement selectorYear;
+
+    public void selectYear(String year) {
+        Select select = new Select(selectorYear);
+        select.selectByValue(year);
+    }
 
     @FindBy(xpath = "//input[@id='newsletter']")
     private WebElement radioNewsLetterRadio;
@@ -64,10 +79,20 @@ public class RegistrationPage extends BasePage {
     private WebElement textFieldPostCode;
 
     @FindBy(xpath = "//select[@id='id_country']")
-    private Select selectorCountry;
+    private WebElement selectorCountry;
+
+    public void selectCountry(String country) {
+        Select select = new Select(selectorCountry);
+        select.selectByValue(country);
+    }
 
     @FindBy(xpath = "//select[@id='id_state']")
-    private Select selectorState;
+    private WebElement selectorState;
+
+    public void selectState(String state) {
+        Select select = new Select(selectorState);
+        select.selectByValue(state);
+    }
 
     @FindBy(xpath = "//textarea[@id='other']")
     private WebElement textFieldAdditionalInformation;
@@ -105,9 +130,9 @@ public class RegistrationPage extends BasePage {
         textFieldFirstName.sendKeys(newUser.getFirstName());
         testFieldLastName.sendKeys(newUser.getLastName());
         textFieldPassword.sendKeys(newUser.getPassword());
-        selectorDay.selectByValue(newUser.getDay());
-        selectorMonth.selectByValue(newUser.getMonth());
-        selectorYear.selectByValue(newUser.getYear());
+        selectDay(newUser.getDay());
+        selectMonth(newUser.getMonth());
+        selectYear(newUser.getYear());
         if (newUser.isNewsLetterRadio()) radioNewsLetterRadio.click();
         if (newUser.isOptinRadio()) radioOptin.click();
         textFieldAdressFirstName.sendKeys(newUser.getAdressFirstName());
@@ -116,8 +141,8 @@ public class RegistrationPage extends BasePage {
         textFieldAdress2.sendKeys(newUser.getAdress2());
         textFieldCity.sendKeys(newUser.getCity());
         textFieldPostCode.sendKeys(newUser.getPostCode());
-        selectorCountry.selectByValue(newUser.getCountry()); //only 21
-        selectorState.selectByValue(newUser.getState());//1-50
+        selectCountry(newUser.getCountry()); //only 21
+        selectState(newUser.getState());//1-50
         textFieldAdditionalInformation.sendKeys(newUser.getAdditionalInformation());
         textFieldHomePhone.sendKeys(newUser.getHomePhone());
         textFieldMobileNumber.sendKeys(newUser.getMobileNumber());
