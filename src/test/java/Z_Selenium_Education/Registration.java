@@ -21,7 +21,7 @@ public class Registration {
     @Test(priority = 1)
     public void startRegistration() {
 
-        System.setProperty("webdriver.chrome.driver", (System.getProperty("user.dir") + "/src/test/Drivers/chromedriver.exe"));
+        System.setProperty("webdriver.chrome.driver", (System.getProperty("user.dir") + "/src/test/drivers/chromedriver.exe"));
         driver = new ChromeDriver();
         driver.get(url);
 

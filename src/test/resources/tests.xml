@@ -2,14 +2,11 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
 <suite name="Simple test suite">
-    <parameter name="dataFile" value="src/test/data/NewUser.json"/>
-
-
-
-
+    <parameter name="dataFile" value="src/main/resources/NewUser.json"/>
 
     <test name="signInAccount" verbose="2">
         <parameter name="login" value="true"/>
+
         <classes>
             <class name="Test.RegistrationTest">
                 <methods>

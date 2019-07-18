@@ -21,9 +21,9 @@ public class RegistrationTest extends BaseTest {
     @Test(dataProvider = "personalInformation")
     public void RegistrationTest(NewUser newUser) throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
-        NewUser account = objectMapper.readValue( new File( System.getProperty("user.dir")+"src/test/java/Model/NewUser.json" ), NewUser.class );
+        //NewUser account = objectMapper.readValue( new File( "src/main/resources/NewUser.json" ), NewUser.class );
 
-        System.out.println( account );
+        System.out.println( newUser );
         RegistrationPage registrationPage;
         registrationPage = PageFactory.initElements(BasePage.driver, RegistrationPage.class);
         registrationPage.inputEmailAndOpenRegistrationPage(newUser.getEmail());

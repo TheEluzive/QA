@@ -31,12 +31,13 @@ public class BaseTest {
         LOGGER = Logger.getLogger(BaseTest.class);
         LOGGER.info("Check");
 
-        System.setProperty("webdriver.chrome.driver", (System.getProperty("user.dir") + "/src/test/Drivers/chromedriver.exe"));
+        System.setProperty("webdriver.chrome.driver", "src/test/resources/drivers/chromedriver.exe");
         BasePage.driver = new ChromeDriver();
 
         dataPool = new DataPool();
         HashMap<String,String> parameters = new HashMap<>( testContext.getCurrentXmlTest().getAllParameters());
-        dataPool.processDataFile(parameters.get( "dataFile" ));
+
+        dataPool.processDataFile(parameters.get("dataFile"));
 
         FileInputStream fis;
         Properties property = new Properties();
