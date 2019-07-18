@@ -1,12 +1,13 @@
 package Page;
 
+import lombok.Getter;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-
+@Getter
 public class BasePage {
     public static WebDriver driver;
 
@@ -26,6 +27,9 @@ public class BasePage {
 
     @FindBy(xpath = "//div[@id='contact-link']//a[contains(text(),'Contact us')]")
     static WebElement buttonContactUs;
+
+    @FindBy(xpath = "//a[@class='account']")
+    public static WebElement buttonAccount;
 
     BasePage() {
         driver.get(mainPage);

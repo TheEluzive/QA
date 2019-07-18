@@ -22,7 +22,7 @@ import java.util.Properties;
 //@Listeners(CustomListener.class)
 public class BaseTest {
     public static Logger LOGGER;
-    public DataPool dataPool;
+    public static DataPool dataPool;
 
     @BeforeSuite
     public void beforeSuite(ITestContext testContext){

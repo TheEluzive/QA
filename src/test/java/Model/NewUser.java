@@ -64,13 +64,30 @@ public class NewUser {
     }
 
 
-
     @Override
     public String toString() {
         return "NewUser{" +
                 "email='" + email + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", password='" + password + '\'' +
+                ", day='" + day + '\'' +
+                ", month='" + month + '\'' +
+                ", year='" + year + '\'' +
+                ", newsLetterRadio=" + newsLetterRadio +
+                ", optinRadio=" + optinRadio +
+                ", adressFirstName='" + adressFirstName + '\'' +
+                ", adressLastName='" + adressLastName + '\'' +
+                ", adress1='" + adress1 + '\'' +
+                ", adress2='" + adress2 + '\'' +
+                ", city='" + city + '\'' +
+                ", postCode='" + postCode + '\'' +
+                ", country='" + country + '\'' +
+                ", state='" + state + '\'' +
+                ", additionalInformation='" + additionalInformation + '\'' +
+                ", homePhone='" + homePhone + '\'' +
+                ", mobileNumber='" + mobileNumber + '\'' +
+                ", addressAlias='" + addressAlias + '\'' +
                 '}';
     }
-
-
 }

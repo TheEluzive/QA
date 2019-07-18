@@ -4,15 +4,24 @@
 <suite name="Simple test suite">
     <parameter name="dataFile" value="src/main/resources/NewUser.json"/>
 
-    <test name="signInAccount" verbose="2">
+    <test name="myTest" verbose="2">
         <parameter name="login" value="true"/>
 
         <classes>
+            <!--
             <class name="Test.RegistrationTest">
                 <methods>
-                    <!--<include name="signInAccount" />
-                    <include name="signInAccount" />-->
+                    <include name="checkAdressesTest"/>
                     <include name="RegistrationTest" />
+
+                </methods>
+            </class>
+             -->
+            <class name="Test.CheckAdressesTest">
+                <methods>
+                    <include name="checkAdressesTest"/>
+                    <!--<include name="RegistrationTest" />
+                    -->
                 </methods>
             </class>
 

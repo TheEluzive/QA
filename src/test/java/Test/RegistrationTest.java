@@ -13,17 +13,11 @@ import java.io.IOException;
 
 public class RegistrationTest extends BaseTest {
 
-    @DataProvider(name = "personalInformation")
-    public Object[][] dataProviderNewUserFromJson() {
-        return dataPool.getData();
-    }
 
-    @Test(dataProvider = "personalInformation")
-    public void RegistrationTest(NewUser newUser) throws IOException {
-        ObjectMapper objectMapper = new ObjectMapper();
-        //NewUser account = objectMapper.readValue( new File( "src/main/resources/NewUser.json" ), NewUser.class );
 
-        System.out.println( newUser );
+    @Test(dataProvider = "personalInformation", dataProviderClass=DataProviderNewUserFromJson.class)
+    public void RegistrationTest(NewUser newUser) {
+
         RegistrationPage registrationPage;
         registrationPage = PageFactory.initElements(BasePage.driver, RegistrationPage.class);
         registrationPage.inputEmailAndOpenRegistrationPage(newUser.getEmail());
