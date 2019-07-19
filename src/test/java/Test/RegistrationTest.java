@@ -16,12 +16,14 @@ public class RegistrationTest extends BaseTest {
 
 
     @Test(dataProvider = "personalInformation", dataProviderClass=DataProviderNewUserFromJson.class)
-    public void RegistrationTest(NewUser newUser) {
+    public void registrationTest(NewUser newUser) throws IOException {
+        BasePage.driver.get(BasePage.mainPage);
 
         RegistrationPage registrationPage;
         registrationPage = PageFactory.initElements(BasePage.driver, RegistrationPage.class);
         registrationPage.inputEmailAndOpenRegistrationPage(newUser.getEmail());
         registrationPage.inputPersonalInformation(newUser);
+        BaseTest.makeScreen("registrationTest");
         BasePage.buttonLogout.click();
         registrationPage.signIn(newUser.getEmail(), newUser.getPassword());
         LOGGER.debug("Login: " + newUser.getEmail() + " password: " + newUser.getPassword());

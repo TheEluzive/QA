@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Simple test suite">
+
+
+    <test name="myTest" verbose="2">
+        <parameter name="login" value="true"/>
+        <parameter name="logout" value="false"/>
+        <parameter name="dataFile" value="src/main/resources/NewUser.json"/>
+
+        <classes>
+            <class name="Test.RegistrationTest">
+                <methods>
+                    <include name="registrationTest"/>
+                    <!--<include name="registrationTest" />
+                    -->
+                </methods>
+            </class>
+
+        </classes>
+    </test>
+
+</suite>

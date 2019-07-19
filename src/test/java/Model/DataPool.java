@@ -10,20 +10,20 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 
-public class DataPool {
+public class DataPool<T> {
 
 
-        Collection<NewUser> accounts;
+        Collection<T> accounts;
 
-        public void processDataFile( String filePath ){
+        public void processDataFile( String filePath, Class<T> template){
 
-            accounts = new ArrayList<NewUser>();
+            accounts = new ArrayList<T>();
 
             ObjectMapper objectMapper = new ObjectMapper();
             DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
             objectMapper.setDateFormat( dateFormat );
             try {
-                NewUser newUser = objectMapper.readValue( new File( filePath ), NewUser.class );
+                T newUser = objectMapper.readValue( new File( filePath ), template );
                 accounts.add( newUser );
             } catch (IOException e) {
                 e.printStackTrace();
@@ -34,7 +34,7 @@ public class DataPool {
 
             Object[][] data = new Object[ accounts.size() ][ 1 ];
 
-            Iterator<NewUser> it = accounts.iterator();
+            Iterator<T> it = accounts.iterator();
 
             int i = 0;
             while( it.hasNext() ) {

@@ -1,16 +1,22 @@
 package Test;
 
 import Model.DataPool;
+import Model.NewUser;
 import Page.BasePage;
+import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.ITestContext;
 import org.testng.TestRunner;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
+import org.testng.asserts.SoftAssert;
 
 
+import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 
@@ -24,6 +30,17 @@ public class BaseTest {
     public static Logger LOGGER;
     public static DataPool dataPool;
 
+    public HashMap<String, String> getParameters() {
+
+        return parameters;
+    }
+
+    HashMap<String,String> parameters;
+    public static SoftAssert softAssert = new SoftAssert();
+    public static SoftAssert getSoftAssert() {
+        return softAssert;
+    }
+
     @BeforeSuite
     public void beforeSuite(ITestContext testContext){
         String log4jConfPath = (System.getProperty("user.dir") + "/src/resources/log4j.properties");
@@ -35,9 +52,9 @@ public class BaseTest {
         BasePage.driver = new ChromeDriver();
 
         dataPool = new DataPool();
-        HashMap<String,String> parameters = new HashMap<>( testContext.getCurrentXmlTest().getAllParameters());
+         parameters = new HashMap<>( testContext.getCurrentXmlTest().getAllParameters());
 
-        dataPool.processDataFile(parameters.get("dataFile"));
+        dataPool.processDataFile(parameters.get("dataFile"), NewUser.class);
 
         FileInputStream fis;
         Properties property = new Properties();
@@ -59,6 +76,13 @@ public class BaseTest {
     @AfterSuite
     public void afterSuite(ITestContext testContext) {
         BasePage.driver.quit();
+    }
+
+
+    public static void makeScreen(String name) throws IOException {
+        File screenshot = ((TakesScreenshot) BasePage.driver)
+                .getScreenshotAs(OutputType.FILE);
+        FileUtils.copyFile(screenshot, new File("src/test/resources/screenshots/"+name + System.currentTimeMillis()+ ".bmp"));
     }
 
 

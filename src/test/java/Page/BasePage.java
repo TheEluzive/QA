@@ -1,6 +1,7 @@
 package Page;
 
 import lombok.Getter;
+import lombok.Setter;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -8,6 +9,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 @Getter
+@Setter
 public class BasePage {
     public static WebDriver driver;
 
@@ -15,6 +17,7 @@ public class BasePage {
     public static String mainPage="";
     public static String dressesPage = mainPage + "index.php?id_category=8&controller=category";
     public static String personalArea = mainPage + "index.php?controller=my-account";
+    private String pageUrl;
 
     @FindBy(xpath = "//a[@class='login']")
     static WebElement buttonSignIn;
@@ -31,9 +34,7 @@ public class BasePage {
     @FindBy(xpath = "//a[@class='account']")
     public static WebElement buttonAccount;
 
-    BasePage() {
-        driver.get(mainPage);
-    }
+
 
 
 

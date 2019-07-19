@@ -24,6 +24,9 @@ public class MyAdressesPage extends BasePage {
     @FindBy(xpath = "//span[@class='address_phone_mobile']")
     WebElement mobilePhone;
 
+    @FindBy(xpath = "//span[contains(text(),'Update')]")
+    WebElement buttonUpdate;
+
 
 
 }
