@@ -1,6 +1,6 @@
 package Page;
 
-import Model.NewUser;
+import Model.User;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -122,31 +122,31 @@ public class RegistrationPage extends BasePage {
     }
 
 
-    public void inputPersonalInformation(NewUser newUser) {
+    public void inputPersonalInformation(User user) {
         radioGender = (new WebDriverWait(driver, 10))
                 .until(ExpectedConditions.visibilityOf(radioGender));//or 2
         radioGender.click();
-        textFieldFirstName.sendKeys(newUser.getFirstName());
-        testFieldLastName.sendKeys(newUser.getLastName());
-        textFieldPassword.sendKeys(newUser.getPassword());
-        selectDay(newUser.getDay());
-        selectMonth(newUser.getMonth());
-        selectYear(newUser.getYear());
-        if (newUser.isNewsLetterRadio()) radioNewsLetterRadio.click();
-        if (newUser.isOptinRadio()) radioOptin.click();
-        textFieldAdressFirstName.sendKeys(newUser.getAdressFirstName());
-        textFieldAdressLastName.sendKeys(newUser.getAdressLastName());
-        textFieldAdress1.sendKeys(newUser.getAdress1());
-        textFieldAdress2.sendKeys(newUser.getAdress2());
-        textFieldCity.sendKeys(newUser.getCity());
-        textFieldPostCode.sendKeys(newUser.getPostCode());
-        selectCountry(newUser.getCountry()); //only 21
-        selectState(newUser.getState());//1-50
-        textFieldAdditionalInformation.sendKeys(newUser.getAdditionalInformation());
-        textFieldHomePhone.sendKeys(newUser.getHomePhone());
-        textFieldMobileNumber.sendKeys(newUser.getMobileNumber());
+        textFieldFirstName.sendKeys(user.getFirstName());
+        testFieldLastName.sendKeys(user.getLastName());
+        textFieldPassword.sendKeys(user.getPassword());
+        selectDay(user.getDay());
+        selectMonth(user.getMonth());
+        selectYear(user.getYear());
+        if (user.isNewsLetterRadio()) radioNewsLetterRadio.click();
+        if (user.isOptinRadio()) radioOptin.click();
+        textFieldAdressFirstName.sendKeys(user.getAdressFirstName());
+        textFieldAdressLastName.sendKeys(user.getAdressLastName());
+        textFieldAdress1.sendKeys(user.getAdress1());
+        textFieldAdress2.sendKeys(user.getAdress2());
+        textFieldCity.sendKeys(user.getCity());
+        textFieldPostCode.sendKeys(user.getPostCode());
+        selectCountry(user.getCountry()); //only 21
+        selectState(user.getState());//1-50
+        textFieldAdditionalInformation.sendKeys(user.getAdditionalInformation());
+        textFieldHomePhone.sendKeys(user.getHomePhone());
+        textFieldMobileNumber.sendKeys(user.getMobileNumber());
         textFieldAdressAlias.clear();
-        textFieldAdressAlias.sendKeys(newUser.getAddressAlias());
+        textFieldAdressAlias.sendKeys(user.getAddressAlias());
         buttonRegister.click();
     }
 }

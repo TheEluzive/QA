@@ -6,8 +6,8 @@
 
     <test name="myTest" verbose="2">
         <parameter name="login" value="true"/>
-        <parameter name="logout" value="false"/>
-        <parameter name="dataFile" value="src/main/resources/NewUser.json"/>
+        <parameter name="logout" value="true"></parameter>
+        <parameter name="dataFile" value="src/main/resources/User.json"/>
 
         <classes>
             <class name="Test.RegistrationTest">

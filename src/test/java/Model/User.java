@@ -8,7 +8,7 @@ import lombok.Setter;
 
 @Data
 @JsonPropertyOrder
-public class NewUser {
+public class User {
 
     private String email;
     private String firstName;
@@ -36,7 +36,7 @@ public class NewUser {
 
 
 
-    public NewUser() {
+    public User() {
 
         this.email = System.currentTimeMillis() + "evgeny.tkach@gmail.com";//email
         BaseTest.LOGGER.debug("Constructor generated email:" +  this.email);
@@ -66,7 +66,7 @@ public class NewUser {
 
     @Override
     public String toString() {
-        return "NewUser{" +
+        return "User{" +
                 "email='" + email + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +

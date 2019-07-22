@@ -1,7 +1,7 @@
 package Test;
 
 import Model.DataPool;
-import Model.NewUser;
+import Model.User;
 import Page.BasePage;
 import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
@@ -10,7 +10,6 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.ITestContext;
-import org.testng.TestRunner;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import org.testng.asserts.SoftAssert;
@@ -31,7 +30,6 @@ public class BaseTest {
     public static DataPool dataPool;
 
     public HashMap<String, String> getParameters() {
-
         return parameters;
     }
 
@@ -54,7 +52,7 @@ public class BaseTest {
         dataPool = new DataPool();
          parameters = new HashMap<>( testContext.getCurrentXmlTest().getAllParameters());
 
-        dataPool.processDataFile(parameters.get("dataFile"), NewUser.class);
+        dataPool.processDataFile(parameters.get("dataFile"), User.class);
 
         FileInputStream fis;
         Properties property = new Properties();
