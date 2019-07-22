@@ -2,7 +2,6 @@
 *.class
 /.idea
 /out
-/src/resources
 /target
 *.log
 *.bmp
