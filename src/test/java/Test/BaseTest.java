@@ -14,34 +14,32 @@ import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import org.testng.asserts.SoftAssert;
 
-
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.HashMap;
-
-
-import java.io.FileInputStream;
-
 import java.util.Properties;
 
 //@Listeners(CustomListener.class)
 public class BaseTest {
     public static Logger LOGGER;
     public static DataPool dataPool;
-
+    public static int timeOut;
     public HashMap<String, String> getParameters() {
         return parameters;
     }
 
-    HashMap<String,String> parameters;
+    HashMap<String, String> parameters;
+    Properties property;
     public static SoftAssert softAssert = new SoftAssert();
+
     public static SoftAssert getSoftAssert() {
         return softAssert;
     }
 
     @BeforeSuite
-    public void beforeSuite(ITestContext testContext){
-        String log4jConfPath = (System.getProperty("user.dir") + "/src/resources/log4j.properties");
+    public void beforeSuite(ITestContext testContext) {
+        String log4jConfPath = "src/resources/log4j.properties";
         PropertyConfigurator.configure(log4jConfPath);
         LOGGER = Logger.getLogger(BaseTest.class);
         LOGGER.info("Check");
@@ -50,19 +48,23 @@ public class BaseTest {
         BasePage.driver = new ChromeDriver();
 
         dataPool = new DataPool();
-         parameters = new HashMap<>( testContext.getCurrentXmlTest().getAllParameters());
+        parameters = new HashMap<>(testContext.getCurrentXmlTest().getAllParameters());
 
         dataPool.processDataFile(parameters.get("dataFile"), User.class);
 
+
         FileInputStream fis;
-        Properties property = new Properties();
+        property = new Properties();
         try {
-            fis = new FileInputStream(System.getProperty("user.dir") + "\\src\\resources\\config.properties");
+            fis = new FileInputStream("src/resources/config.properties");
             property.load(fis);
+
+
             BasePage.mainPage = property.getProperty("mainPage");
             BasePage.dressesPage = BasePage.mainPage + "index.php?id_category=8&controller=category";
-            BasePage.personalArea = BasePage.mainPage +"index.php?controller=my-account";
+            BasePage.personalArea = BasePage.mainPage + "index.php?controller=my-account";
             LOGGER.info("url = " + BasePage.mainPage);
+            timeOut = Integer.parseInt(property.getProperty("timeout"));
 
         } catch (IOException e) {
             LOGGER.error("Properties files wasn`t found");
@@ -80,7 +82,7 @@ public class BaseTest {
     public static void makeScreen(String name) throws IOException {
         File screenshot = ((TakesScreenshot) BasePage.driver)
                 .getScreenshotAs(OutputType.FILE);
-        FileUtils.copyFile(screenshot, new File("src/test/resources/screenshots/"+name + System.currentTimeMillis()+ ".bmp"));
+        FileUtils.copyFile(screenshot, new File("src/test/resources/screenshots/" + name + System.currentTimeMillis() + ".jpg"));
     }
 
 

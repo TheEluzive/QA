@@ -19,8 +19,8 @@ public class DataProviderClass {
                         true, //optin radio
                         "", //firstname + ...
                         "", //lastname + ...
-                        "Street street", //adress1
-                        "5",//adress2
+                        "Street street", //address1
+                        "5",//address2
                         "Volgograd", //city
                         "12345", //postcode
                         "21", //country //only USA
@@ -43,8 +43,8 @@ public class DataProviderClass {
                         true, //optin radio
                         "", //firstname + ...
                         "", //lastname + ...
-                        "Street street", //adress1
-                        "5",//adress2
+                        "Street street", //address1
+                        "5",//address2
                         "Volgograd", //city
                         "12345", //postcode
                         "21", //country //only USA
@@ -67,8 +67,8 @@ public class DataProviderClass {
                         true, //optin radio
                         "", //firstname + ...
                         "", //lastname + ...
-                        "Street street", //adress1
-                        "5",//adress2
+                        "Street street", //address1
+                        "5",//address2
                         "Volgograd", //city
                         "12345", //postcode
                         "21", //country //only USA

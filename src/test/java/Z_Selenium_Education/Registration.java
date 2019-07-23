@@ -10,6 +10,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+
 public class Registration {
     private WebDriver driver;
     private final String url = "http://automationpractice.com";

@@ -26,7 +26,7 @@ public class VerifyPersonalInformationTest extends BaseTest {
             myAdresses.signIn(user.getEmail(), user.getPassword());
         LOGGER.debug("Login: " + user.getEmail() + " password: " + user.getPassword());
         //LOGGER.info("Auto-generated email: " + user.getEmail() + " password: " + user.getPassword());
-        BasePage.buttonAccount.click();
+        myAccountPage.getButtonAccount().click();
         myAccountPage.getButtonMyPersonalInformation().click();
 
         PersonalInformationPage personalInformationPage;
@@ -43,7 +43,7 @@ public class VerifyPersonalInformationTest extends BaseTest {
         BaseTest.getSoftAssert().assertAll();
         BaseTest.makeScreen("verifyPersonalInformationTest");
         if (getParameters().get("logout").equals("true"))
-            BasePage.buttonLogout.click();
+            myAccountPage.getButtonLogout().click();
 
 
     }

@@ -1,19 +1,21 @@
 package Page;
 
+import Model.User;
 import lombok.Getter;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 @Getter
 public class MyAdressesPage extends BasePage {
     @FindBy(xpath = "//div[@class='addresses']//li[2]")
-    WebElement adressedFirstName;
+    WebElement addressedFirstName;
 
     @FindBy(xpath = "//div[@class='columns-container']//li[4]")
-    WebElement adress1;
+    WebElement address1;
 
     @FindBy(xpath = "//div[@class='columns-container']//li[5]")
-    WebElement adress2;
+    WebElement address2;
 
     @FindBy(xpath = "//div[@class='columns-container']//li[6]")
     WebElement country;
@@ -28,5 +30,10 @@ public class MyAdressesPage extends BasePage {
     WebElement buttonUpdate;
 
 
+    public void updateAdress(User user) throws InterruptedException {
+    buttonUpdate.click();
+    EditYourAddressedPage editYourAdressedPage = PageFactory.initElements(BasePage.driver, EditYourAddressedPage.class);
+    editYourAdressedPage.updateYourAddress(user);
+    }
 
 }

@@ -22,12 +22,12 @@ public class RegistrationTest extends BaseTest {
         registrationPage.inputEmailAndOpenRegistrationPage(user.getEmail());
         registrationPage.inputPersonalInformation(user);
         BaseTest.makeScreen("registrationTest");
-        BasePage.buttonLogout.click();
+        registrationPage.getButtonLogout().click();
         registrationPage.signIn(user.getEmail(), user.getPassword());
         LOGGER.debug("Login: " + user.getEmail() + " password: " + user.getPassword());
         LOGGER.info("Auto-generated email: " + user.getEmail() + " password: " + user.getPassword());
         Assert.assertEquals(BasePage.driver.getCurrentUrl(), BasePage.personalArea);
         if (getParameters().get("logout").equals("true"))
-            BasePage.buttonLogout.click();
+            registrationPage.getButtonLogout().click();
     }
 }

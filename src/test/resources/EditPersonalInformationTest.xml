@@ -5,7 +5,7 @@
 
 
     <test name="myTest" verbose="2">
-        <parameter name="dataFile" value="src/main/resources/User.json"/>
+        <parameter name="dataFile" value="src/test/resources/User.json"/>
         <parameter name="login" value="true"/>
         <parameter name="logout" value="true"></parameter>
         <classes>

@@ -7,6 +7,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 @Getter
 @Setter
@@ -15,36 +16,35 @@ public class BasePage {
 
 
     public static String mainPage="";
-    public static String dressesPage = mainPage + "index.php?id_category=8&controller=category";
-    public static String personalArea = mainPage + "index.php?controller=my-account";
-    private String pageUrl;
+    public static String dressesPage="";
+    public static String personalArea ="";
+    //private String pageUrl;
 
     @FindBy(xpath = "//a[@class='login']")
-    static WebElement buttonSignIn;
+    private WebElement buttonSignIn;
 
     @FindBy(xpath = "//a[@class='logout']")
-    public static WebElement buttonLogout;
+    private WebElement buttonLogout;
 
     @FindBy(xpath = "//a[@title='View my shopping cart']")
-    static WebElement buttonCart;
+    private WebElement buttonCart;
 
     @FindBy(xpath = "//div[@id='contact-link']//a[contains(text(),'Contact us')]")
-    static WebElement buttonContactUs;
+    private WebElement buttonContactUs;
+
 
     @FindBy(xpath = "//a[@class='account']")
-    public static WebElement buttonAccount;
-
-
-
-
-
+    private  WebElement buttonAccount;
 
     public void signIn(String email, String password) {
         buttonSignIn.click();
-        driver.findElement(By.xpath("//input[@id='email']")).sendKeys(email);
-        driver.findElement(By.xpath("//input[@id='passwd']")).sendKeys(password);
-        driver.findElement(By.xpath("//p[@class='submit']//span[1]")).click();
+        AuthenticationPage authenticationPage = PageFactory.initElements(driver, AuthenticationPage.class);
+        authenticationPage.textFieldEmail.sendKeys(email);
+        authenticationPage.textFieldPassword.sendKeys(password);
+        authenticationPage.buttonSignIn.click();
     }
+
+
 
 
 

@@ -1,8 +1,10 @@
 package Page;
 
 import Model.User;
+import Test.BaseTest;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -10,12 +12,6 @@ import static Test.BaseTest.LOGGER;
 
 
 public class RegistrationPage extends BasePage {
-
-    @FindBy(xpath = "//input[@id='email_create']")
-    private WebElement textFieldEmailInAuthenticationPage;
-
-    @FindBy(xpath = "//form[@id='create-account_form']//span[1]")
-    private WebElement buttonCreateAnAccountInAuthenticationPage;
 
     @FindBy(xpath = "//input[@id='id_gender1']")
     private WebElement radioGender;
@@ -82,7 +78,8 @@ public class RegistrationPage extends BasePage {
 
     private void selectCountry(String country) {
         Select select = new Select(selectorCountry);
-        select.selectByValue(country);
+        selectorCountry.click();
+        select.selectByVisibleText(country);
     }
 
     @FindBy(xpath = "//select[@id='id_state']")
@@ -90,7 +87,8 @@ public class RegistrationPage extends BasePage {
 
     private void selectState(String state) {
         Select select = new Select(selectorState);
-        select.selectByValue(state);
+        selectorState.click();
+        select.selectByVisibleText(state);
     }
 
     @FindBy(xpath = "//textarea[@id='other']")
@@ -111,19 +109,20 @@ public class RegistrationPage extends BasePage {
 
     public void inputEmailAndOpenRegistrationPage(String email) {
 
-        buttonSignIn.click();
+        getButtonSignIn().click();
         LOGGER.debug("Registration called");
         LOGGER.debug("using mail: " + email);
-        textFieldEmailInAuthenticationPage = (new WebDriverWait(driver, 10))
-                .until(ExpectedConditions.visibilityOf(textFieldEmailInAuthenticationPage));//or 2
-        textFieldEmailInAuthenticationPage.clear();
-        textFieldEmailInAuthenticationPage.sendKeys(email);
-        buttonCreateAnAccountInAuthenticationPage.click();
+        AuthenticationPage authenticationPage = PageFactory.initElements(driver, AuthenticationPage.class);
+        authenticationPage.textFieldEmailAddressForRegistration = (new WebDriverWait(driver, BaseTest.timeOut))
+                .until(ExpectedConditions.visibilityOf(authenticationPage.textFieldEmailAddressForRegistration));//or 2
+        authenticationPage.textFieldEmailAddressForRegistration.clear();
+        authenticationPage.textFieldEmailAddressForRegistration.sendKeys(email);
+        authenticationPage.buttonCreateAnAccount.click();
     }
 
 
     public void inputPersonalInformation(User user) {
-        radioGender = (new WebDriverWait(driver, 10))
+        radioGender = (new WebDriverWait(driver, BaseTest.timeOut))
                 .until(ExpectedConditions.visibilityOf(radioGender));//or 2
         radioGender.click();
         textFieldFirstName.sendKeys(user.getFirstName());
@@ -134,14 +133,14 @@ public class RegistrationPage extends BasePage {
         selectYear(user.getYear());
         if (user.isNewsLetterRadio()) radioNewsLetterRadio.click();
         if (user.isOptinRadio()) radioOptin.click();
-        textFieldAdressFirstName.sendKeys(user.getAdressFirstName());
-        textFieldAdressLastName.sendKeys(user.getAdressLastName());
-        textFieldAdress1.sendKeys(user.getAdress1());
-        textFieldAdress2.sendKeys(user.getAdress2());
+        textFieldAdressFirstName.sendKeys(user.getAddressFirstName());
+        textFieldAdressLastName.sendKeys(user.getAddressLastName());
+        textFieldAdress1.sendKeys(user.getAddress1());
+        textFieldAdress2.sendKeys(user.getAddress2());
         textFieldCity.sendKeys(user.getCity());
         textFieldPostCode.sendKeys(user.getPostCode());
-        selectCountry(user.getCountry()); //only 21
-        selectState(user.getState());//1-50
+        selectCountry(user.getCountry());
+        selectState(user.getState());
         textFieldAdditionalInformation.sendKeys(user.getAdditionalInformation());
         textFieldHomePhone.sendKeys(user.getHomePhone());
         textFieldMobileNumber.sendKeys(user.getMobileNumber());

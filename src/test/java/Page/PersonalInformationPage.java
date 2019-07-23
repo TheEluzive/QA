@@ -1,5 +1,6 @@
 package Page;
 
+import Model.User;
 import lombok.Getter;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -27,18 +28,8 @@ public class PersonalInformationPage extends BasePage {
     @FindBy(xpath = "//select[@id='days']")
     private WebElement selectorDay;
 
-    public void selectDay(String day) {
-        Select select = new Select(selectorDay);
-        select.selectByValue(day);
-    }
-
     @FindBy(xpath = "//select[@id='months']")
     private WebElement selectorMonth;
-
-    public void selectMonth(String month) {
-        Select select = new Select(selectorMonth);
-        select.selectByValue(month);
-    }
 
     @FindBy(xpath = "//select[@id='years']")
     private WebElement selectorYear;
@@ -65,5 +56,32 @@ public class PersonalInformationPage extends BasePage {
 
     @FindBy(xpath = "//span[contains(text(),'Save')]//i[@class='icon-chevron-right right']")
     private WebElement buttonSave;
+
+    private void select(String string, WebElement selector) {
+        Select select = new Select(selector);
+        select.selectByValue(string);
+    }
+
+    public void updateInformation(User user){
+        textFieldFirstName.clear();
+        textFieldFirstName.sendKeys(user.getFirstName());
+
+        testFieldLastName.clear();
+        testFieldLastName.sendKeys(user.getLastName());
+
+        textFieldEmail.clear();
+        textFieldEmail.sendKeys(user.getEmail());
+
+        select(user.getDay(), selectorDay);
+        select(user.getMonth(), selectorMonth);
+        select(user.getYear(), selectorYear);
+
+        getTextFieldCurrentPassword().sendKeys(user.getPassword());
+
+        textFieldNewPassword.sendKeys(user.getPassword());
+        textFieldConfirmPassword.sendKeys(user.getPassword());
+
+        getButtonSave().click();
+    }
 
 }

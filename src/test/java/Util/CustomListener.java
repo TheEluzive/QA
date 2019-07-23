@@ -1,14 +1,16 @@
 package Util;
 
+import Test.BaseTest;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 
 
-import static Test.BaseTest.LOGGER;
-public class CustomListener {}
+import java.io.IOException;
 
-/*public class CustomListener implements ITestListener {
+import static Test.BaseTest.LOGGER;
+
+public class CustomListener implements ITestListener {
 
 
     public void onTestStart(ITestResult iTestResult) {
@@ -22,6 +24,11 @@ public class CustomListener {}
 
     public void onTestFailure(ITestResult iTestResult) {
         LOGGER.info("Test Failure");
+        try {
+            BaseTest.makeScreen("editAddressesTest");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void onTestSkipped(ITestResult iTestResult) {
@@ -29,7 +36,11 @@ public class CustomListener {}
     }
 
     public void onTestFailedButWithinSuccessPercentage(ITestResult iTestResult) {
-        //LOGGER.info("Test Failed But Within Success Percentage");
+        try {
+            BaseTest.makeScreen("editAddressesTest");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void onStart(ITestContext iTestContext) {
@@ -40,4 +51,4 @@ public class CustomListener {}
     public void onFinish(ITestContext iTestContext) {
 
     }
-}*/
+}
