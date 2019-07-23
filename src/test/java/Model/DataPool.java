@@ -17,7 +17,7 @@ public class DataPool<T> {
 
         public void processDataFile( String filePath, Class<T> template){
 
-            dataFiles = new ArrayList<T>();
+            dataFiles = new ArrayList<>();
 
             ObjectMapper objectMapper = new ObjectMapper();
             DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");

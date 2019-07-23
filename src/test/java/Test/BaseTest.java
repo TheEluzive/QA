@@ -51,7 +51,7 @@ public class BaseTest {
         parameters = new HashMap<>(testContext.getCurrentXmlTest().getAllParameters());
 
         dataPool.processDataFile(parameters.get("dataFile"), User.class);
-
+        dataPool.processDataFile(parameters.get("dataFileForChange"), User.class);
 
         FileInputStream fis;
         property = new Properties();

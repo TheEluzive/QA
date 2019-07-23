@@ -5,3 +5,4 @@
 /target
 *.log
 *.bmp
+src/test/resources/screenshots

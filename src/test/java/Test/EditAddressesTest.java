@@ -12,7 +12,7 @@ import java.io.IOException;
 
 public class EditAddressesTest extends BaseTest {
     @Test(dataProvider = "personalInformation", dataProviderClass = DataProviderNewUserFromJson.class)
-    public void editAddressesTest(User user) throws InterruptedException, IOException {
+    public void editAddressesTest(User user, User userForChange) throws InterruptedException, IOException {
         BasePage.driver.get(BasePage.mainPage);
         System.out.println(user);
         MyAccountPage myAccountPage;
@@ -20,11 +20,10 @@ public class EditAddressesTest extends BaseTest {
         myAccountPage.signIn(user.getEmail(), user.getPassword());
         LOGGER.debug("Login: " + user.getEmail() + " password: " + user.getPassword());
         makeScreen("editAddressesTest");
-       // myAccountPage.getButtonAccount().click;
         myAccountPage.getButtonMyAddresses().click();
 
         MyAdressesPage myAdressesPage = PageFactory.initElements(BasePage.driver, MyAdressesPage.class);
-        myAdressesPage.updateAdress(user);
+        myAdressesPage.updateAdress(userForChange);
 
         Assert.assertEquals(BasePage.driver.getCurrentUrl(), BasePage.mainPage+"index.php?controller=addresses");
 
