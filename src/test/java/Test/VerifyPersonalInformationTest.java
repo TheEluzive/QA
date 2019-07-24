@@ -13,7 +13,7 @@ import java.io.IOException;
 
 public class VerifyPersonalInformationTest extends BaseTest {
 
-    @Test(dataProvider = "personalInformation", dataProviderClass=DataProviderNewUserFromJson.class)
+    @Test(dataProvider = "personalInformation", dataProviderClass=BaseTest.class)
     public void verifyPersonalInformationTest(User user) throws IOException {
         BasePage.driver.get(BasePage.mainPage);
         System.out.println(user);

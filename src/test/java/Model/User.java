@@ -34,12 +34,4 @@ public class User {
     private String addressAlias;
     private String newPassword;
 
-
-
-
-
-
-
-
-
 }

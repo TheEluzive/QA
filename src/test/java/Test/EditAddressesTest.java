@@ -11,8 +11,8 @@ import org.testng.annotations.Test;
 import java.io.IOException;
 
 public class EditAddressesTest extends BaseTest {
-    @Test(dataProvider = "personalInformation", dataProviderClass = DataProviderNewUserFromJson.class)
-    public void editAddressesTest(User user, User userForChange) throws InterruptedException, IOException {
+    @Test(dataProvider = "personalInformation", dataProviderClass = BaseTest.class)
+    public void editAddressesTest(User user, User userForChanges) throws InterruptedException, IOException {
         BasePage.driver.get(BasePage.mainPage);
         System.out.println(user);
         MyAccountPage myAccountPage;
@@ -23,11 +23,9 @@ public class EditAddressesTest extends BaseTest {
         myAccountPage.getButtonMyAddresses().click();
 
         MyAdressesPage myAdressesPage = PageFactory.initElements(BasePage.driver, MyAdressesPage.class);
-        myAdressesPage.updateAdress(userForChange);
+        myAdressesPage.updateAdress(userForChanges);
 
         Assert.assertEquals(BasePage.driver.getCurrentUrl(), BasePage.mainPage+"index.php?controller=addresses");
-
-
 
     }
 }

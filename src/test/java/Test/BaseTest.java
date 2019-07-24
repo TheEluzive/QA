@@ -12,6 +12,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.ITestContext;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.DataProvider;
 import org.testng.asserts.SoftAssert;
 
 import java.io.File;
@@ -23,8 +24,8 @@ import java.util.Properties;
 //@Listeners(CustomListener.class)
 public class BaseTest {
     public static Logger LOGGER;
-    public static DataPool dataPool;
-    public static int timeOut;
+   // public DataPool dataPool;
+    public static  int timeOut;
     public HashMap<String, String> getParameters() {
         return parameters;
     }
@@ -47,11 +48,9 @@ public class BaseTest {
         System.setProperty("webdriver.chrome.driver", "src/test/resources/drivers/chromedriver.exe");
         BasePage.driver = new ChromeDriver();
 
-        dataPool = new DataPool();
-        parameters = new HashMap<>(testContext.getCurrentXmlTest().getAllParameters());
 
-        dataPool.processDataFile(parameters.get("dataFile"), User.class);
-        dataPool.processDataFile(parameters.get("dataFileForChange"), User.class);
+
+        LOGGER.info("dataPool created!");
 
         FileInputStream fis;
         property = new Properties();
@@ -86,17 +85,6 @@ public class BaseTest {
     }
 
 
-
-
-
-
-
-    /*@Test
-    public void addDressTest(){
-        ProductPage dressedPage = new ProductPage();
-        dressedPage.buyPrintedDress();
-        dressedPage.openCart();
-    }*/
 
 
 }

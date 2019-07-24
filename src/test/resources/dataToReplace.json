@@ -20,5 +20,6 @@
   "additionalInformation": "something",
   "homePhone": "12-23-34",
   "mobileNumber": "89876543210",
-  "addressAlias": "Adress"
+  "addressAlias": "Adress",
+  "newPassword": "2345dfghqwerty"
 }

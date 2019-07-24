@@ -5,8 +5,8 @@
 
 
     <test name="myTest" verbose="2">
-        <parameter name="dataFile" value="src/test/resources/User.json"/>
-        <parameter name="dataFileForChange" value="src/test/resources/userForChanges.json"/>
+        <parameter name="dataFile" value="src/test/resources/data.json"/>
+        <parameter name="dataFileToReplace" value="src/test/resources/dataToReplace.json"/>
 
         <parameter name="login" value="true"/>
         <parameter name="logout" value="true"></parameter>

@@ -1,20 +1,36 @@
 package Test;
-
+import Model.DataPool;
 import Model.User;
 import Page.BasePage;
 import Page.RegistrationPage;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
+import org.testng.ITestContext;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
 
 public class RegistrationTest extends BaseTest {
+DataPool dataPool;
+
+@BeforeClass
+public void beforeClass(ITestContext testContext){
+    dataPool = new DataPool("dataFile", testContext, User.class);
+    dataPool.fillNewDataPool("dataFileToReplace", testContext, User.class);
+}
+
+    @DataProvider(name = "personalInformation")
+    public Object[][] dataProviderNewUserFromJson() {
+        return dataPool.getData();
+    }
 
 
 
-    @Test(dataProvider = "personalInformation", dataProviderClass=DataProviderNewUserFromJson.class)
-    public void registrationTest(User user) throws IOException {
+
+    @Test(dataProvider = "personalInformation")
+    public void registrationTest(User user, User user2) throws IOException {
         BasePage.driver.get(BasePage.mainPage);
 
         RegistrationPage registrationPage;
@@ -27,7 +43,6 @@ public class RegistrationTest extends BaseTest {
         LOGGER.debug("Login: " + user.getEmail() + " password: " + user.getPassword());
         LOGGER.info("Auto-generated email: " + user.getEmail() + " password: " + user.getPassword());
         Assert.assertEquals(BasePage.driver.getCurrentUrl(), BasePage.personalArea);
-        if (getParameters().get("logout").equals("true"))
-            registrationPage.getButtonLogout().click();
+        registrationPage.getButtonLogout().click();
     }
 }

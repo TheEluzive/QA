@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 import java.io.IOException;
 
 public class VerifyAdressesTest extends BaseTest {
-    @Test(dataProvider = "personalInformation", dataProviderClass=DataProviderNewUserFromJson.class)
+    @Test(dataProvider = "personalInformation", dataProviderClass=BaseTest.class)
     public void checkAdressesTest(User user) throws IOException {
         BasePage.driver.get(BasePage.mainPage);
         System.out.println(user);

@@ -11,14 +11,12 @@ import org.openqa.selenium.support.PageFactory;
 
 @Getter
 @Setter
-public class BasePage {
+public abstract class BasePage {
     public static WebDriver driver;
-
-
     public static String mainPage="";
     public static String dressesPage="";
     public static String personalArea ="";
-    //private String pageUrl;
+
 
     @FindBy(xpath = "//a[@class='login']")
     private WebElement buttonSignIn;
@@ -43,10 +41,6 @@ public class BasePage {
         authenticationPage.textFieldPassword.sendKeys(password);
         authenticationPage.buttonSignIn.click();
     }
-
-
-
-
 
 
     public void mouseOver(WebElement element) {

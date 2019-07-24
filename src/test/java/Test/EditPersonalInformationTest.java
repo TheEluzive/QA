@@ -12,8 +12,8 @@ import org.testng.annotations.Test;
 import java.io.IOException;
 
 public class EditPersonalInformationTest extends BaseTest {
-    @Test(dataProvider = "personalInformation", dataProviderClass = DataProviderNewUserFromJson.class)
-    public void editPersonalInformationTest(User user) throws IOException {
+    @Test(dataProvider = "personalInformation", dataProviderClass = BaseTest.class)
+    public void editPersonalInformationTest(User user, User userForChanges) throws IOException {
         BasePage.driver.get(BasePage.mainPage);
         System.out.println(user);
         MyAccountPage myAccountPage;
@@ -26,7 +26,7 @@ public class EditPersonalInformationTest extends BaseTest {
 
         PersonalInformationPage personalInformationPage;
         personalInformationPage = PageFactory.initElements(BasePage.driver, PersonalInformationPage.class);
-        personalInformationPage.updateInformation(user);
+        personalInformationPage.updateInformation(userForChanges, user.getPassword());
 
         BaseTest.makeScreen("editPersonalInformationTest");
         Assert.assertEquals(BasePage.driver.getCurrentUrl(), "http://automationpractice.com/index.php?controller=identity");
