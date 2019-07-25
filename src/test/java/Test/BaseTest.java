@@ -40,13 +40,12 @@ public class BaseTest {
     }
     DataPool dataPool;
 
-    @BeforeClass
-    public void beforeClass(ITestContext testContext){
-        dataPool = new DataPool("dataFile", testContext, User.class);
-        dataPool.fillNewDataPool("dataFileToReplace", testContext, User.class);
-    }
+
+
     @BeforeSuite
     public void beforeSuite(ITestContext testContext) {
+        dataPool = new DataPool("dataFile", testContext, User.class);
+        dataPool.fillNewDataPool("dataFileToReplace", testContext, User.class);
         String log4jConfPath = "src/resources/log4j.properties";
         PropertyConfigurator.configure(log4jConfPath);
         LOGGER = Logger.getLogger(BaseTest.class);

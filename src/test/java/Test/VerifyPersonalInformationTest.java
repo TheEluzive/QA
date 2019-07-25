@@ -6,6 +6,7 @@ import Page.MyAccountPage;
 import Page.MyAdressesPage;
 import Page.PersonalInformationPage;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
@@ -13,7 +14,13 @@ import java.io.IOException;
 
 public class VerifyPersonalInformationTest extends BaseTest {
 
-    @Test(dataProvider = "personalInformation", dataProviderClass=BaseTest.class)
+
+    @DataProvider(name = "personalInformation")
+    public Object[][] dataProviderNewUserFromJson() {
+        return dataPool.getData();
+    }
+
+    @Test(dataProvider = "personalInformation")
     public void verifyPersonalInformationTest(User user) throws IOException {
         BasePage.driver.get(BasePage.mainPage);
         System.out.println(user);
@@ -42,8 +49,7 @@ public class VerifyPersonalInformationTest extends BaseTest {
 
         BaseTest.getSoftAssert().assertAll();
         BaseTest.makeScreen("verifyPersonalInformationTest");
-        if (getParameters().get("logout").equals("true"))
-            myAccountPage.getButtonLogout().click();
+
 
 
     }

@@ -5,13 +5,19 @@ import Page.BasePage;
 import Page.MyAccountPage;
 import Page.MyAdressesPage;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
 
 public class VerifyAdressesTest extends BaseTest {
-    @Test(dataProvider = "personalInformation", dataProviderClass=BaseTest.class)
-    public void checkAdressesTest(User user) throws IOException {
+    @DataProvider(name = "personalInformation")
+    public Object[][] dataProviderNewUserFromJson() {
+        return dataPool.getData();
+    }
+
+    @Test(dataProvider = "personalInformation")
+    public void checkAdressesTest(User user, User userForChanges) throws IOException {
         BasePage.driver.get(BasePage.mainPage);
         System.out.println(user);
         MyAdressesPage myAdressesPage;
@@ -36,7 +42,6 @@ public class VerifyAdressesTest extends BaseTest {
         softAssert.assertEquals(myAdressesPage.getMobilePhone().getText(), user.getMobileNumber());
 
         BaseTest.getSoftAssert().assertAll();
-        if (getParameters().get("logout").equals("true"))
-            myAdressesPage.getButtonAccount().click();
+
     }
 }

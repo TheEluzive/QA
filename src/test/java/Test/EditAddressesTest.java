@@ -6,12 +6,18 @@ import Page.MyAccountPage;
 import Page.MyAdressesPage;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
 
 public class EditAddressesTest extends BaseTest {
-    @Test(dataProvider = "personalInformation", dataProviderClass = BaseTest.class)
+    @DataProvider(name = "personalInformation")
+    public Object[][] dataProviderNewUserFromJson() {
+        return dataPool.getData();
+    }
+
+    @Test(dataProvider = "personalInformation")
     public void editAddressesTest(User user, User userForChanges) throws InterruptedException, IOException {
         BasePage.driver.get(BasePage.mainPage);
         System.out.println(user);

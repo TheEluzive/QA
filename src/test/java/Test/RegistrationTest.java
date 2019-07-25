@@ -15,11 +15,11 @@ import java.io.IOException;
 public class RegistrationTest extends BaseTest {
 
 
+
     @DataProvider(name = "personalInformation")
     public Object[][] dataProviderNewUserFromJson() {
         return dataPool.getData();
     }
-
 
 
     @Test(dataProvider = "personalInformation")

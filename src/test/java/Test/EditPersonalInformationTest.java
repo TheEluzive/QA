@@ -7,12 +7,18 @@ import Page.MyAdressesPage;
 import Page.PersonalInformationPage;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
 
 public class EditPersonalInformationTest extends BaseTest {
-    @Test(dataProvider = "personalInformation", dataProviderClass = BaseTest.class)
+    @DataProvider(name = "personalInformation")
+    public Object[][] dataProviderNewUserFromJson() {
+        return dataPool.getData();
+    }
+
+    @Test(dataProvider = "personalInformation")
     public void editPersonalInformationTest(User user, User userForChanges) throws IOException {
         BasePage.driver.get(BasePage.mainPage);
         System.out.println(user);
@@ -30,8 +36,7 @@ public class EditPersonalInformationTest extends BaseTest {
 
         BaseTest.makeScreen("editPersonalInformationTest");
         Assert.assertEquals(BasePage.driver.getCurrentUrl(), "http://automationpractice.com/index.php?controller=identity");
-        if (getParameters().get("logout").equals("true"))
-            myAccountPage.getButtonLogout().click();
+
 
 
     }
