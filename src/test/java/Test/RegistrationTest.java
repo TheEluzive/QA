@@ -24,6 +24,7 @@ public class RegistrationTest extends BaseTest {
 
     @Test(dataProvider = "personalInformation")
     public void registrationTest(User user, User user2) throws IOException {
+
         BasePage.driver.get(BasePage.mainPage);
 
         RegistrationPage registrationPage;
@@ -38,5 +39,7 @@ public class RegistrationTest extends BaseTest {
         Assert.assertEquals(BasePage.driver.getCurrentUrl(), BasePage.personalArea);
         registrationPage.getButtonLogout().click();
     }
+
+
 }
 

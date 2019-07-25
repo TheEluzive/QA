@@ -1,6 +1,8 @@
 package Test;
 
+import Model.Address;
 import Model.DataPool;
+import Model.PersonalInfo;
 import Model.User;
 import Page.BasePage;
 import org.apache.commons.io.FileUtils;
@@ -44,8 +46,11 @@ public class BaseTest {
 
     @BeforeSuite
     public void beforeSuite(ITestContext testContext) {
-        dataPool = new DataPool("dataFile", testContext, User.class);
-        dataPool.fillNewDataPool("dataFileToReplace", testContext, User.class);
+
+        dataPool = new DataPool("dataFilePersonalInfo", testContext, Address.class);
+        dataPool.fillNewDataPool("dataFileAddresses", testContext, PersonalInfo.class);
+        /*dataPool = new DataPool("dataFile", testContext, User.class);
+        dataPool.fillNewDataPool("dataFileToReplace", testContext, User.class);*/
         String log4jConfPath = "src/resources/log4j.properties";
         PropertyConfigurator.configure(log4jConfPath);
         LOGGER = Logger.getLogger(BaseTest.class);

@@ -32,6 +32,17 @@ public class User {
     private String homePhone;
     private String mobileNumber;
     private String addressAlias;
-    private String newPassword;
+
+
+    private Address address;
+    private PersonalInfo personalInfo;
+
+    public User(Address address, PersonalInfo personalInfo) {
+
+        this.address = address;
+        this.personalInfo = personalInfo;
+
+    }
+
 
 }
