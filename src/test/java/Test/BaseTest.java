@@ -11,6 +11,7 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.ITestContext;
 import org.testng.annotations.AfterSuite;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.DataProvider;
 import org.testng.asserts.SoftAssert;
@@ -37,7 +38,13 @@ public class BaseTest {
     public static SoftAssert getSoftAssert() {
         return softAssert;
     }
+    DataPool dataPool;
 
+    @BeforeClass
+    public void beforeClass(ITestContext testContext){
+        dataPool = new DataPool("dataFile", testContext, User.class);
+        dataPool.fillNewDataPool("dataFileToReplace", testContext, User.class);
+    }
     @BeforeSuite
     public void beforeSuite(ITestContext testContext) {
         String log4jConfPath = "src/resources/log4j.properties";

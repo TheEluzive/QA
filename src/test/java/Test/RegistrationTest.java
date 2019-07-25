@@ -13,19 +13,12 @@ import org.testng.annotations.Test;
 import java.io.IOException;
 
 public class RegistrationTest extends BaseTest {
-DataPool dataPool;
 
-@BeforeClass
-public void beforeClass(ITestContext testContext){
-    dataPool = new DataPool("dataFile", testContext, User.class);
-    dataPool.fillNewDataPool("dataFileToReplace", testContext, User.class);
-}
 
     @DataProvider(name = "personalInformation")
     public Object[][] dataProviderNewUserFromJson() {
         return dataPool.getData();
     }
-
 
 
 
@@ -46,3 +39,4 @@ public void beforeClass(ITestContext testContext){
         registrationPage.getButtonLogout().click();
     }
 }
+
