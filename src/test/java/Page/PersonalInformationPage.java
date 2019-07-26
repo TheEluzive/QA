@@ -1,7 +1,9 @@
 package Page;
 
+import Model.PersonalInfo;
 import Model.User;
 import lombok.Getter;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
@@ -11,10 +13,10 @@ public class PersonalInformationPage extends BasePage {
 
 
     @FindBy(xpath = "//input[@id='id_gender1']")
-    private WebElement radioGenderMen;
+    private WebElement radioGenderMale;
 
     @FindBy(xpath = "//input[@id='id_gender2']")
-    private WebElement radioGenderWomen;
+    private WebElement radioGenderFemale;
 
     @FindBy(xpath = "//input[@id='firstname']")
     private WebElement textFieldFirstName;
@@ -33,11 +35,6 @@ public class PersonalInformationPage extends BasePage {
 
     @FindBy(xpath = "//select[@id='years']")
     private WebElement selectorYear;
-
-    public void selectYear(String year) {
-        Select select = new Select(selectorYear);
-        select.selectByValue(year);
-    }
 
     @FindBy(xpath = "//input[@id='newsletter']")
     private WebElement radioNewsLetterRadio;
@@ -62,26 +59,50 @@ public class PersonalInformationPage extends BasePage {
         select.selectByValue(string);
     }
 
-    /*public void updateInformation(User user, String oldPassword){
-        textFieldFirstName.clear();
-        textFieldFirstName.sendKeys(user.getFirstName());
+    public PersonalInfo getPersonalInfoFromPage() {
+        boolean gender;
+        gender = getRadioGenderMale().isSelected();
+        return new PersonalInfo(
+                gender,
+                getTextFieldEmail().getAttribute("value"),
+                getTextFieldFirstName().getAttribute("value"),
+                getTestFieldLastName().getAttribute("value"),
 
-        testFieldLastName.clear();
-        testFieldLastName.sendKeys(user.getLastName());
+                getSelectorDay().getAttribute("value"),
+                getSelectorMonth().getAttribute("value"),
+                getSelectorYear().getAttribute("value")
+        );
+    }
 
-        textFieldEmail.clear();
-        textFieldEmail.sendKeys(user.getEmail());
+    private void clearFieldAndSendString(WebElement webElement, String textField) {
+        webElement.clear();
+        webElement.sendKeys(textField);
+    }
 
-        select(user.getDay(), selectorDay);
-        select(user.getMonth(), selectorMonth);
-        select(user.getYear(), selectorYear);
-
+    public void updateInformation(User user, String oldPassword) {
+        if (user.getPersonalInfo().isGender()) //men
+            if (!radioGenderMale.isSelected())
+                radioGenderMale.click();
+        clearFieldAndSendString(textFieldFirstName, user.getPersonalInfo().getFirstName());
+        clearFieldAndSendString(testFieldLastName, user.getPersonalInfo().getLastName());
+        clearFieldAndSendString(textFieldEmail, user.getPersonalInfo().getEmail());
+        select(user.getPersonalInfo().getDay(), selectorDay);
+        select(user.getPersonalInfo().getMonth(), selectorMonth);
+        select(user.getPersonalInfo().getYear(), selectorYear);
         getTextFieldCurrentPassword().sendKeys(oldPassword);
-
         textFieldNewPassword.sendKeys(user.getPassword());
         textFieldConfirmPassword.sendKeys(user.getPassword());
-
         getButtonSave().click();
-    }*/
+    }
+
+    public boolean messageOfSuccessChanges() {
+        boolean message;
+        try {
+            message = BasePage.driver.findElement((By.xpath("//p[@class='alert alert-success']"))).isDisplayed();
+        } catch (Exception e) {
+            message = false;
+        }
+        return message;
+    }
 
 }

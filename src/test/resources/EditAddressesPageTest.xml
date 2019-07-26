@@ -5,12 +5,9 @@
 
 
     <test name="myTest" verbose="2">
-        <parameter name="dataFile" value="src/test/resources/data.json"/>
+
+        <parameter name="data" value="src/test/resources/dataToReplace.json"/>
         <parameter name="dataFileToReplace" value="src/test/resources/dataToReplace.json"/>
-
-        <parameter name="login" value="true"/>
-        <parameter name="logout" value="true"></parameter>
-
         <classes>
             <class name="Test.EditAddressesTest">
                 <methods>

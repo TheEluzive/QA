@@ -1,37 +1,37 @@
 package Test;
 
+import Model.DataPool;
 import Model.User;
 import Page.BasePage;
-import Page.MyAccountPage;
-import Page.MyAdressesPage;
-import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
+import org.testng.ITestContext;
+import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
 
 public class EditAddressesTest extends BaseTest {
+
+    @BeforeSuite
+    public void dataPool(ITestContext testContext) {
+        dataPool = new DataPool<>("data", testContext, User.class);
+    }
+
     @DataProvider(name = "personalInformation")
     public Object[][] dataProviderNewUserFromJson() {
         return dataPool.getData();
     }
 
     @Test(dataProvider = "personalInformation")
-    public void editAddressesTest(User user, User userForChanges) throws InterruptedException, IOException {
-        BasePage.driver.get(BasePage.mainPage);
-        System.out.println(user);
-        MyAccountPage myAccountPage;
-        myAccountPage = PageFactory.initElements(BasePage.driver, MyAccountPage.class);
-        myAccountPage.signIn(user.getEmail(), user.getPassword());
-        LOGGER.debug("Login: " + user.getEmail() + " password: " + user.getPassword());
-        makeScreen("editAddressesTest");
+    public void editAddressesTest(User user) throws IOException {
+
+        myAccountPage.signIn(user.getPersonalInfo().getEmail(), user.getPassword());
+        LOGGER.debug("Login: " + user.getPersonalInfo().getEmail() + " password: " + user.getPassword());
         myAccountPage.getButtonMyAddresses().click();
+        myAddressesPage.updateAddress(user);
 
-        MyAdressesPage myAdressesPage = PageFactory.initElements(BasePage.driver, MyAdressesPage.class);
-        myAdressesPage.updateAdress(userForChanges);
-
-        Assert.assertEquals(BasePage.driver.getCurrentUrl(), BasePage.mainPage+"index.php?controller=addresses");
-
+        makeScreen("editAddressesTest");
+        Assert.assertEquals(BasePage.driver.getCurrentUrl(), BasePage.mainPage + property.getProperty("addressesPage"));
     }
 }

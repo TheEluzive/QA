@@ -8,13 +8,18 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+
 import static Test.BaseTest.LOGGER;
 
 
 public class RegistrationPage extends BasePage {
 
     @FindBy(xpath = "//input[@id='id_gender1']")
-    private WebElement radioGender;
+    private WebElement radioGenderMale;
+
+    @FindBy(xpath = "//input[@id='id_gender2']")
+    private WebElement radioGenderFemale;
 
     @FindBy(xpath = "//input[@id='customer_firstname']")
     private WebElement textFieldFirstName;
@@ -28,26 +33,11 @@ public class RegistrationPage extends BasePage {
     @FindBy(xpath = "//select[@id='days']")
     private WebElement selectorDay;
 
-    private void selectDay(String day) {
-        Select select = new Select(selectorDay);
-        select.selectByValue(day);
-    }
-
     @FindBy(xpath = "//select[@id='months']")
     private WebElement selectorMonth;
 
-    private void selectMonth(String month) {
-        Select select = new Select(selectorMonth);
-        select.selectByValue(month);
-    }
-
     @FindBy(xpath = "//select[@id='years']")
     private WebElement selectorYear;
-
-    private void selectYear(String year) {
-        Select select = new Select(selectorYear);
-        select.selectByValue(year);
-    }
 
     @FindBy(xpath = "//input[@id='newsletter']")
     private WebElement radioNewsLetterRadio;
@@ -76,20 +66,8 @@ public class RegistrationPage extends BasePage {
     @FindBy(xpath = "//select[@id='id_country']")
     private WebElement selectorCountry;
 
-    private void selectCountry(String country) {
-        Select select = new Select(selectorCountry);
-        selectorCountry.click();
-        select.selectByVisibleText(country);
-    }
-
     @FindBy(xpath = "//select[@id='id_state']")
     private WebElement selectorState;
-
-    private void selectState(String state) {
-        Select select = new Select(selectorState);
-        selectorState.click();
-        select.selectByVisibleText(state);
-    }
 
     @FindBy(xpath = "//textarea[@id='other']")
     private WebElement textFieldAdditionalInformation;
@@ -106,6 +84,17 @@ public class RegistrationPage extends BasePage {
     @FindBy(xpath = "//span[contains(text(),'Register')]")
     private WebElement buttonRegister;
 
+    private void selectByValue(WebElement selector, String value) {
+        Select select = new Select(selector);
+        selector.click();
+        select.selectByValue(value);
+    }
+
+    private void selectByText(WebElement selector, String value) {
+        Select select = new Select(selector);
+        selector.click();
+        select.selectByVisibleText(value);
+    }
 
     public void inputEmailAndOpenRegistrationPage(String email) {
 
@@ -122,23 +111,30 @@ public class RegistrationPage extends BasePage {
 
 
     public void inputPersonalInformation(User user) {
-        radioGender = (new WebDriverWait(driver, BaseTest.timeOut))
-                .until(ExpectedConditions.visibilityOf(radioGender));//or 2
-        radioGender.click();
+        if (user.getPersonalInfo().isGender()) {
+            radioGenderMale = (new WebDriverWait(driver, BaseTest.timeOut))
+                    .until(ExpectedConditions.visibilityOf(radioGenderMale));//or 2
+            radioGenderMale.click();
+        } else {
+
+            radioGenderFemale = (new WebDriverWait(driver, BaseTest.timeOut))
+                    .until(ExpectedConditions.visibilityOf(radioGenderFemale));//or 2
+            radioGenderFemale.click();
+        }
         textFieldFirstName.sendKeys(user.getPersonalInfo().getFirstName());
         testFieldLastName.sendKeys(user.getPersonalInfo().getLastName());
         textFieldPassword.sendKeys(user.getPassword());
-        selectDay(user.getPersonalInfo().getDay());
-        selectMonth(user.getPersonalInfo().getMonth());
-        selectYear(user.getPersonalInfo().getYear());
+        selectByValue(selectorDay, user.getPersonalInfo().getDay());
+        selectByValue(selectorMonth, user.getPersonalInfo().getMonth());
+        selectByValue(selectorYear, user.getPersonalInfo().getYear());
         if (user.isNewsLetterRadio()) radioNewsLetterRadio.click();
         if (user.isOptinRadio()) radioOptin.click();
         textFieldAdress1.sendKeys(user.getAddress().getAddress1());
         textFieldAdress2.sendKeys(user.getAddress().getAddress2());
         textFieldCity.sendKeys(user.getAddress().getCity());
         textFieldPostCode.sendKeys(user.getAddress().getPostCode());
-        selectCountry(user.getAddress().getCountry());
-        selectState(user.getAddress().getState());
+        selectByText(selectorCountry, user.getAddress().getCountry());
+        selectByText(selectorState, user.getAddress().getState());
         textFieldAdditionalInformation.sendKeys(user.getAddress().getAdditionalInformation());
         textFieldHomePhone.sendKeys(user.getAddress().getHomePhone());
         textFieldMobileNumber.sendKeys(user.getAddress().getMobileNumber());

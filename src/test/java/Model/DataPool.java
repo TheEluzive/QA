@@ -14,27 +14,22 @@ import java.util.HashMap;
 import java.util.Iterator;
 
 @NoArgsConstructor
-public class DataPool<T>{
-    {   //new
+public class DataPool<T> {
+    {
         dataCollection = new ArrayList<>();
     }
 
-    public DataPool(String testParameterName, ITestContext testContext, Class<T> dataClass){
+    public DataPool(String testParameterName, ITestContext testContext, Class<T> dataClass) {
         fillNewDataPool(testParameterName, testContext, dataClass);
     }
 
-    Collection<T> dataCollection;
+    private Collection<T> dataCollection;
 
-    public void processDataFile( String filePath, Class<T> dataClass ){
-
-        //dataCollection = new ArrayList<>();    new
-
+    private void processDataFile(String filePath, Class<T> dataClass) {
         ObjectMapper objectMapper = new ObjectMapper();
-        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-        objectMapper.setDateFormat( dateFormat );
         try {
-            T data = objectMapper.readValue( new File( filePath ), dataClass );
-            dataCollection.add( data );
+            T data = objectMapper.readValue(new File(filePath), dataClass);
+            dataCollection.add(data);
             System.out.println("dataPool created");
         } catch (IOException e) {
             e.printStackTrace();
@@ -42,22 +37,19 @@ public class DataPool<T>{
     }
 
     public Object[][] getData() {
-        Object[][] dataToGet = new Object[ 1 ][ dataCollection.size() ];
-
+        Object[][] dataToGet = new Object[1][dataCollection.size()];
         Iterator<T> it = dataCollection.iterator();
-
         int i = 0;
-        while( it.hasNext() ) {
-            dataToGet[ 0 ][ i  ] = it.next();
-            System.out.println(dataToGet[ 0 ][ i  ].toString());
+        while (it.hasNext()) {
+            dataToGet[0][i] = it.next();
+            System.out.println(dataToGet[0][i].toString());
             i++;
         }
-
         return dataToGet;
     }
 
-    public void fillNewDataPool(String testParameterName , ITestContext testContext,  Class<T> dataClass){
-        HashMap<String,String> parameters = new HashMap<>( testContext.getCurrentXmlTest().getAllParameters());
-        this.processDataFile( parameters.get(testParameterName), dataClass );
+    public void fillNewDataPool(String testParameterName, ITestContext testContext, Class<T> dataClass) {
+        HashMap<String, String> parameters = new HashMap<>(testContext.getCurrentXmlTest().getAllParameters());
+        this.processDataFile(parameters.get(testParameterName), dataClass);
     }
 }

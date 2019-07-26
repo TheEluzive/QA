@@ -20,6 +20,6 @@ public class MyAccountPage extends BasePage {
     private WebElement buttonMyPersonalInformation;
 
     @FindBy(xpath = "//span[contains(text(),'My wishlists')]")
-    private  WebElement buttonMyWishlists;
+    private WebElement buttonMyWishlists;
 
 }

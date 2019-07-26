@@ -2,11 +2,9 @@ package Test;
 import Model.DataPool;
 import Model.User;
 import Page.BasePage;
-import Page.RegistrationPage;
-import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import org.testng.ITestContext;
-import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
@@ -14,7 +12,10 @@ import java.io.IOException;
 
 public class RegistrationTest extends BaseTest {
 
-
+    @BeforeSuite
+    public void dataPool(ITestContext testContext){
+        dataPool = new DataPool<>("data", testContext, User.class);
+    }
 
     @DataProvider(name = "personalInformation")
     public Object[][] dataProviderNewUserFromJson() {
@@ -22,25 +23,17 @@ public class RegistrationTest extends BaseTest {
     }
 
 
-
-
-
     @Test(dataProvider = "personalInformation")
     public void registrationTest(User user) throws IOException {
 
-        BasePage.driver.get(BasePage.mainPage);
-
-        RegistrationPage registrationPage;
-        registrationPage = PageFactory.initElements(BasePage.driver, RegistrationPage.class);
-        registrationPage.inputEmailAndOpenRegistrationPage(user.getEmail());
+        registrationPage.inputEmailAndOpenRegistrationPage(user.getPersonalInfo().getEmail());
         registrationPage.inputPersonalInformation(user);
-        BaseTest.makeScreen("registrationTest");
+        makeScreen("registrationTest");
+
         registrationPage.getButtonLogout().click();
-        registrationPage.signIn(user.getEmail(), user.getPassword());
-        LOGGER.debug("Login: " + user.getEmail() + " password: " + user.getPassword());
-        LOGGER.info("Auto-generated email: " + user.getEmail() + " password: " + user.getPassword());
-        Assert.assertEquals(BasePage.driver.getCurrentUrl(), BasePage.personalArea);
-        registrationPage.getButtonLogout().click();
+        registrationPage.signIn(user.getPersonalInfo().getEmail(), user.getPassword());
+
+        Assert.assertEquals(BasePage.driver.getCurrentUrl(), BasePage.mainPage + property.getProperty("myAccountPage"));
     }
 
 

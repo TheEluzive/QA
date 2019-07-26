@@ -9,9 +9,9 @@
         <parameter name="data" value="src/test/resources/data.json"/>
 
         <classes>
-            <class name="Test.VerifyPersonalInformationTest">
+            <class name="Test.VerifyAddressesTest">
                 <methods>
-                    <include name="verifyPersonalInformationTest"/>
+                    <include name="verifyAddressesTest"/>
                 </methods>
             </class>
 

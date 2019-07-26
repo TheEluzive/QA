@@ -1,5 +1,6 @@
 package Page;
 
+import Model.Address;
 import Model.User;
 import lombok.Getter;
 import org.openqa.selenium.WebElement;
@@ -7,8 +8,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
 
 @Getter
-public class EditYourAddressedPage extends BasePage{
-
+public class EditYourAddressedPage extends BasePage {
 
 
     @FindBy(xpath = "//input[@id='firstname']")
@@ -59,43 +59,52 @@ public class EditYourAddressedPage extends BasePage{
         select.selectByVisibleText(string);
     }
 
-   /* public void updateYourAddress(User user) {
-        textFieldAdressFirstName.clear();
-        textFieldAdressFirstName.sendKeys(user.getFirstName());
+    private void cleanFieldAndSendString(WebElement webElement, String textField) {
+        webElement.clear();
+        webElement.sendKeys(textField);
+    }
 
-        textFieldAdressLastName.clear();
-        textFieldAdressLastName.sendKeys(user.getLastName());
-
-        textFieldCompany.clear();
-        textFieldCompany.sendKeys(user.getCompany());
-
-
-        textFieldAdress1.clear();
-        textFieldAdress1.sendKeys(user.getAddress1());
-
-        textFieldAdress2.clear();
-        textFieldAdress2.sendKeys(user.getAddress2());
-
-        textFieldCity.clear();
-        textFieldCity.sendKeys(user.getCity());
-
-        select(user.getState(), selectorState);
-
-        textFieldPostCode.clear();
-        textFieldPostCode.sendKeys(user.getPostCode());
-
-        select(user.getCountry(), selectorCountry);
-
-        textFieldHomePhone.clear();
-        textFieldHomePhone.sendKeys(user.getHomePhone());
-
-        textFieldMobileNumber.clear();
-        textFieldMobileNumber.sendKeys(user.getMobileNumber());
-
-        textFieldAdditionalInformation.clear();
-        textFieldAdditionalInformation.sendKeys(user.getAdditionalInformation());
-
+    void updateYourAddress(User user) {
+        cleanFieldAndSendString(textFieldAdressFirstName, user.getPersonalInfo().getFirstName());
+        cleanFieldAndSendString(textFieldAdressLastName, user.getPersonalInfo().getLastName());
+        cleanFieldAndSendString(textFieldCompany, user.getAddress().getCompany());
+        cleanFieldAndSendString(textFieldAdress1, user.getAddress().getAddress1());
+        cleanFieldAndSendString(textFieldAdress2, user.getAddress().getAddress2());
+        cleanFieldAndSendString(textFieldCity, user.getAddress().getAddress2());
+        cleanFieldAndSendString(textFieldCity, user.getAddress().getCity());
+        cleanFieldAndSendString(textFieldPostCode, user.getAddress().getPostCode());
+        select(user.getAddress().getState(), selectorState);
+        select(user.getAddress().getCountry(), selectorCountry);
+        cleanFieldAndSendString(textFieldHomePhone, user.getAddress().getHomePhone());
+        cleanFieldAndSendString(textFieldMobileNumber, user.getAddress().getMobileNumber());
+        cleanFieldAndSendString(textFieldAdditionalInformation, user.getAddress().getAdditionalInformation());
         buttonSave.click();
-    }*/
+    }
 
+    public String getUserFirstName() {
+        return textFieldAdressFirstName.getAttribute("value");
+    }
+
+    public String getUserLastName() {
+        return textFieldAdressLastName.getAttribute("value");
+    }
+
+    public Address getUserAddressFromPage() {
+        String country = new Select(selectorCountry).getFirstSelectedOption().getText();
+        String state = new Select(selectorState).getFirstSelectedOption().getText();
+
+        return new Address(
+                textFieldCompany.getAttribute("value"),
+                textFieldAdress1.getAttribute("value"),
+                textFieldAdress2.getAttribute("value"),
+                textFieldCity.getAttribute("value"),
+                textFieldPostCode.getAttribute("value"),
+                country,
+                state,
+                textFieldAdditionalInformation.getAttribute("value"),
+                textFieldHomePhone.getAttribute("value"),
+                textFieldMobileNumber.getAttribute("value"),
+                textFieldAdressAlias.getAttribute("value")
+        );
+    }
 }

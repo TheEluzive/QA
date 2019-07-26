@@ -2,7 +2,6 @@ package Page;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -13,9 +12,7 @@ import org.openqa.selenium.support.PageFactory;
 @Setter
 public abstract class BasePage {
     public static WebDriver driver;
-    public static String mainPage="";
-    public static String dressesPage="";
-    public static String personalArea ="";
+    public static String mainPage = "";
 
 
     @FindBy(xpath = "//a[@class='login']")
@@ -32,7 +29,7 @@ public abstract class BasePage {
 
 
     @FindBy(xpath = "//a[@class='account']")
-    private  WebElement buttonAccount;
+    private WebElement buttonAccount;
 
     public void signIn(String email, String password) {
         buttonSignIn.click();

@@ -1,6 +1,5 @@
 package Model;
 
-import Test.BaseTest;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import lombok.*;
 
@@ -9,14 +8,9 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 public class User {
-
-    private String email;
     private String password;
     private boolean newsLetterRadio;
     private boolean optinRadio;
-
     private Address address;
     private PersonalInfo personalInfo;
-
-
 }

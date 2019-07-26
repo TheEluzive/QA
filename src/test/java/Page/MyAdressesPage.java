@@ -30,10 +30,10 @@ public class MyAdressesPage extends BasePage {
     WebElement buttonUpdate;
 
 
-    public void updateAdress(User user) throws InterruptedException {
-    buttonUpdate.click();
-    EditYourAddressedPage editYourAdressedPage = PageFactory.initElements(BasePage.driver, EditYourAddressedPage.class);
-    //editYourAdressedPage.updateYourAddress(user);
+    public void updateAddress(User user) {
+        buttonUpdate.click();
+        EditYourAddressedPage editYourAdressedPage = PageFactory.initElements(BasePage.driver, EditYourAddressedPage.class);
+        editYourAdressedPage.updateYourAddress(user);
     }
 
 }

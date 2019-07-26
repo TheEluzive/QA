@@ -1,5 +1,6 @@
 package Util;
 
+import Page.BasePage;
 import Test.BaseTest;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
@@ -29,6 +30,7 @@ public class CustomListener implements ITestListener {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        BasePage.driver.quit();
     }
 
     public void onTestSkipped(ITestResult iTestResult) {
