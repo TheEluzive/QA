@@ -33,7 +33,7 @@ public class MyAdressesPage extends BasePage {
     public void updateAdress(User user) throws InterruptedException {
     buttonUpdate.click();
     EditYourAddressedPage editYourAdressedPage = PageFactory.initElements(BasePage.driver, EditYourAddressedPage.class);
-    editYourAdressedPage.updateYourAddress(user);
+    //editYourAdressedPage.updateYourAddress(user);
     }
 
 }

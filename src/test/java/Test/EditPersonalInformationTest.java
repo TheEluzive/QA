@@ -32,7 +32,7 @@ public class EditPersonalInformationTest extends BaseTest {
 
         PersonalInformationPage personalInformationPage;
         personalInformationPage = PageFactory.initElements(BasePage.driver, PersonalInformationPage.class);
-        personalInformationPage.updateInformation(userForChanges, user.getPassword());
+        //personalInformationPage.updateInformation(userForChanges, user.getPassword());
 
         BaseTest.makeScreen("editPersonalInformationTest");
         Assert.assertEquals(BasePage.driver.getCurrentUrl(), "http://automationpractice.com/index.php?controller=identity");

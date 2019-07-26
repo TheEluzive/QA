@@ -1,11 +1,13 @@
 package Model;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Address {
-    private String addressFirstName;
-    private String addressLastName;
     private String company;
     private String address1;
     private String address2;
@@ -17,4 +19,6 @@ public class Address {
     private String homePhone;
     private String mobileNumber;
     private String addressAlias;
+
+
 }

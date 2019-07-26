@@ -62,7 +62,7 @@ public class PersonalInformationPage extends BasePage {
         select.selectByValue(string);
     }
 
-    public void updateInformation(User user, String oldPassword){
+    /*public void updateInformation(User user, String oldPassword){
         textFieldFirstName.clear();
         textFieldFirstName.sendKeys(user.getFirstName());
 
@@ -82,6 +82,6 @@ public class PersonalInformationPage extends BasePage {
         textFieldConfirmPassword.sendKeys(user.getPassword());
 
         getButtonSave().click();
-    }
+    }*/
 
 }

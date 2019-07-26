@@ -5,8 +5,7 @@
 
 
     <test name="myTest" verbose="2">
-        <parameter name="dataFilePersonalInfo" value="src/test/resources/dataAddresses.json"/>
-        <parameter name="dataFileAddresses" value="src/test/resources/dataPersonalInfo.json"/>
+        <parameter name="data" value="src/test/resources/Class.json"/>
 
         <classes>
             <class name="Test.ComplexUserTest">

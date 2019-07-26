@@ -125,27 +125,25 @@ public class RegistrationPage extends BasePage {
         radioGender = (new WebDriverWait(driver, BaseTest.timeOut))
                 .until(ExpectedConditions.visibilityOf(radioGender));//or 2
         radioGender.click();
-        textFieldFirstName.sendKeys(user.getFirstName());
-        testFieldLastName.sendKeys(user.getLastName());
+        textFieldFirstName.sendKeys(user.getPersonalInfo().getFirstName());
+        testFieldLastName.sendKeys(user.getPersonalInfo().getLastName());
         textFieldPassword.sendKeys(user.getPassword());
-        selectDay(user.getDay());
-        selectMonth(user.getMonth());
-        selectYear(user.getYear());
+        selectDay(user.getPersonalInfo().getDay());
+        selectMonth(user.getPersonalInfo().getMonth());
+        selectYear(user.getPersonalInfo().getYear());
         if (user.isNewsLetterRadio()) radioNewsLetterRadio.click();
         if (user.isOptinRadio()) radioOptin.click();
-        textFieldAdressFirstName.sendKeys(user.getAddressFirstName());
-        textFieldAdressLastName.sendKeys(user.getAddressLastName());
-        textFieldAdress1.sendKeys(user.getAddress1());
-        textFieldAdress2.sendKeys(user.getAddress2());
-        textFieldCity.sendKeys(user.getCity());
-        textFieldPostCode.sendKeys(user.getPostCode());
-        selectCountry(user.getCountry());
-        selectState(user.getState());
-        textFieldAdditionalInformation.sendKeys(user.getAdditionalInformation());
-        textFieldHomePhone.sendKeys(user.getHomePhone());
-        textFieldMobileNumber.sendKeys(user.getMobileNumber());
+        textFieldAdress1.sendKeys(user.getAddress().getAddress1());
+        textFieldAdress2.sendKeys(user.getAddress().getAddress2());
+        textFieldCity.sendKeys(user.getAddress().getCity());
+        textFieldPostCode.sendKeys(user.getAddress().getPostCode());
+        selectCountry(user.getAddress().getCountry());
+        selectState(user.getAddress().getState());
+        textFieldAdditionalInformation.sendKeys(user.getAddress().getAdditionalInformation());
+        textFieldHomePhone.sendKeys(user.getAddress().getHomePhone());
+        textFieldMobileNumber.sendKeys(user.getAddress().getMobileNumber());
         textFieldAdressAlias.clear();
-        textFieldAdressAlias.sendKeys(user.getAddressAlias());
+        textFieldAdressAlias.sendKeys(user.getAddress().getAddressAlias());
         buttonRegister.click();
     }
 }

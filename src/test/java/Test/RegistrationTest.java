@@ -22,8 +22,11 @@ public class RegistrationTest extends BaseTest {
     }
 
 
+
+
+
     @Test(dataProvider = "personalInformation")
-    public void registrationTest(User user, User user2) throws IOException {
+    public void registrationTest(User user) throws IOException {
 
         BasePage.driver.get(BasePage.mainPage);
 

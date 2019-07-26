@@ -59,7 +59,7 @@ public class EditYourAddressedPage extends BasePage{
         select.selectByVisibleText(string);
     }
 
-    public void updateYourAddress(User user) {
+   /* public void updateYourAddress(User user) {
         textFieldAdressFirstName.clear();
         textFieldAdressFirstName.sendKeys(user.getFirstName());
 
@@ -96,6 +96,6 @@ public class EditYourAddressedPage extends BasePage{
         textFieldAdditionalInformation.sendKeys(user.getAdditionalInformation());
 
         buttonSave.click();
-    }
+    }*/
 
 }

@@ -1,24 +1,28 @@
- {
-  "email": "7g4rrgfdgfdunevgeny.tkach@gmail.com",
-  "firstName": "AbsolutelyNotEvgeny",
-  "lastName": "Tkachdfghjk",
-  "password": "2345dfghqwerty",
-  "day": "24",
-  "month": "5",
-  "year": "1997",
-  "newsLetterRadio": true,
-  "optinRadio": true,
-  "addressFirstName": "",
-  "addressLastName": "",
-  "company": "secret",
-  "address1": "Street street",
-  "address2": "5",
-  "city": "Volgograd",
-  "postCode": "12345",
-  "country": "United States",
-  "state": "Georgia",
-  "additionalInformation": "something",
-  "homePhone": "12-23-34",
-  "mobileNumber": "89876543210",
-  "addressAlias": "Adress"
+{
+
+    "email": "7g4rrg5tghbnunevgeny.tkach@gmail.com",
+    "password": "2345dfghqwerty",
+    "newsLetterRadio": true,
+    "optinRadio": true,
+    "address": {
+      "company": "secret",
+      "address1": "Street street",
+      "address2": "5",
+      "city": "Volgograd",
+      "postCode": "12345",
+      "country": "United States",
+      "state": "Georgia",
+      "additionalInformation": "something",
+      "homePhone": "12-23-34",
+      "mobileNumber": "89876543210",
+      "addressAlias": "Address"
+    },
+    "personalInfo": {
+      "firstName": "AbsolutelyNotEvgeny",
+      "lastName": "Tkachdfghjk",
+      "day": "24",
+      "month": "5",
+      "year": "1997"
+    }
+
 }
