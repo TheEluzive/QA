@@ -1,7 +1,7 @@
 package Util;
 
-import Page.BasePage;
-import Test.BaseTest;
+import Pages.BasePage;
+import Tests.BaseTest;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
@@ -9,22 +9,22 @@ import org.testng.ITestResult;
 
 import java.io.IOException;
 
-import static Test.BaseTest.LOGGER;
+import static Tests.BaseTest.LOGGER;
 
 public class CustomListener implements ITestListener {
 
 
     public void onTestStart(ITestResult iTestResult) {
-        LOGGER.info("Test started!");
+        LOGGER.info("Tests started!");
     }
 
     public void onTestSuccess(ITestResult iTestResult) {
 
-        LOGGER.info("Test succesfull finish");
+        LOGGER.info("Tests succesfull finish");
     }
 
     public void onTestFailure(ITestResult iTestResult) {
-        LOGGER.info("Test Failure");
+        LOGGER.info("Tests Failure");
         try {
             BaseTest.makeScreen("editAddressesTest");
         } catch (IOException e) {
@@ -34,7 +34,7 @@ public class CustomListener implements ITestListener {
     }
 
     public void onTestSkipped(ITestResult iTestResult) {
-//        LOGGER.info("Test Skipped");
+//        LOGGER.info("Tests Skipped");
     }
 
     public void onTestFailedButWithinSuccessPercentage(ITestResult iTestResult) {

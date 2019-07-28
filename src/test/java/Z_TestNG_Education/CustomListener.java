@@ -6,23 +6,23 @@ import org.testng.ITestResult;
 
 class CustomListener implements ITestListener {
     public void onTestStart(ITestResult iTestResult) {
-        System.out.println("Test started!");
+        System.out.println("Tests started!");
     }
 
     public void onTestSuccess(ITestResult iTestResult) {
-        System.out.println("Test Success");
+        System.out.println("Tests Success");
     }
 
     public void onTestFailure(ITestResult iTestResult) {
-        System.out.println("Test Failure");
+        System.out.println("Tests Failure");
     }
 
     public void onTestSkipped(ITestResult iTestResult) {
-        System.out.println("Test Skipped");
+        System.out.println("Tests Skipped");
     }
 
     public void onTestFailedButWithinSuccessPercentage(ITestResult iTestResult) {
-        System.out.println("Test Failed But Within Success Percentage");
+        System.out.println("Tests Failed But Within Success Percentage");
     }
 
     public void onStart(ITestContext iTestContext) {

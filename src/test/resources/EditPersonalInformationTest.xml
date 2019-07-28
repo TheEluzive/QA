@@ -9,7 +9,7 @@
         <parameter name="dataFileToReplace" value="src/test/resources/dataToReplace.json"/>
 
         <classes>
-            <class name="Test.EditPersonalInformationTest">
+            <class name="Tests.EditPersonalInformationTest">
                 <methods>
                     <include name="editPersonalInformationTest"/>
                 </methods>

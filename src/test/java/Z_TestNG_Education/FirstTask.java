@@ -38,12 +38,12 @@ public class FirstTask {
 
     @BeforeTest
     public void beforeTest() {
-        System.out.println("Before Test");
+        System.out.println("Before Tests");
     }
 
     @AfterTest
     public void afterTest() {
-        System.out.println("After Test");
+        System.out.println("After Tests");
     }
 
 

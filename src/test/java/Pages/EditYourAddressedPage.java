@@ -1,4 +1,4 @@
-package Page;
+package Pages;
 
 import Model.Address;
 import Model.User;

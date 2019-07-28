@@ -1,4 +1,4 @@
-package Test;
+package Tests;
 
 import Model.DataPool;
 import Model.User;

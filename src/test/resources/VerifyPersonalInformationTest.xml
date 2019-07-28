@@ -9,7 +9,7 @@
         <parameter name="data" value="src/test/resources/data.json"/>
 
         <classes>
-            <class name="Test.VerifyPersonalInformationTest">
+            <class name="Tests.VerifyPersonalInformationTest">
                 <methods>
                     <include name="verifyPersonalInformationTest"/>
                 </methods>

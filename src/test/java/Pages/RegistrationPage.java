@@ -1,7 +1,7 @@
-package Page;
+package Pages;
 
 import Model.User;
-import Test.BaseTest;
+import Tests.BaseTest;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -10,7 +10,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 
-import static Test.BaseTest.LOGGER;
+import static Tests.BaseTest.LOGGER;
 
 
 public class RegistrationPage extends BasePage {
@@ -108,6 +108,17 @@ public class RegistrationPage extends BasePage {
         authenticationPage.textFieldEmailAddressForRegistration.sendKeys(email);
         authenticationPage.buttonCreateAnAccount.click();
     }
+
+    public static final String messagePhoneIsRequired = "You must register at least one phone number.";
+    public static final String messageLastNameIsInvalid = "lastname is invalid.";
+    public static final String messageFirstNameIsInvalid = "firstname is invalid.";
+    public static final String messageEmailIsInvalid = "email is invalid.";
+    public static final String messagePasswordIsInvalid = "passwd is required.";
+    public static final String messageIdCountryIsRequired = "id_country is required.";
+    public static final String messageCountry2 = "Country cannot be loaded with address->id_country";
+    public static final String messageCountryIsInvalid = "Country is invalid";
+    public static final String messageStateIsRequired = "This country requires you to choose a State."; //if country chosen
+    public static final String messagePostCodeIsRequired = "The Zip/Postal code you've entered is invalid. It must follow this format: 00000";//if country chosen
 
 
     public void inputPersonalInformation(User user) {

@@ -1,8 +1,10 @@
-package Page;
+package Pages;
 
+import lombok.Data;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+@Data
 public class AuthenticationPage extends BasePage {
 
     //CREATE AN ACCOUNT
@@ -24,5 +26,16 @@ public class AuthenticationPage extends BasePage {
 
     @FindBy(xpath = "//p[@class='submit']//span[1]")
     WebElement buttonSignIn;
+
+
+    public static final String MESSAGE_AUTHENTICATION_FAILED ="Authentication failed.";
+    public static final String MESSAGE_INVALID_EMAIL_ADDRESS ="Invalid email address.";
+
+    @FindBy(xpath = "//li[contains(text(),'"+ MESSAGE_AUTHENTICATION_FAILED +"')]")
+    WebElement errorBoxAuthenticationFailed;
+
+    @FindBy(xpath = "//li[contains(text(),'"+ MESSAGE_INVALID_EMAIL_ADDRESS +"')]")
+    WebElement errorBoxInvalidEmail;
+
 
 }

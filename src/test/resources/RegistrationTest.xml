@@ -9,7 +9,7 @@
 
 
         <classes>
-            <class name="Test.RegistrationTest">
+            <class name="Tests.RegistrationTest">
                 <methods>
                     <include name="registrationTest"/>
                     <!--<include name="registrationTest" />

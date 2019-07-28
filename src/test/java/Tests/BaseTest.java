@@ -1,7 +1,7 @@
-package Test;
+package Tests;
 
-import Model.*;
-import Page.*;
+import Model.DataPool;
+import Pages.*;
 import Util.CustomListener;
 import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
@@ -11,7 +11,10 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.ITestContext;
-import org.testng.annotations.*;
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.Listeners;
 import org.testng.asserts.SoftAssert;
 
 import java.io.File;
@@ -20,8 +23,13 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Properties;
 
+
+
 @Listeners(CustomListener.class)
 public class BaseTest {
+    public static final String WRONG_EMAIL = "123456dfghjk@QWERTY.com";
+    public static final String WRONG_PASSWORD = "QWERTY";
+    public static final String INVALID_EMAIL = "qwerty";
     public static Logger LOGGER;
     public static int timeOut;
     MyAccountPage myAccountPage;
@@ -29,6 +37,7 @@ public class BaseTest {
     PersonalInformationPage personalInformationPage;
     RegistrationPage registrationPage;
     EditYourAddressedPage editYourAddressedPage;
+    HomePage homePage;
 
     public HashMap<String, String> parameters;
     Properties property;
@@ -69,7 +78,7 @@ public class BaseTest {
         } catch (IOException e) {
             LOGGER.error("Properties files wasn`t found");
         }
-
+        homePage = PageFactory.initElements(BasePage.driver, HomePage.class);
         myAccountPage = PageFactory.initElements(BasePage.driver, MyAccountPage.class);
         myAddressesPage = PageFactory.initElements(BasePage.driver, MyAdressesPage.class);
         personalInformationPage = PageFactory.initElements(BasePage.driver, PersonalInformationPage.class);

@@ -1,8 +1,8 @@
-package Test;
+package Tests;
 
 import Model.DataPool;
 import Model.User;
-import Page.BasePage;
+import Pages.BasePage;
 import org.testng.Assert;
 import org.testng.ITestContext;
 import org.testng.annotations.BeforeSuite;
