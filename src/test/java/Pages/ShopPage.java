@@ -3,6 +3,7 @@ package Pages;
 import lombok.Getter;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+
 @Getter
 public class ShopPage extends BasePage {
     public static final int AMOUNT_DRESSES = 10;
@@ -10,10 +11,16 @@ public class ShopPage extends BasePage {
     //WebElement[] dresses;
 
 
-    @FindBy(css = "/html/body/div[1]/div[2]/div/div[3]/div[2]/ul/li[1]/div/div[1]/div/a[1]/img")
+    @FindBy(xpath = "//*[@id=\"center_column\"]/ul/li[1]/div/div[1]/div/a[1]/img")
     WebElement dress1;
 
+    @FindBy(xpath = "//*[@id=\"center_column\"]/ul/li[1]/div/div[2]/div[2]/a[1]/span" )
+    WebElement dress1AddToCart;
 
+   public void buyDress1(){
+       mouseOver(dress1);
+       dress1AddToCart.click();
+   }
 
 
 
