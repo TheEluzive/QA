@@ -3,6 +3,13 @@ package Pages;
 import lombok.Data;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
+
+import java.io.IOException;
+
+import static Tests.BaseTest.LOGGER;
+import static Tests.BaseTest.makeScreen;
 
 @Data
 public class AuthenticationPage extends BasePage {
@@ -36,6 +43,35 @@ public class AuthenticationPage extends BasePage {
 
     @FindBy(xpath = "//li[contains(text(),'"+ MESSAGE_INVALID_EMAIL_ADDRESS +"')]")
     WebElement errorBoxInvalidEmail;
+
+    public boolean findErrorBoxAuthenticationFailed() throws IOException {
+        try{
+            getErrorBoxAuthenticationFailed().isDisplayed();
+            LOGGER.info("Error message: " + AuthenticationPage.MESSAGE_AUTHENTICATION_FAILED +" was output");
+            return true;
+        }
+        catch (Exception e)
+        {
+            makeScreen("authenticationFailedTest");
+            LOGGER.info("Error message: " + AuthenticationPage.MESSAGE_AUTHENTICATION_FAILED +" wasn`t output");
+            return false;
+        }
+    }
+
+    public boolean findErrorBoxInvalidEmail() throws IOException{
+        try{
+            getErrorBoxInvalidEmail().isDisplayed();
+            LOGGER.info("Error message: " + AuthenticationPage.MESSAGE_INVALID_EMAIL_ADDRESS +" was output");
+            return true;
+        }
+        catch (Exception e)
+        {
+            makeScreen("invalidEmailToLoginTest");
+            LOGGER.info("Error message: " + AuthenticationPage.MESSAGE_INVALID_EMAIL_ADDRESS +" wasn`t output");
+            Assert.fail();
+            return false;
+        }
+    }
 
 
 }

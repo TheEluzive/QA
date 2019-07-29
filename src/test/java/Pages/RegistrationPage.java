@@ -10,6 +10,9 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static Tests.BaseTest.LOGGER;
 
 
@@ -109,16 +112,51 @@ public class RegistrationPage extends BasePage {
         authenticationPage.buttonCreateAnAccount.click();
     }
 
-    public static final String messagePhoneIsRequired = "You must register at least one phone number.";
-    public static final String messageLastNameIsInvalid = "lastname is invalid.";
-    public static final String messageFirstNameIsInvalid = "firstname is invalid.";
-    public static final String messageEmailIsInvalid = "email is invalid.";
-    public static final String messagePasswordIsInvalid = "passwd is required.";
-    public static final String messageIdCountryIsRequired = "id_country is required.";
-    public static final String messageCountry2 = "Country cannot be loaded with address->id_country";
-    public static final String messageCountryIsInvalid = "Country is invalid";
-    public static final String messageStateIsRequired = "This country requires you to choose a State."; //if country chosen
-    public static final String messagePostCodeIsRequired = "The Zip/Postal code you've entered is invalid. It must follow this format: 00000";//if country chosen
+    public static final String MESSAGE_PHONE_IS_REQUIRED = "You must register at least one phone number.";
+    public static final String MESSAGE_LAST_NAME_IS_INVALID = "lastname is invalid.";
+    public static final String MESSAGE_FIRST_NAME_IS_INVALID = "firstname is invalid.";
+    public static final String MESSAGE_EMAIL_IS_INVALID = "email is invalid.";
+    public static final String MESSAGE_PASSWORD_IS_REQUIRED = "passwd is required.";
+    public static final String MESSAGE_PASSWORD_IS_INVALID = "passwd is invalid.";
+    public static final String MESSAGE_ERROR_ADDRESS1 = "address1 is too long. Maximum length: 128";
+    public static final String MESSAGE_COUNTRY_IS_INVALID = "Country is invalid";
+    public static final String MESSAGE_CITY_IS_REQUIRED = "city is required.";
+    public static final String MESSAGE_STATE_IS_REQUIRED = "This country requires you to choose a State."; //if country chosen
+    public static final String MESSAGE_POST_CODE_IS_REQUIRED = "The Zip/Postal code you've entered is invalid. It must follow this format: 00000";//if country chosen
+
+    private ArrayList<String> registrationErrors = new ArrayList<>();
+
+    public void fillErrorArrayList(){
+        registrationErrors.add(MESSAGE_PHONE_IS_REQUIRED);
+        registrationErrors.add(MESSAGE_LAST_NAME_IS_INVALID);
+        registrationErrors.add(MESSAGE_FIRST_NAME_IS_INVALID);
+        registrationErrors.add(MESSAGE_EMAIL_IS_INVALID);
+        registrationErrors.add(MESSAGE_PASSWORD_IS_REQUIRED);
+        registrationErrors.add(MESSAGE_PASSWORD_IS_INVALID);
+        registrationErrors.add(MESSAGE_ERROR_ADDRESS1);
+        registrationErrors.add(MESSAGE_COUNTRY_IS_INVALID);
+        registrationErrors.add(MESSAGE_CITY_IS_REQUIRED);
+        registrationErrors.add(MESSAGE_STATE_IS_REQUIRED);
+        registrationErrors.add(MESSAGE_POST_CODE_IS_REQUIRED);
+
+
+    }
+
+    @FindBy(css = "div.alert li")
+    List<WebElement> ourRegistrationError;
+
+    public boolean findError() {
+        fillErrorArrayList();
+
+        for (WebElement webElement : ourRegistrationError) {
+            if (!registrationErrors.contains(webElement.getText())) {
+                LOGGER.error("Error message: " + webElement.getText() + " wasn`t output");
+                return false;
+            }
+        }
+        LOGGER.info("All error messages was output");
+        return true;
+    }
 
 
     public void inputPersonalInformation(User user) {

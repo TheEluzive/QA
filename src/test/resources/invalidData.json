@@ -1,0 +1,27 @@
+{
+  "password": "",
+  "newsLetterRadio": true,
+  "optinRadio": true,
+  "address": {
+    "company": "secret",
+    "address1": "123455678910123455678910123455678910123455678910123455678910123455678910123455678910123455678910123455678910123455678910123455678910123455678910123455678910",
+    "address2": "5",
+    "city": "",
+    "postCode": "",
+    "country": "-",
+    "state": "-",
+    "additionalInformation": "something",
+    "homePhone": "",
+    "mobileNumber": "",
+    "addressAlias": "Address"
+  },
+  "personalInfo": {
+    "gender": true,
+    "email": "lkhjghggjkjg@gmail.com",
+    "firstName": "657777",
+    "lastName": "765765",
+    "day": "24",
+    "month": "5",
+    "year": "1997"
+  }
+}

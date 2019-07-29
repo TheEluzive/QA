@@ -38,7 +38,7 @@ public class BaseTest {
     RegistrationPage registrationPage;
     EditYourAddressedPage editYourAddressedPage;
     HomePage homePage;
-
+    AuthenticationPage authenticationPage;
     public HashMap<String, String> parameters;
     Properties property;
     static SoftAssert softAssert = new SoftAssert();
@@ -84,6 +84,7 @@ public class BaseTest {
         personalInformationPage = PageFactory.initElements(BasePage.driver, PersonalInformationPage.class);
         registrationPage = PageFactory.initElements(BasePage.driver, RegistrationPage.class);
         editYourAddressedPage = PageFactory.initElements(BasePage.driver, EditYourAddressedPage.class);
+        authenticationPage = PageFactory.initElements(BasePage.driver, AuthenticationPage.class);
 
     }
 
