@@ -1,21 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
-<suite name="Simple test suite">
-
-
-    <test name="myTest" verbose="2">
-        <parameter name="data" value="src/test/resources/data.json"/>
-        <parameter name="dataFileToReplace" value="src/test/resources/dataToReplace.json"/>
-
+<suite name="editPersonalInformationTest">
+    <test name="editPersonalInformationTest" verbose="2">
+        <parameter name="data" value="src/test/resources/data/data.json"/>
+        <parameter name="dataFileToReplace" value="src/test/resources/data/dataToReplace.json"/>
         <classes>
             <class name="Tests.EditPersonalInformationTest">
                 <methods>
                     <include name="editPersonalInformationTest"/>
                 </methods>
             </class>
-
         </classes>
     </test>
-
 </suite>

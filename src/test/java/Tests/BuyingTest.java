@@ -6,22 +6,23 @@ import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class ShopTest extends BaseTest{
+public class BuyingTest extends BaseTest {
 
     @Test
-    public void shopTest() {
+    public void buyingTest() throws InterruptedException {
 
-        BasePage.driver.get(BasePage.mainPage + "?id_category=3&controller=category");
+        BasePage.driver.get(BasePage.mainPage + property.getProperty("shopPage"));
         ShopPage shopPage = PageFactory.initElements(BasePage.driver, ShopPage.class);
         BasePage.driver.manage().window().maximize();
 
         int addedProducts = 0;
         shopPage.makeListOfProducts();
 
-        for (int i = 0; i<shopPage.getAmountProductsInShopPage(); i++){
+        for (int i = 0; i < shopPage.getAmountProductsInShopPage(); i++) {
             shopPage.addToCart(i);
             addedProducts++;
         }
+        LOGGER.debug("Amount added products: " + addedProducts);
         Assert.assertEquals(shopPage.getAmountProductsInCart(), addedProducts);
     }
 }

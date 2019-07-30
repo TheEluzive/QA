@@ -8,8 +8,6 @@ import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import java.io.IOException;
-
 public class EditPersonalInformationTest extends BaseTest {
 
     @BeforeSuite
@@ -25,13 +23,12 @@ public class EditPersonalInformationTest extends BaseTest {
 
 
     @Test(dataProvider = "personalInformation")
-    public void editPersonalInformationTest(User user, User userForChanges) throws IOException {
+    public void editPersonalInformationTest(User user, User userForChanges) {
 
-        myAccountPage.signIn(user.getPersonalInfo().getEmail(), user.getPassword());
+        myAccountPage.signIn(user.getPersonalInfo().getEmail(), user.getPersonalInfo().getPassword());
         myAccountPage.getButtonMyPersonalInformation().click();
-        personalInformationPage.updateInformation(userForChanges, user.getPassword());
+        personalInformationPage.updateInformation(userForChanges, user.getPersonalInfo().getPassword());
 
-        BaseTest.makeScreen("editPersonalInformationTest");
         Assert.assertTrue(personalInformationPage.messageOfSuccessChanges());
     }
 }

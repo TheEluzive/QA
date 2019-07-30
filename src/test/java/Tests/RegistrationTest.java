@@ -1,4 +1,5 @@
 package Tests;
+
 import Model.DataPool;
 import Model.User;
 import Pages.BasePage;
@@ -7,8 +8,6 @@ import org.testng.ITestContext;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
-import java.io.IOException;
 
 public class RegistrationTest extends BaseTest {
 
@@ -29,9 +28,8 @@ public class RegistrationTest extends BaseTest {
         registrationPage.inputEmailAndOpenRegistrationPage(user.getPersonalInfo().getEmail());
         registrationPage.inputPersonalInformation(user);
 
-
         registrationPage.getButtonLogout().click();
-        registrationPage.signIn(user.getPersonalInfo().getEmail(), user.getPassword());
+        registrationPage.signIn(user.getPersonalInfo().getEmail(), user.getPersonalInfo().getPassword());
 
         Assert.assertEquals(BasePage.driver.getCurrentUrl(), BasePage.mainPage + property.getProperty("myAccountPage"));
     }

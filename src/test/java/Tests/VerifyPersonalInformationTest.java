@@ -11,7 +11,6 @@ import org.testng.annotations.Test;
 
 public class VerifyPersonalInformationTest extends BaseTest {
 
-
     @BeforeSuite
     public void dataPool(ITestContext testContext) {
         dataPool = new DataPool<>("data", testContext, User.class);
@@ -25,11 +24,10 @@ public class VerifyPersonalInformationTest extends BaseTest {
     @Test(dataProvider = "personalInformation")
     public void verifyPersonalInformationTest(User user) {
 
-        myAddressesPage.signIn(user.getPersonalInfo().getEmail(), user.getPassword());
+        myAddressesPage.signIn(user.getPersonalInfo().getEmail(), user.getPersonalInfo().getPassword());
         myAccountPage.getButtonAccount().click();
         myAccountPage.getButtonMyPersonalInformation().click();
 
-        Assert.assertEquals(personalInformationPage.getPersonalInfoFromPage(), user.getPersonalInfo());
-        BaseTest.getSoftAssert().assertAll();
+        Assert.assertEquals(personalInformationPage.getPersonalInfoFromPage(user), user.getPersonalInfo());
     }
 }

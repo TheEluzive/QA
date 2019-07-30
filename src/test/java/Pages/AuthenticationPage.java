@@ -30,17 +30,8 @@ public class AuthenticationPage extends BasePage {
     @FindBy(xpath = "//*[@id=\"center_column\"]/div[1]/ol/li")
     WebElement errorBoxErrorCreateAccount;
 
-
-
-
-
-
-
     public String findErrorBoxAuthenticationFailed() {
        return errorBoxErrorCreateAccount.getText();
     }
-
-
-
 
 }

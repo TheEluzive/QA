@@ -9,8 +9,6 @@ import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import java.io.IOException;
-
 public class EditAddressesTest extends BaseTest {
 
     @BeforeSuite
@@ -24,14 +22,13 @@ public class EditAddressesTest extends BaseTest {
     }
 
     @Test(dataProvider = "personalInformation")
-    public void editAddressesTest(User user) throws IOException {
+    public void editAddressesTest(User user) {
 
-        myAccountPage.signIn(user.getPersonalInfo().getEmail(), user.getPassword());
-        LOGGER.debug("Login: " + user.getPersonalInfo().getEmail() + " password: " + user.getPassword());
+        myAccountPage.signIn(user.getPersonalInfo().getEmail(), user.getPersonalInfo().getPassword());
+        LOGGER.debug("Login: " + user.getPersonalInfo().getEmail() + " password: " + user.getPersonalInfo().getPassword());
         myAccountPage.getButtonMyAddresses().click();
         myAddressesPage.updateAddress(user);
 
-        makeScreen("editAddressesTest");
         Assert.assertEquals(BasePage.driver.getCurrentUrl(), BasePage.mainPage + property.getProperty("addressesPage"));
     }
 }

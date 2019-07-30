@@ -23,8 +23,7 @@ import java.io.IOException;
 import java.util.Properties;
 
 
-
-//@Listeners(CustomListener.class)
+@Listeners(CustomListener.class)
 public class BaseTest {
 
     public static Logger LOGGER;
@@ -90,6 +89,8 @@ public class BaseTest {
     public void afterSuite(ITestContext testContext) {
         BasePage.driver.quit();
     }
+
+    //@Attachment(value = "Page screenshot", type = "image/png")
 
     public static void makeScreen(String name) throws IOException {
         File screenshot = ((TakesScreenshot) BasePage.driver)

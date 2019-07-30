@@ -8,6 +8,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import static Tests.BaseTest.LOGGER;
+
 @Getter
 @Setter
 public abstract class BasePage {
@@ -37,6 +39,7 @@ public abstract class BasePage {
         authenticationPage.textFieldEmail.sendKeys(email);
         authenticationPage.textFieldPassword.sendKeys(password);
         authenticationPage.buttonSignIn.click();
+        LOGGER.debug("Sign successful finished.");
     }
 
 

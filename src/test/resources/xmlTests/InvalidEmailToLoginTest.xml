@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="invalidEmailToLoginTest">
+    <test name="invalidEmailToLoginTest" verbose="2">
+        <classes>
+            <class name="Tests.InvalidEmailToLoginTest">
+                <methods>
+                    <include name="invalidEmailToLoginTest"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

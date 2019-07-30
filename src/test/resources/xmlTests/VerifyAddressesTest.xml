@@ -1,21 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
-<suite name="Simple test suite">
-
-
-    <test name="myTest" verbose="2">
-
-        <parameter name="data" value="src/test/resources/data.json"/>
-
+<suite name="verifyAddressesTest">
+    <test name="verifyAddressesTest" verbose="2">
+        <parameter name="data" value="src/test/resources/data/data.json"/>
         <classes>
             <class name="Tests.VerifyAddressesTest">
                 <methods>
                     <include name="verifyAddressesTest"/>
                 </methods>
             </class>
-
         </classes>
     </test>
-
 </suite>

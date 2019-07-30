@@ -1,7 +1,4 @@
 {
-  "password": "2345dfghqwerty",
-  "newsLetterRadio": true,
-  "optinRadio": true,
   "address": {
     "company": "secret",
     "address1": "Street street",
@@ -18,10 +15,13 @@
   "personalInfo": {
     "gender": true,
     "email": "7g5ty45rtgtttyhjmgccevgeny.tkach@gmail.com",
+    "password": "2345dfghqwerty",
     "firstName": "AbsojkllutelyNotEvgeny",
     "lastName": "Tkachdfghjk",
     "day": "24",
     "month": "5",
     "year": "1997"
-  }
+  },
+  "subscribeToNews": true,
+  "subscribeForSpecialOffers": true
 }

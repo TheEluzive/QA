@@ -6,7 +6,6 @@ import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 
-
 import java.io.IOException;
 
 import static Tests.BaseTest.LOGGER;
@@ -19,14 +18,13 @@ public class CustomListener implements ITestListener {
     }
 
     public void onTestSuccess(ITestResult iTestResult) {
-
         LOGGER.info("Tests successful finish");
     }
 
     public void onTestFailure(ITestResult iTestResult) {
         LOGGER.info("Tests Failure");
         try {
-            BaseTest.makeScreen("editAddressesTest");
+            BaseTest.makeScreen("testFailure");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -34,12 +32,12 @@ public class CustomListener implements ITestListener {
     }
 
     public void onTestSkipped(ITestResult iTestResult) {
-//        LOGGER.info("Tests Skipped");
+        LOGGER.info("Tests Skipped");
     }
 
     public void onTestFailedButWithinSuccessPercentage(ITestResult iTestResult) {
         try {
-            BaseTest.makeScreen("editAddressesTest");
+            BaseTest.makeScreen("testFailure");
         } catch (IOException e) {
             e.printStackTrace();
         }

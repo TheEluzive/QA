@@ -59,7 +59,7 @@ public class PersonalInformationPage extends BasePage {
         select.selectByValue(string);
     }
 
-    public PersonalInfo getPersonalInfoFromPage() {
+    public PersonalInfo getPersonalInfoFromPage(User user) {
         boolean gender;
         gender = getRadioGenderMale().isSelected();
         return new PersonalInfo(
@@ -67,7 +67,7 @@ public class PersonalInformationPage extends BasePage {
                 getTextFieldEmail().getAttribute("value"),
                 getTextFieldFirstName().getAttribute("value"),
                 getTestFieldLastName().getAttribute("value"),
-
+                user.getPersonalInfo().getPassword(),
                 getSelectorDay().getAttribute("value"),
                 getSelectorMonth().getAttribute("value"),
                 getSelectorYear().getAttribute("value")
@@ -90,8 +90,8 @@ public class PersonalInformationPage extends BasePage {
         select(user.getPersonalInfo().getMonth(), selectorMonth);
         select(user.getPersonalInfo().getYear(), selectorYear);
         getTextFieldCurrentPassword().sendKeys(oldPassword);
-        textFieldNewPassword.sendKeys(user.getPassword());
-        textFieldConfirmPassword.sendKeys(user.getPassword());
+        textFieldNewPassword.sendKeys(user.getPersonalInfo().getPassword());
+        textFieldConfirmPassword.sendKeys(user.getPersonalInfo().getPassword());
         getButtonSave().click();
     }
 

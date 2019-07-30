@@ -9,7 +9,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -116,10 +115,12 @@ public class RegistrationPage extends BasePage {
     }
 
 
-
     private ArrayList<String> registrationErrors = new ArrayList<>();
 
-    public void fillErrorArrayList() {
+    @FindBy(css = "div.alert li")
+    private List<WebElement> ourRegistrationError;
+
+    private void fillErrorArrayList() {
         registrationErrors.add(MESSAGE_PHONE_IS_REQUIRED);
         registrationErrors.add(MESSAGE_LAST_NAME_IS_INVALID);
         registrationErrors.add(MESSAGE_FIRST_NAME_IS_INVALID);
@@ -131,12 +132,7 @@ public class RegistrationPage extends BasePage {
         registrationErrors.add(MESSAGE_CITY_IS_REQUIRED);
         registrationErrors.add(MESSAGE_STATE_IS_REQUIRED);
         registrationErrors.add(MESSAGE_POST_CODE_IS_REQUIRED);
-
-
     }
-
-    @FindBy(css = "div.alert li")
-    List<WebElement> ourRegistrationError;
 
     public boolean findError() {
         fillErrorArrayList();
@@ -151,7 +147,6 @@ public class RegistrationPage extends BasePage {
         return true;
     }
 
-
     public void inputPersonalInformation(User user) {
         if (user.getPersonalInfo().isGender()) {
             radioGenderMale = (new WebDriverWait(driver, BaseTest.timeOut))
@@ -165,12 +160,12 @@ public class RegistrationPage extends BasePage {
         }
         textFieldFirstName.sendKeys(user.getPersonalInfo().getFirstName());
         testFieldLastName.sendKeys(user.getPersonalInfo().getLastName());
-        textFieldPassword.sendKeys(user.getPassword());
+        textFieldPassword.sendKeys(user.getPersonalInfo().getPassword());
         selectByValue(selectorDay, user.getPersonalInfo().getDay());
         selectByValue(selectorMonth, user.getPersonalInfo().getMonth());
         selectByValue(selectorYear, user.getPersonalInfo().getYear());
-        if (user.isNewsLetterRadio()) radioNewsLetterRadio.click();
-        if (user.isOptinRadio()) radioOptin.click();
+        if (user.isSubscribeToNews()) radioNewsLetterRadio.click();
+        if (user.isSubscribeForSpecialOffers()) radioOptin.click();
         textFieldAddress1.sendKeys(user.getAddress().getAddress1());
         textFieldAddress2.sendKeys(user.getAddress().getAddress2());
         textFieldCity.sendKeys(user.getAddress().getCity());
@@ -185,7 +180,7 @@ public class RegistrationPage extends BasePage {
         buttonRegister.click();
     }
 
-    public void verifyElementPage() throws IllegalAccessException {
+    public boolean verifyElementPage() throws IllegalAccessException {
         RegistrationPage obj = PageFactory.initElements(BasePage.driver, RegistrationPage.class);
 
         List<Field> allElements = new ArrayList<>(Arrays.asList(RegistrationPage.class.getDeclaredFields()));
@@ -193,15 +188,21 @@ public class RegistrationPage extends BasePage {
         for (Field allElement : allElements)
             if (allElement.getType().toString().equals("interface org.openqa.selenium.WebElement")) {
                 webElementsInPage.add(((WebElement) allElement.get(obj)));
-        }
+            }
 
         radioGenderMale = (new WebDriverWait(driver, BaseTest.timeOut))
-              .until(ExpectedConditions.visibilityOf(radioGenderMale));
+                .until(ExpectedConditions.visibilityOf(radioGenderMale));
 
-        for (int i=1; i<webElementsInPage.size(); i++){
+        for (int i = 1; i < webElementsInPage.size(); i++) {
             webElementsInPage.get(i).click();
-            webElementsInPage.get(i).isDisplayed();
+            if (!webElementsInPage.get(i).isDisplayed() && !webElementsInPage.get(i).isEnabled()) {
+                LOGGER.debug(!webElementsInPage.get(i).isDisplayed());
+                LOGGER.debug(!webElementsInPage.get(i).isEnabled());
+                LOGGER.debug(webElementsInPage.get(i).toString());
+                return false;
+            }
         }
+        return true;
 
        /* RegistrationPage obj  =  new RegistrationPage();
         Field field  =   RegistrationPage.class.getDeclaredField  ("buttonRegister");

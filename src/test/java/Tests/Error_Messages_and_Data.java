@@ -17,5 +17,4 @@ public class Error_Messages_and_Data {
     public static final String WRONG_EMAIL = "123456dfghjk@QWERTY.com";
     public static final String WRONG_PASSWORD = "QWERTY";
     public static final String INVALID_EMAIL = "qwerty";
-
 }

@@ -42,7 +42,7 @@ public class ShopPage extends BasePage {
         }
     }
 
-    public void addToCart(int productNumber){
+    public void addToCart(int productNumber) throws InterruptedException {
 
         scrollToElement(products.get(productNumber));
         mouseOver(products.get(productNumber));
@@ -53,7 +53,6 @@ public class ShopPage extends BasePage {
         buttonCloseMessageAdding = (new WebDriverWait(driver, BaseTest.timeOut))
                 .until(ExpectedConditions.visibilityOf(buttonCloseMessageAdding));
         buttonCloseMessageAdding.click();
+        Thread.sleep(100); //it`s a necessary evil
     }
-
-
 }

@@ -1,11 +1,13 @@
 package Tests;
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class VerifyRegistrationPageElementTest extends BaseTest{
+public class VerifyRegistrationPageElementsTest extends BaseTest {
+
     @Test
     public void verifyRegistrationPageElementTest() throws IllegalAccessException {
         registrationPage.inputEmailAndOpenRegistrationPage("kek@gfdgdf.com");
-        registrationPage.verifyElementPage();
+        Assert.assertTrue(registrationPage.verifyElementPage());
     }
 }
