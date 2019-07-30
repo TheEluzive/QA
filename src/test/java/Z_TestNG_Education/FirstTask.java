@@ -119,15 +119,15 @@ public class FirstTask {
 
     @org.testng.annotations.Test
     @Parameters({"firstValue", "secondValue"})
-    public void paramertizedTestAssertTrue(int firstValue, int secondValue){
-        Assert.assertTrue(Math.sqrt(firstValue)==Math.pow(secondValue,2), "Provided value not true");
+    public void parametrizedTestAssertTrue(int firstValue, int secondValue){
+        Assert.assertEquals(Math.pow(secondValue, 2), Math.sqrt(firstValue), "Provided value not true");
 
     }
 
     @org.testng.annotations.Test
     @Parameters({"secondValue"})
-    public void paramertizedTestAssertFalse(int firstValue, int secondValue){
-        Assert.assertTrue(Math.sqrt(firstValue)==Math.pow(secondValue,2), "Provided value not true");
+    public void parametrizedTestAssertFalse(int firstValue, int secondValue){
+        Assert.assertEquals(Math.pow(secondValue, 2), Math.sqrt(firstValue), "Provided value not true");
     }
 
 }

@@ -40,7 +40,7 @@ public abstract class BasePage {
     }
 
 
-    public void mouseOver(WebElement element) {
+    void mouseOver(WebElement element) {
         String code = "var fireOnThis = arguments[0];"
                 + "var evObj = document.createEvent('MouseEvents');"
                 + "evObj.initEvent( 'mouseover', true, true );"

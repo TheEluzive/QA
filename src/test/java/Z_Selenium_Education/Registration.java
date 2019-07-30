@@ -33,7 +33,7 @@ public class Registration {
     @Test(priority = 2, dataProvider = "dataProviderForRegistration", dataProviderClass = DataProviderClass.class)
     public void inputPersonalInformation(String email, String firstName, String lastName, String password, String day, String month,
                                          String year, boolean newsletter, boolean optin, String firstNameAgain, String lastNameAgain,
-                                         String adress1, String adress2, String city, String postcode, String country,
+                                         String address1, String address2, String city, String postcode, String country,
                                          String state, String additional, String homePhone, String mobilePhone, String adressOptional) {
         driver.findElement(By.xpath("//a[@class='login']")).click();
         WebElement inputEmail = (new WebDriverWait(driver, 10))
@@ -61,8 +61,8 @@ public class Registration {
         if (optin) driver.findElement(By.xpath("//input[@id='optin']")).click();
         driver.findElement(By.xpath("//input[@id='firstname']")).sendKeys(firstNameAgain);
         driver.findElement(By.xpath("//input[@id='lastname']")).sendKeys(lastNameAgain);
-        driver.findElement(By.xpath("//input[@id='address1']")).sendKeys(adress1);
-        driver.findElement(By.xpath("//input[@id='address2']")).sendKeys(adress2);
+        driver.findElement(By.xpath("//input[@id='address1']")).sendKeys(address1);
+        driver.findElement(By.xpath("//input[@id='address2']")).sendKeys(address2);
         driver.findElement(By.xpath("//input[@id='city']")).sendKeys(city);
         driver.findElement(By.xpath("//input[@id='postcode']")).sendKeys(postcode);
         Select selectCountry = new Select(driver.findElement(By.xpath("//select[@id='id_country']")));

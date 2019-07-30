@@ -3,12 +3,6 @@ package Pages;
 import lombok.Data;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.testng.Assert;
-
-import java.io.IOException;
-
-import static Tests.BaseTest.LOGGER;
-import static Tests.BaseTest.makeScreen;
 
 @Data
 public class AuthenticationPage extends BasePage {

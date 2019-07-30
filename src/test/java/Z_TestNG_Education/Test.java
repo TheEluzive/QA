@@ -64,14 +64,14 @@ public class Test {
 
     @org.testng.annotations.Test
     @Parameters({"firstValue"})
-    public void paramertizedTestAssertTrue(boolean firstValue){
+    public void parametrizedTestAssertTrue(boolean firstValue){
         Assert.assertTrue(firstValue, "Provided value not true");
 
     }
 
     @org.testng.annotations.Test
     @Parameters({"secondValue"})
-    public void paramertizedTestAssertFalse(boolean secondValue){
+    public void parametrizedTestAssertFalse(boolean secondValue){
         Assert.assertTrue(secondValue, "Provided value not true");
     }
 }

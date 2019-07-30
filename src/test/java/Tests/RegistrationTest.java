@@ -24,7 +24,7 @@ public class RegistrationTest extends BaseTest {
 
 
     @Test(dataProvider = "personalInformation")
-    public void registrationTest(User user) throws IOException {
+    public void registrationTest(User user) {
 
         registrationPage.inputEmailAndOpenRegistrationPage(user.getPersonalInfo().getEmail());
         registrationPage.inputPersonalInformation(user);

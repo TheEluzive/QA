@@ -7,7 +7,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 @Getter
-public class MyAdressesPage extends BasePage {
+public class MyAddressesPage extends BasePage {
     @FindBy(xpath = "//div[@class='addresses']//li[2]")
     WebElement addressedFirstName;
 
@@ -32,8 +32,8 @@ public class MyAdressesPage extends BasePage {
 
     public void updateAddress(User user) {
         buttonUpdate.click();
-        EditYourAddressedPage editYourAdressedPage = PageFactory.initElements(BasePage.driver, EditYourAddressedPage.class);
-        editYourAdressedPage.updateYourAddress(user);
+        EditYourAddressedPage editYourAddressedPage = PageFactory.initElements(BasePage.driver, EditYourAddressedPage.class);
+        editYourAddressedPage.updateYourAddress(user);
     }
 
 }

@@ -20,7 +20,6 @@ import org.testng.asserts.SoftAssert;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.Properties;
 
 
@@ -33,13 +32,13 @@ public class BaseTest {
     public static Logger LOGGER;
     public static int timeOut;
     MyAccountPage myAccountPage;
-    MyAdressesPage myAddressesPage;
+    MyAddressesPage myAddressesPage;
     PersonalInformationPage personalInformationPage;
     RegistrationPage registrationPage;
     EditYourAddressedPage editYourAddressedPage;
     HomePage homePage;
     AuthenticationPage authenticationPage;
-    public HashMap<String, String> parameters;
+
     Properties property;
     static SoftAssert softAssert = new SoftAssert();
 
@@ -80,7 +79,7 @@ public class BaseTest {
         }
         homePage = PageFactory.initElements(BasePage.driver, HomePage.class);
         myAccountPage = PageFactory.initElements(BasePage.driver, MyAccountPage.class);
-        myAddressesPage = PageFactory.initElements(BasePage.driver, MyAdressesPage.class);
+        myAddressesPage = PageFactory.initElements(BasePage.driver, MyAddressesPage.class);
         personalInformationPage = PageFactory.initElements(BasePage.driver, PersonalInformationPage.class);
         registrationPage = PageFactory.initElements(BasePage.driver, RegistrationPage.class);
         editYourAddressedPage = PageFactory.initElements(BasePage.driver, EditYourAddressedPage.class);

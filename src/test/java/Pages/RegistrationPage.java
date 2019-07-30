@@ -2,8 +2,6 @@ package Pages;
 
 import Model.User;
 import Tests.BaseTest;
-import Z_Selenium_Education.Registration;
-import com.sun.prism.PixelFormat;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -56,13 +54,13 @@ public class RegistrationPage extends BasePage {
     private WebElement textFieldAdressFirstName;
 
     @FindBy(xpath = "//input[@id='lastname']")
-    private WebElement textFieldAdressLastName;
+    private WebElement textFieldAddressLastName;
 
     @FindBy(xpath = "//input[@id='address1']")
-    private WebElement textFieldAdress1;
+    private WebElement textFieldAddress1;
 
     @FindBy(xpath = "//input[@id='address2']")
-    private WebElement textFieldAdress2;
+    private WebElement textFieldAddress2;
 
     @FindBy(xpath = "//input[@id='city']")
     private WebElement textFieldCity;
@@ -86,7 +84,7 @@ public class RegistrationPage extends BasePage {
     private WebElement textFieldMobileNumber;
 
     @FindBy(xpath = "//input[@id='alias']")
-    private WebElement textFieldAdressAlias;
+    private WebElement textFieldAddressAlias;
 
     @FindBy(xpath = "//span[contains(text(),'Register')]")
     private WebElement buttonRegister;
@@ -116,17 +114,17 @@ public class RegistrationPage extends BasePage {
         authenticationPage.buttonCreateAnAccount.click();
     }
 
-    public static final String MESSAGE_PHONE_IS_REQUIRED = "You must register at least one phone number.";
-    public static final String MESSAGE_LAST_NAME_IS_INVALID = "lastname is invalid.";
-    public static final String MESSAGE_FIRST_NAME_IS_INVALID = "firstname is invalid.";
-    public static final String MESSAGE_EMAIL_IS_INVALID = "email is invalid.";
-    public static final String MESSAGE_PASSWORD_IS_REQUIRED = "passwd is required.";
-    public static final String MESSAGE_PASSWORD_IS_INVALID = "passwd is invalid.";
-    public static final String MESSAGE_ERROR_ADDRESS1 = "address1 is too long. Maximum length: 128";
-    public static final String MESSAGE_COUNTRY_IS_INVALID = "Country is invalid";
-    public static final String MESSAGE_CITY_IS_REQUIRED = "city is required.";
-    public static final String MESSAGE_STATE_IS_REQUIRED = "This country requires you to choose a State."; //if country chosen
-    public static final String MESSAGE_POST_CODE_IS_REQUIRED = "The Zip/Postal code you've entered is invalid. It must follow this format: 00000";//if country chosen
+    private static final String MESSAGE_PHONE_IS_REQUIRED = "You must register at least one phone number.";
+    private static final String MESSAGE_LAST_NAME_IS_INVALID = "lastname is invalid.";
+    private static final String MESSAGE_FIRST_NAME_IS_INVALID = "firstname is invalid.";
+    private static final String MESSAGE_EMAIL_IS_INVALID = "email is invalid.";
+    private static final String MESSAGE_PASSWORD_IS_REQUIRED = "passwd is required.";
+    private static final String MESSAGE_PASSWORD_IS_INVALID = "passwd is invalid.";
+    private static final String MESSAGE_ERROR_ADDRESS1 = "address1 is too long. Maximum length: 128";
+    private static final String MESSAGE_COUNTRY_IS_INVALID = "Country is invalid";
+    private static final String MESSAGE_CITY_IS_REQUIRED = "city is required.";
+    private static final String MESSAGE_STATE_IS_REQUIRED = "This country requires you to choose a State."; //if country chosen
+    private static final String MESSAGE_POST_CODE_IS_REQUIRED = "The Zip/Postal code you've entered is invalid. It must follow this format: 00000";//if country chosen
 
     private ArrayList<String> registrationErrors = new ArrayList<>();
 
@@ -182,8 +180,8 @@ public class RegistrationPage extends BasePage {
         selectByValue(selectorYear, user.getPersonalInfo().getYear());
         if (user.isNewsLetterRadio()) radioNewsLetterRadio.click();
         if (user.isOptinRadio()) radioOptin.click();
-        textFieldAdress1.sendKeys(user.getAddress().getAddress1());
-        textFieldAdress2.sendKeys(user.getAddress().getAddress2());
+        textFieldAddress1.sendKeys(user.getAddress().getAddress1());
+        textFieldAddress2.sendKeys(user.getAddress().getAddress2());
         textFieldCity.sendKeys(user.getAddress().getCity());
         textFieldPostCode.sendKeys(user.getAddress().getPostCode());
         selectByText(selectorCountry, user.getAddress().getCountry());
@@ -191,8 +189,8 @@ public class RegistrationPage extends BasePage {
         textFieldAdditionalInformation.sendKeys(user.getAddress().getAdditionalInformation());
         textFieldHomePhone.sendKeys(user.getAddress().getHomePhone());
         textFieldMobileNumber.sendKeys(user.getAddress().getMobileNumber());
-        textFieldAdressAlias.clear();
-        textFieldAdressAlias.sendKeys(user.getAddress().getAddressAlias());
+        textFieldAddressAlias.clear();
+        textFieldAddressAlias.sendKeys(user.getAddress().getAddressAlias());
         buttonRegister.click();
     }
 

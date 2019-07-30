@@ -20,7 +20,7 @@ public class CustomListener implements ITestListener {
 
     public void onTestSuccess(ITestResult iTestResult) {
 
-        LOGGER.info("Tests succesfull finish");
+        LOGGER.info("Tests successful finish");
     }
 
     public void onTestFailure(ITestResult iTestResult) {
