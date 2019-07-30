@@ -201,18 +201,23 @@ public class RegistrationPage extends BasePage {
 
         List<Field> allElements = new ArrayList<>(Arrays.asList(RegistrationPage.class.getDeclaredFields()));
         List<WebElement> webElementsInPage = new ArrayList<>();
-        for (Field allElement : allElements) {
-            if (allElement.getClass().toString().equals("WebElement")) {
+        for (Field allElement : allElements)
+            if (allElement.getType().toString().equals("interface org.openqa.selenium.WebElement")) {
                 webElementsInPage.add(((WebElement) allElement.get(obj)));
-            }
         }
 
-        WebElement firstWebElement = (new WebDriverWait(driver, BaseTest.timeOut))
-                .until(ExpectedConditions.visibilityOf(webElementsInPage.get(0)));
-        firstWebElement.isDisplayed();
+        radioGenderMale = (new WebDriverWait(driver, BaseTest.timeOut))
+              .until(ExpectedConditions.visibilityOf(radioGenderMale));
+
         for (int i=1; i<webElementsInPage.size(); i++){
+            webElementsInPage.get(i).click();
             webElementsInPage.get(i).isDisplayed();
         }
+
+       /* RegistrationPage obj  =  new RegistrationPage();
+        Field field  =   RegistrationPage.class.getDeclaredField  ("buttonRegister");
+        field.setAccessible   (true);
+        PixelFormat.DataType value  =  (PixelFormat.DataType) field.get(obj);*/
 
     }
 }
