@@ -1,10 +1,10 @@
 package Pages;
 
-import lombok.Getter;
+import lombok.Data;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-@Getter
+@Data
 public class AuthenticationPage extends BasePage {
 
     //CREATE AN ACCOUNT
