@@ -2,6 +2,8 @@ package Pages;
 
 import Model.User;
 import Tests.BaseTest;
+import Z_Selenium_Education.Registration;
+import com.sun.prism.PixelFormat;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -10,7 +12,9 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static Tests.BaseTest.LOGGER;
@@ -126,7 +130,7 @@ public class RegistrationPage extends BasePage {
 
     private ArrayList<String> registrationErrors = new ArrayList<>();
 
-    public void fillErrorArrayList(){
+    public void fillErrorArrayList() {
         registrationErrors.add(MESSAGE_PHONE_IS_REQUIRED);
         registrationErrors.add(MESSAGE_LAST_NAME_IS_INVALID);
         registrationErrors.add(MESSAGE_FIRST_NAME_IS_INVALID);
@@ -190,5 +194,25 @@ public class RegistrationPage extends BasePage {
         textFieldAdressAlias.clear();
         textFieldAdressAlias.sendKeys(user.getAddress().getAddressAlias());
         buttonRegister.click();
+    }
+
+    public void verifyElementPage() throws IllegalAccessException {
+        RegistrationPage obj = PageFactory.initElements(BasePage.driver, RegistrationPage.class);
+
+        List<Field> allElements = new ArrayList<>(Arrays.asList(RegistrationPage.class.getDeclaredFields()));
+        List<WebElement> webElementsInPage = new ArrayList<>();
+        for (Field allElement : allElements) {
+            if (allElement.getClass().toString().equals("WebElement")) {
+                webElementsInPage.add(((WebElement) allElement.get(obj)));
+            }
+        }
+
+        WebElement firstWebElement = (new WebDriverWait(driver, BaseTest.timeOut))
+                .until(ExpectedConditions.visibilityOf(webElementsInPage.get(0)));
+        firstWebElement.isDisplayed();
+        for (int i=1; i<webElementsInPage.size(); i++){
+            webElementsInPage.get(i).isDisplayed();
+        }
+
     }
 }

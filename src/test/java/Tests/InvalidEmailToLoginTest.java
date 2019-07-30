@@ -1,19 +1,16 @@
 package Tests;
-
-import Pages.AuthenticationPage;
-import Pages.BasePage;
-import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import java.io.IOException;
+
+import static Pages.AuthenticationPage.MESSAGE_INVALID_EMAIL_ADDRESS;
 
 public class InvalidEmailToLoginTest extends BaseTest {
 
     @Test
-    public void invalidEmailToLoginTest() throws IOException {
+    public void invalidEmailToLoginTest() {
         homePage.signIn(INVALID_EMAIL, WRONG_PASSWORD);
-        Assert.assertTrue(authenticationPage.findErrorBoxInvalidEmail());
+        Assert.assertEquals(authenticationPage.findErrorBoxAuthenticationFailed(), MESSAGE_INVALID_EMAIL_ADDRESS);
     }
 
 }

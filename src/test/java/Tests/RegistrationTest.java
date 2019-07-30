@@ -28,7 +28,7 @@ public class RegistrationTest extends BaseTest {
 
         registrationPage.inputEmailAndOpenRegistrationPage(user.getPersonalInfo().getEmail());
         registrationPage.inputPersonalInformation(user);
-        makeScreen("registrationTest");
+
 
         registrationPage.getButtonLogout().click();
         registrationPage.signIn(user.getPersonalInfo().getEmail(), user.getPassword());
