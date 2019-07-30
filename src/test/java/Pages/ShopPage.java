@@ -22,8 +22,8 @@ public class ShopPage extends BasePage {
     @FindBy(xpath = "//span[@class='heading-counter']")
     WebElement textAboutAmountProducts;
 
-    ArrayList<WebElement> products = new ArrayList<>();
-    ArrayList<WebElement> buttonsAddToCart = new ArrayList<>();
+    private final ArrayList<WebElement> products = new ArrayList<>();
+    private final ArrayList<WebElement> buttonsAddToCart = new ArrayList<>();
 
     public int getAmountProductsInShopPage() {
          return Integer.parseInt(textAboutAmountProducts.getText().replaceAll("\\D+",""));

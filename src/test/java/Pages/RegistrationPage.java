@@ -115,7 +115,7 @@ public class RegistrationPage extends BasePage {
     }
 
 
-    private ArrayList<String> registrationErrors = new ArrayList<>();
+    private final ArrayList<String> registrationErrors = new ArrayList<>();
 
     @FindBy(css = "div.alert li")
     private List<WebElement> ourRegistrationError;

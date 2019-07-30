@@ -21,7 +21,7 @@ public class DataPool<T> {
         fillNewDataPool(testParameterName, testContext, dataClass);
     }
 
-    private Collection<T> dataCollection;
+    private final Collection<T> dataCollection;
 
     private void processDataFile(String filePath, Class<T> dataClass) {
         ObjectMapper objectMapper = new ObjectMapper();

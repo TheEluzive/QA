@@ -37,7 +37,7 @@ public class BaseTest {
     AuthenticationPage authenticationPage;
 
     Properties property;
-    static SoftAssert softAssert = new SoftAssert();
+    static final SoftAssert softAssert = new SoftAssert();
 
     static SoftAssert getSoftAssert() {
         return softAssert;
