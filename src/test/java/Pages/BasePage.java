@@ -47,6 +47,11 @@ public abstract class BasePage {
                 + "fireOnThis.dispatchEvent(evObj);";
         ((JavascriptExecutor) driver).executeScript(code, element);
     }
+
+    void scrollToElement(WebElement webElement){
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();"
+                , webElement);
+    }
     void mouseClick(WebElement element) {
         String code = "var fireOnThis = arguments[0];"
                 + "var evt = document.createEvent('MouseEvents');"

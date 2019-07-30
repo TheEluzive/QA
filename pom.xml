@@ -14,6 +14,15 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.0.0-M3</version>
+                <configuration>
+                    <suiteXmlFiles>
+                        <suiteXmlFile>src/test/resources/EditAddressesPageTest.xml</suiteXmlFile>
+                        <suiteXmlFile>src/test/resources/EditPersonalInformationTest.xml</suiteXmlFile>
+                        <suiteXmlFile>src/test/resources/RegistrationTest.xml</suiteXmlFile>
+                        <suiteXmlFile>src/test/resources/VerifyAddressesTest.xml</suiteXmlFile>
+                        <suiteXmlFile>src/test/resources/VerifyPersonalInformationTest.xml</suiteXmlFile>
+                    </suiteXmlFiles>
+                </configuration>
             </plugin>
 
             <plugin>
