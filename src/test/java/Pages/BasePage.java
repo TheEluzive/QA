@@ -47,6 +47,12 @@ public abstract class BasePage {
                 + "fireOnThis.dispatchEvent(evObj);";
         ((JavascriptExecutor) driver).executeScript(code, element);
     }
-
+    void mouseClick(WebElement element) {
+        String code = "var fireOnThis = arguments[0];"
+                + "var evt = document.createEvent('MouseEvents');"
+                + "evt.initMouseEvent('click', true, true, window, 0, 0, 0, 5, 5, false, false, false, false, 0, null);"
+                + "fireOnThis.dispatchEvent(evt);";
+        ((JavascriptExecutor) driver).executeScript(code, element);
+    }
 
 }

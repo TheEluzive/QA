@@ -81,7 +81,7 @@ public class FirstTask {
     @org.testng.annotations.Test(dataProvider = "someDataProviderName")
     public void hardAssetEqualsTest(Integer i, Integer j){
         System.out.println("hardAssertEquals Method Was Started");
-        Assert.assertEquals(Math.sqrt(i),j, "Provided sqrt and number are not equal");
+        Assert.assertEquals((double)Math.sqrt(i),(double)j, "Provided sqrt and number are not equal");
         System.out.println("hardAssertEquals Method Was Executed");
     }
 

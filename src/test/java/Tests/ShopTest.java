@@ -12,11 +12,16 @@ public class ShopTest extends BaseTest{
 
         BasePage.driver.get(BasePage.mainPage + "?id_category=3&controller=category");
         ShopPage shopPage = PageFactory.initElements(BasePage.driver, ShopPage.class);
+        BasePage.driver.manage().window().maximize();
 
         //JavascriptExecutor js = (JavascriptExecutor)BasePage.driver;
         //WebElement element = (WebElement) js.executeScript("return jQuery.find('#center_column > ul > li:nth-child(1) > div > div.left-block > div > a.product_img_link > img');");
-        shopPage.buyDress1();
-        Thread.sleep(10000);
+
+        shopPage.makeListOfProducts();
+        shopPage.addToCart(0);
+        shopPage.addToCart(3);
+        shopPage.addToCart(6);
+
 
     }
 }

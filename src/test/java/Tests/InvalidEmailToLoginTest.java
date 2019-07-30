@@ -1,9 +1,9 @@
 package Tests;
+
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-
-import static Pages.AuthenticationPage.MESSAGE_INVALID_EMAIL_ADDRESS;
+import static Tests.Error_Messages_and_Data.*;
 
 public class InvalidEmailToLoginTest extends BaseTest {
 

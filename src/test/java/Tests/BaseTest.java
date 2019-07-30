@@ -24,11 +24,9 @@ import java.util.Properties;
 
 
 
-@Listeners(CustomListener.class)
+//@Listeners(CustomListener.class)
 public class BaseTest {
-    public static final String WRONG_EMAIL = "123456dfghjk@QWERTY.com";
-    public static final String WRONG_PASSWORD = "QWERTY";
-    public static final String INVALID_EMAIL = "qwerty";
+
     public static Logger LOGGER;
     public static int timeOut;
     MyAccountPage myAccountPage;

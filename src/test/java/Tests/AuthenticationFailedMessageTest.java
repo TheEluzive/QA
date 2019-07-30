@@ -3,7 +3,8 @@ package Tests;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import static Pages.AuthenticationPage.MESSAGE_AUTHENTICATION_FAILED;
+import static Tests.Error_Messages_and_Data.*;
+
 
 public class AuthenticationFailedMessageTest extends BaseTest {
 

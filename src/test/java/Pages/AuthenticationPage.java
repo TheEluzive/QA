@@ -33,8 +33,7 @@ public class AuthenticationPage extends BasePage {
 
 
 
-    public static final String MESSAGE_AUTHENTICATION_FAILED ="Authentication failed.";
-    public static final String MESSAGE_INVALID_EMAIL_ADDRESS ="Invalid email address.";
+
 
 
     public String findErrorBoxAuthenticationFailed() {
