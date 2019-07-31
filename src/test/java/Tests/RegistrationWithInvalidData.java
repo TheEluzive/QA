@@ -22,8 +22,12 @@ public class RegistrationWithInvalidData extends BaseTest {
 
     @Test(dataProvider = "personalInformation")
     public void registrationWithInvalidData(User user) {
+        user.getPersonalInfo().setEmail(System.currentTimeMillis()+user.getPersonalInfo().getEmail());
+        LOGGER.debug(user.getPersonalInfo().getEmail());
         registrationPage.inputEmailAndOpenRegistrationPage(user.getPersonalInfo().getEmail());
+
         registrationPage.inputPersonalInformation(user);
+
 
         Assert.assertTrue(registrationPage.findError());
     }

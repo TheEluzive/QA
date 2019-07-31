@@ -2,6 +2,7 @@ package Pages;
 
 import Model.PersonalInfo;
 import Model.User;
+import Tests.BaseTest;
 import lombok.Getter;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -65,9 +66,9 @@ public class PersonalInformationPage extends BasePage {
         return new PersonalInfo(
                 gender,
                 getTextFieldEmail().getAttribute("value"),
+                user.getPersonalInfo().getPassword(),
                 getTextFieldFirstName().getAttribute("value"),
                 getTestFieldLastName().getAttribute("value"),
-                user.getPersonalInfo().getPassword(),
                 getSelectorDay().getAttribute("value"),
                 getSelectorMonth().getAttribute("value"),
                 getSelectorYear().getAttribute("value")
@@ -85,7 +86,7 @@ public class PersonalInformationPage extends BasePage {
                 radioGenderMale.click();
         clearFieldAndSendString(textFieldFirstName, user.getPersonalInfo().getFirstName());
         clearFieldAndSendString(testFieldLastName, user.getPersonalInfo().getLastName());
-        clearFieldAndSendString(textFieldEmail, user.getPersonalInfo().getEmail());
+        clearFieldAndSendString(textFieldEmail, (int)System.currentTimeMillis() + user.getPersonalInfo().getEmail());
         select(user.getPersonalInfo().getDay(), selectorDay);
         select(user.getPersonalInfo().getMonth(), selectorMonth);
         select(user.getPersonalInfo().getYear(), selectorYear);
@@ -98,7 +99,7 @@ public class PersonalInformationPage extends BasePage {
     public boolean messageOfSuccessChanges() {
         boolean message;
         try {
-            message = BasePage.driver.findElement((By.xpath("//p[@class='alert alert-success']"))).isDisplayed();
+            message = driver.findElement((By.xpath("//p[@class='alert alert-success']"))).isDisplayed();
         } catch (Exception e) {
             message = false;
         }

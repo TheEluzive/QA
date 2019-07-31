@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 public class VerifyRegistrationPageElementsTest extends BaseTest {
 
     @Test
-    public void verifyRegistrationPageElementTest() throws IllegalAccessException {
+    public void verifyRegistrationPageElementsTest() throws IllegalAccessException {
         registrationPage.inputEmailAndOpenRegistrationPage("kek@gfdgdf.com");
         Assert.assertTrue(registrationPage.verifyElementPage());
     }

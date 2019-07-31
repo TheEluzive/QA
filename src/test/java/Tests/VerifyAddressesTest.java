@@ -22,6 +22,7 @@ public class VerifyAddressesTest extends BaseTest {
     @Test(dataProvider = "personalInformation")
     public void verifyAddressesTest(User user) {
 
+        makeAccountAndLogout(user);
         myAddressesPage.signIn(user.getPersonalInfo().getEmail(), user.getPersonalInfo().getPassword());
         myAddressesPage.getButtonAccount().click();
         myAccountPage.getButtonMyAddresses().click();

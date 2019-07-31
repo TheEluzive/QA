@@ -24,6 +24,8 @@ public class EditAddressesTest extends BaseTest {
     @Test(dataProvider = "personalInformation")
     public void editAddressesTest(User user) {
 
+        makeAccountAndLogout(user);
+
         myAccountPage.signIn(user.getPersonalInfo().getEmail(), user.getPersonalInfo().getPassword());
         LOGGER.debug("Login: " + user.getPersonalInfo().getEmail() + " password: " + user.getPersonalInfo().getPassword());
         myAccountPage.getButtonMyAddresses().click();

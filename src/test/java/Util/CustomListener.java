@@ -33,6 +33,7 @@ public class CustomListener implements ITestListener {
 
     public void onTestSkipped(ITestResult iTestResult) {
         LOGGER.info("Tests Skipped");
+
     }
 
     public void onTestFailedButWithinSuccessPercentage(ITestResult iTestResult) {
@@ -41,6 +42,7 @@ public class CustomListener implements ITestListener {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
     }
 
     public void onStart(ITestContext iTestContext) {

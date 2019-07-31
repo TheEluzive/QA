@@ -1,6 +1,7 @@
 package Tests;
 
 import Model.DataPool;
+import Model.User;
 import Pages.*;
 import Util.CustomListener;
 import org.apache.commons.io.FileUtils;
@@ -8,13 +9,11 @@ import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.ITestContext;
-import org.testng.annotations.AfterSuite;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeSuite;
-import org.testng.annotations.Listeners;
+import org.testng.annotations.*;
 import org.testng.asserts.SoftAssert;
 
 import java.io.File;
@@ -28,6 +27,7 @@ public class BaseTest {
 
     public static Logger LOGGER;
     public static int timeOut;
+
     MyAccountPage myAccountPage;
     MyAddressesPage myAddressesPage;
     PersonalInformationPage personalInformationPage;
@@ -46,13 +46,11 @@ public class BaseTest {
     DataPool dataPool;
 
 
-    @BeforeMethod
-    public void beforeMethod() {
-        BasePage.driver.get(BasePage.mainPage);
-    }
+
 
     @BeforeSuite
     public void beforeSuite(ITestContext testContext) {
+
         String log4jConfPath = "src/resources/log4j.properties";
         PropertyConfigurator.configure(log4jConfPath);
 
@@ -74,6 +72,7 @@ public class BaseTest {
         } catch (IOException e) {
             LOGGER.error("Properties files wasn`t found");
         }
+        BasePage.driver.get(BasePage.mainPage);
         homePage = PageFactory.initElements(BasePage.driver, HomePage.class);
         myAccountPage = PageFactory.initElements(BasePage.driver, MyAccountPage.class);
         myAddressesPage = PageFactory.initElements(BasePage.driver, MyAddressesPage.class);
@@ -95,7 +94,15 @@ public class BaseTest {
     public static void makeScreen(String name) throws IOException {
         File screenshot = ((TakesScreenshot) BasePage.driver)
                 .getScreenshotAs(OutputType.FILE);
-        FileUtils.copyFile(screenshot, new File("src/test/resources/screenshots/" + name + System.currentTimeMillis() + ".jpg"));
+        FileUtils.copyFile(screenshot, new File("src/target/surefire-reports/screenshots/" + name + System.currentTimeMillis() + ".jpg"));
+    }
+
+    public void makeAccountAndLogout(User user){
+        user.getPersonalInfo().setEmail(System.currentTimeMillis()+user.getPersonalInfo().getEmail());
+        LOGGER.debug(user.getPersonalInfo().getEmail());
+        registrationPage.inputEmailAndOpenRegistrationPage(user.getPersonalInfo().getEmail());
+        registrationPage.inputPersonalInformation(user);
+        registrationPage.getButtonLogout().click();
     }
 
 

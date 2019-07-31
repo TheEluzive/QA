@@ -1,5 +1,6 @@
 package Pages;
 
+import Tests.BaseTest;
 import lombok.Getter;
 import lombok.Setter;
 import org.openqa.selenium.JavascriptExecutor;
@@ -13,9 +14,8 @@ import static Tests.BaseTest.LOGGER;
 @Getter
 @Setter
 public abstract class BasePage {
-    public static WebDriver driver;
     public static String mainPage = "";
-
+    public static WebDriver driver;
 
     @FindBy(xpath = "//a[@class='login']")
     private WebElement buttonSignIn;

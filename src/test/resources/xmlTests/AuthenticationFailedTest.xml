@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
-<suite name="authenticationFailedMessageTest">
-    <test name="myTest" verbose="2">
+<suite name="authenticationFailedTest3">
+    <test name="authenticationFailedTest2" verbose="2">
         <classes>
-            <class name="Tests.AuthenticationFailedMessageTest">
+            <class name="Tests.AuthenticationFailedTest">
                 <methods>
-                    <include name="authenticationFailedMessageTest"/>
+                    <include name="authenticationFailedTest"/>
                 </methods>
             </class>
         </classes>

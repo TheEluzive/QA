@@ -25,6 +25,8 @@ public class EditPersonalInformationTest extends BaseTest {
     @Test(dataProvider = "personalInformation")
     public void editPersonalInformationTest(User user, User userForChanges) {
 
+        makeAccountAndLogout(user);
+
         myAccountPage.signIn(user.getPersonalInfo().getEmail(), user.getPersonalInfo().getPassword());
         myAccountPage.getButtonMyPersonalInformation().click();
         personalInformationPage.updateInformation(userForChanges, user.getPersonalInfo().getPassword());

@@ -1,6 +1,7 @@
 package Pages;
 
 import Model.User;
+import Tests.BaseTest;
 import lombok.Getter;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -32,7 +33,7 @@ public class MyAddressesPage extends BasePage {
 
     public void updateAddress(User user) {
         buttonUpdate.click();
-        EditYourAddressedPage editYourAddressedPage = PageFactory.initElements(BasePage.driver, EditYourAddressedPage.class);
+        EditYourAddressedPage editYourAddressedPage = PageFactory.initElements(driver, EditYourAddressedPage.class);
         editYourAddressedPage.updateYourAddress(user);
     }
 

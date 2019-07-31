@@ -5,8 +5,7 @@ import org.testng.annotations.Test;
 
 import static Tests.Error_Messages_and_Data.*;
 
-
-public class AuthenticationFailedMessageTest extends BaseTest {
+public class AuthenticationFailedTest extends BaseTest {
 
     @Test
     public void authenticationFailedTest() {

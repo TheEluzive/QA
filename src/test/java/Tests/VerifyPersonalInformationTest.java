@@ -24,6 +24,8 @@ public class VerifyPersonalInformationTest extends BaseTest {
     @Test(dataProvider = "personalInformation")
     public void verifyPersonalInformationTest(User user) {
 
+        makeAccountAndLogout(user);
+
         myAddressesPage.signIn(user.getPersonalInfo().getEmail(), user.getPersonalInfo().getPassword());
         myAccountPage.getButtonAccount().click();
         myAccountPage.getButtonMyPersonalInformation().click();

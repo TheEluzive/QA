@@ -14,6 +14,7 @@ public class Error_Messages_and_Data {
     public static final String MESSAGE_CITY_IS_REQUIRED = "city is required.";
     public static final String MESSAGE_STATE_IS_REQUIRED = "This country requires you to choose a State."; //if country chosen
     public static final String MESSAGE_POST_CODE_IS_REQUIRED = "The Zip/Postal code you've entered is invalid. It must follow this format: 00000";//if country chosen
+    public static final String MESSAGE_COUNTRY_CANNOT_BE_LOADED = "Country cannot be loaded with address->id_country";
     public static final String WRONG_EMAIL = "123456dfghjk@QWERTY.com";
     public static final String WRONG_PASSWORD = "QWERTY";
     public static final String INVALID_EMAIL = "qwerty";

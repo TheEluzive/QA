@@ -15,17 +15,18 @@
                 <version>3.0.0-M3</version>
                 <configuration>
                     <suiteXmlFiles>
-                        <suiteXmlFile>src/test/resources/xmlTests/AuthenticationFailedMessageTest.xml</suiteXmlFile>
+                        <suiteXmlFile>src/test/resources/xmlTests/AuthenticationFailedTest.xml</suiteXmlFile>
                         <suiteXmlFile>src/test/resources/xmlTests/BuyingTest.xml</suiteXmlFile>
                         <suiteXmlFile>src/test/resources/xmlTests/EditAddressesTest.xml</suiteXmlFile>
                         <suiteXmlFile>src/test/resources/xmlTests/EditPersonalInformationTest.xml</suiteXmlFile>
                         <suiteXmlFile>src/test/resources/xmlTests/InvalidEmailToLoginTest.xml</suiteXmlFile>
-                        <suiteXmlFile>src/test/resources/xmlTests/RegisrtationWithInvalidData.xml</suiteXmlFile>
+                        <suiteXmlFile>src/test/resources/xmlTests/RegistrationWithInvalidData.xml</suiteXmlFile>
                         <suiteXmlFile>src/test/resources/xmlTests/RegistrationTest.xml</suiteXmlFile>
                         <suiteXmlFile>src/test/resources/xmlTests/VerifyAddressesTest.xml</suiteXmlFile>
                         <suiteXmlFile>src/test/resources/xmlTests/VerifyPersonalInformationTest.xml</suiteXmlFile>
                         <suiteXmlFile>src/test/resources/xmlTests/VerifyRegistrationPageElementsTest.xml</suiteXmlFile>
                     </suiteXmlFiles>
+
                 </configuration>
             </plugin>
 
