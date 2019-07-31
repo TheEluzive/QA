@@ -24,13 +24,8 @@ public class RegistrationTest extends BaseTest {
 
     @Test(dataProvider = "personalInformation")
     public void registrationTest(User user) {
-        user.getPersonalInfo().setEmail(System.currentTimeMillis()+user.getPersonalInfo().getEmail());
-        LOGGER.debug(user.getPersonalInfo().getEmail());
-        registrationPage.inputEmailAndOpenRegistrationPage(user.getPersonalInfo().getEmail());
-        registrationPage.inputPersonalInformation(user);
-        registrationPage.getButtonLogout().click();
 
-
+        makeAccountAndLogout(user);
         registrationPage.signIn(user.getPersonalInfo().getEmail(), user.getPersonalInfo().getPassword());
 
         Assert.assertEquals(BasePage.driver.getCurrentUrl(), BasePage.mainPage + property.getProperty("myAccountPage"));

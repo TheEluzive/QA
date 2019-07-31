@@ -33,7 +33,7 @@ public class CustomListener implements ITestListener {
 
     public void onTestSkipped(ITestResult iTestResult) {
         LOGGER.info("Tests Skipped");
-
+        BasePage.driver.quit();
     }
 
     public void onTestFailedButWithinSuccessPercentage(ITestResult iTestResult) {
@@ -51,6 +51,6 @@ public class CustomListener implements ITestListener {
     }
 
     public void onFinish(ITestContext iTestContext) {
-
+        BasePage.driver.quit();
     }
 }

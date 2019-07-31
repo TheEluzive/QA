@@ -84,10 +84,10 @@ public class BaseTest {
     }
 
 
-    @AfterSuite
+    /*@AfterSuite
     public void afterSuite(ITestContext testContext) {
         BasePage.driver.quit();
-    }
+    }*/
 
     //@Attachment(value = "Page screenshot", type = "image/png")
 
