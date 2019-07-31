@@ -10,7 +10,7 @@ public class BuyingTest extends BaseTest {
 
     @Test
     public void buyingTest() throws InterruptedException {
-
+//don`t move mouse in this test
         BasePage.driver.get(BasePage.mainPage + property.getProperty("shopPage"));
         ShopPage shopPage = PageFactory.initElements(BasePage.driver, ShopPage.class);
         BasePage.driver.manage().window().maximize();

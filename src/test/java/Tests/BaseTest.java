@@ -94,7 +94,7 @@ public class BaseTest {
     public static void makeScreen(String name) throws IOException {
         File screenshot = ((TakesScreenshot) BasePage.driver)
                 .getScreenshotAs(OutputType.FILE);
-        FileUtils.copyFile(screenshot, new File("src/target/surefire-reports/screenshots/" + name + System.currentTimeMillis() + ".jpg"));
+        FileUtils.copyFile(screenshot, new File("target/surefire-reports/screenshots/" + name + System.currentTimeMillis() + ".jpg"));
     }
 
     public void makeAccountAndLogout(User user){

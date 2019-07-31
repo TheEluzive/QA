@@ -53,6 +53,6 @@ public class ShopPage extends BasePage {
         buttonCloseMessageAdding = (new WebDriverWait(driver, BaseTest.timeOut))
                 .until(ExpectedConditions.visibilityOf(buttonCloseMessageAdding));
         buttonCloseMessageAdding.click();
-        Thread.sleep(100); //it`s a necessary evil
+        Thread.sleep(200); //it`s a necessary evil
     }
 }
