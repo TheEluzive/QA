@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="registrationWithInvalidData">
+    <test name="registrationWithInvalidData" verbose="2">
+        <parameter name="data" value="src/test/resources/data/invalidData.json"/>
+        <classes>
+            <class name="Tests.RegistrationWithInvalidData">
+                <methods>
+                    <include name="registrationWithInvalidData"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

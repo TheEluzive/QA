@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="TestSuite" thread-count="3" >
+<test name = "paramertizedTestAssertTrue">
+    <parameter name="firstValue" value = "1"/>
+    <parameter name="secondValue" value = "2"/>
+    <classes>
+        <class name = "Z_TestNG_Education.Test">
+            <methods>
+                <include name="parametrizedTestAssertTrue"/>
+                <include name="parametrizedTestAssertFalse"/>
+                <include name="testWithExpectedException"/>
+                <include name="testWithoutExpectedException"/>
+                <include name="hardAssetEqualsTest"/>
+                <include name="softAssertEqualsTest"/>
+                <include name="hardAssetNotEqualsTest"/>
+                <include name="softAssertNotEqualsTest"/>
+                <include name="softAssertFailTest"/>
+                <include name="parametrizedTestAssertTrue"/>
+                <include name="parametrizedTestAssertFalse"/>
+
+
+
+            </methods>
+        </class>
+    </classes>
+</test>
+</suite>
+
+

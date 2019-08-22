@@ -1,0 +1,27 @@
+{
+  "address": {
+    "company": "secret",
+    "address1": "Street street",
+    "address2": "5",
+    "city": "Volgograd",
+    "postCode": "12345",
+    "country": "United States",
+    "state": "Georgia",
+    "additionalInformation": "something",
+    "homePhone": "12-23-34",
+    "mobileNumber": "89876543210",
+    "addressAlias": "Address"
+  },
+  "personalInfo": {
+    "gender": false,
+    "email": "evgeny.tkachForQA@gmail.com",
+    "password": "2345dfghqwerty",
+    "firstName": "EvgenyDvaDva",
+    "lastName": "Tkach",
+    "day": "24",
+    "month": "5",
+    "year": "1997"
+  },
+  "subscribeToNews": true,
+  "subscribeForSpecialOffers": true
+}

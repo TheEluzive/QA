@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="verifyRegistrationPageElementsTest">
+    <test name="verifyRegistrationPageElementsTest" verbose="2">
+        <classes>
+            <class name="Tests.VerifyRegistrationPageElementsTest">
+                <methods>
+                    <include name="verifyRegistrationPageElementsTest"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

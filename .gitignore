@@ -2,5 +2,7 @@
 *.class
 /.idea
 /out
-/src/resources
 /target
+*.log
+*.bmp
+src/test/resources/screenshots
